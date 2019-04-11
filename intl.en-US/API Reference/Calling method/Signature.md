@@ -86,7 +86,7 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey
 &AccessKeyId=F585********APMU
 &SignatureMethod=HMAC-SHA1
 &Timestamp=2016-03-28T03:13:08Z
-&Signature=41wk2SSX1GJh7fwnc5eqOfiJPFg%3D
+&Signature=41wk2SSX1GJh7fwnc5eqOfiJPF****
 
 
 ```
