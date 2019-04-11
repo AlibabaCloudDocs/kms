@@ -11,7 +11,7 @@ You can use a CMK to encrypt small amounts of data \(a maximum of 6 KB\). Typica
 
 **Note:** Default value: Aliyun\_KMS. Note that the values are case sensitive.
 
-If you choose EXTERNAL, you need to [Import key material](../../../../reseller.en-US/User Guide/Import key material.md#).|
+If you choose EXTERNAL, you need to [Import key material](../../../../../reseller.en-US/User Guide/Import key material.md#).|
 |Description|String|No|The description of the CMK. Length constraints: Minimum length of 0 characters. Maximum length of 8192 characters.|
 |KeyUsage|String|No|The intended use of the CMK. Default value: ENCRYPT/DECRYPT.|
 
@@ -60,12 +60,12 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey
         "KeyMetadata": {
                 "CreationDate": "2016-03-25T10:42:40Z",
                 "Description": "key description example",
-                "KeyId": "08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4fb73",
+                "KeyId": "08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****",
                 "KeyState": "Enabled",
                 "KeyUsage": "ENCRYPT/DECRYPT",
                 "DeleteDate": "",
                 "Creator":"123456",
-                "Arn":"acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4fb73",
+                "Arn":"acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****",
                 "Origin":"Aliyun_KMS",
                 "MaterialExpireTime":""
         },
@@ -83,12 +83,12 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey
  <KeyMetadata>
         <CreationDate>2016-03-25T10:40:47Z</CreationDate>
         <Description>key description example</Description>
-        <KeyId>08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4fb73</KeyId>
+        <KeyId>08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****</KeyId>
         <KeyState>Enabled</KeyState>
         <KeyUsage>ENCRYPT/DECRYPT</KeyUsage>
         <DeleteDate></DeleteDate>
         <Creator>123456</Creator>
-        <Arn>acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4fb73</Arn>
+        <Arn>acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****</Arn>
         <Origin>Aliyun_KMS</Origin>
         <MaterialExpireTime></MaterialExpireTime>
  </KeyMetadata>
