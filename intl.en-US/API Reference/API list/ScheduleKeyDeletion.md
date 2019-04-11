@@ -3,8 +3,8 @@
 Schedules the deletion of a CMK.
 
 -   During waiting period, the key is in **PendingDeletion** state and cannot be used for encryption, decryption, or data key generation.
--   A deleted CMK cannot be recovered. The data it encrypted, and the DataKey it generated cannot be decrypted again. Therefore, you must make a request to KMS for deleting a CMK. We recommend that you use [DisableKey](intl.en-US/API Reference/API list/DisableKey.md#) instead if possible.
--   You must specify a waiting period when you make the request. The period must be between 7 and 30 days. You can use [CancelKeyDeletion](intl.en-US/API Reference/API list/CancelKeyDeletion.md#) to cancel the request after submission but before the waiting period ends.
+-   A deleted CMK cannot be recovered. The data it encrypted, and the DataKey it generated cannot be decrypted again. Therefore, you must make a request to KMS for deleting a CMK. We recommend that you use [DisableKey](reseller.en-US/API Reference/API list/DisableKey.md#) instead if possible.
+-   You must specify a waiting period when you make the request. The period must be between 7 and 30 days. You can use [CancelKeyDeletion](reseller.en-US/API Reference/API list/CancelKeyDeletion.md#) to cancel the request after submission but before the waiting period ends.
 -   The CMK is deleted within 24 hours after the waiting period ends. The API server uses UTC format. For example, a user makes a request at 14:00, Sep 10, 2016. The waiting period is 7 days. KMS deletes the CMK within 24 hours after 14:00, Sep 17.
 
 ## Request parameters { .section}
