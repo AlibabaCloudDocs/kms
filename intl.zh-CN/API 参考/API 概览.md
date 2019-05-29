@@ -12,7 +12,7 @@
 |:--|:-|
 |[CreateKey](intl.zh-CN/API 参考/API列表/CreateKey.md#)|创建用户主密钥。用户可以选择由 KMS 生成密钥材料；也可以选择自己上传密钥材料（也就是BYOK，此时CreateKey是 BYOK 的第一步）。|
 |[GetParametersForImport](intl.zh-CN/API 参考/API列表/GetParametersForImport.md#)|创建外部密钥（BYOK）的第二步：获取导入主密钥的材料。|
-|[ImportKeyMaterial](intl.zh-CN/API 参考/API列表/ImportKeyMaterial.md#)|创建外部密钥（BYOK）的第二步：导入密钥材料到用户主密钥中，完成外部密钥的创建。|
+|[ImportKeyMaterial](intl.zh-CN/API 参考/API列表/ImportKeyMaterial.md#)|创建外部密钥（BYOK）的第三步：导入密钥材料到用户主密钥中，完成外部密钥的创建。|
 |[EnableKey](intl.zh-CN/API 参考/API列表/EnableKey.md#)|修改密钥的状态为：启用。|
 |[DisableKey](intl.zh-CN/API 参考/API列表/DisableKey.md#)|修改密钥的状态为：禁用。|
 |[ScheduleKeyDeletion](intl.zh-CN/API 参考/API列表/ScheduleKeyDeletion.md#)|计划删除密钥。将密钥的状态设置为待删除状态，处于待删除状态的主密钥，会在计划的日期到期后删除。|
