@@ -17,7 +17,7 @@
 
 -   [信封加密](#li_7t1_wkl_j1k)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037245925_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046345925_zh-CN.png)
 
     操作流程如下：
 
@@ -29,23 +29,23 @@
 
     |图例|含义|
     |--|--|
-    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188761/156559037245807_zh-CN.png)
+    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188761/156559046345807_zh-CN.png)
 
 |用户主密钥（CMK）|
-    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037246057_zh-CN.png)
+    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046346057_zh-CN.png)
 
 |明文数据密钥|
-    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037246058_zh-CN.png)
+    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046346058_zh-CN.png)
 
 |密文数据密钥|
-    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037245889_zh-CN.png)
+    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046445889_zh-CN.png)
 
 |明文文件|
-    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037345890_zh-CN.png)
+    |![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046445890_zh-CN.png)
 
 |密文文件|
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559037345927_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188762/156559046445927_zh-CN.png)
 
     操作流程如下：
 
