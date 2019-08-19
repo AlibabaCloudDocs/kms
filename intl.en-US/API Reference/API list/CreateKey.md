@@ -2,7 +2,7 @@
 
 You can call this operation to create a customer master key \(CMK\).
 
-You can use a CMK to encrypt up to 6 KB of data. You use CMKs to generate data keys used to encrypt large amounts of data. For more information, see [GenerateDataKey](reseller.en-US/API Reference/API list/GenerateDataKey.md#).
+A CMK is used to directly encrypt a small amout of data \(up to 6 KB of data\). However, it's often used to generate data keys for encrypting a large amount of data. For more information, see [GenerateDataKey](reseller.en-US/API Reference/API list/GenerateDataKey.md#).
 
 ## Request parameters {#section_28947_01 .section}
 
