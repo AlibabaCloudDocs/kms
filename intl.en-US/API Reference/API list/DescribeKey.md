@@ -1,47 +1,47 @@
 # DescribeKey {#concept_28952_zh .concept}
 
-Returns detailed information about the specified CMK.
+You can call this operation to query detailed information about a specified CMK.
 
 ## Request parameters {#section_28952_01 .section}
 
-|Name|Type|Required|Description|
-|KeyId|String|Yes|Globally unique identifier of the CMK. You can use aliases. For more information, see [Alias Instructions](../../../../../reseller.en-US/User Guide/Alias Instructions.md#).|
+|Parameter|Type|Required|Description|
+|KeyId|String|Yes|The globally unique ID of the CMK to query. You can use aliases in the request. For more information, see [Alias Instructions](../../../../reseller.en-US/User Guide/Alias Instructions.md#).|
 
 ## Response parameters {#section_28952_02 .section}
 
-|Name|Type|Description|
-|KeyMetadata|[KeyMetadata](#)|Contains metadata about a CMK.|
+|Parameter|Type|Description|
+|KeyMetadata|[KeyMetadata parameters](#section_28952_03)|The metadata of the CMK queried.|
 
-## KeyMetadata {#section_28952_03 .section}
+## KeyMetadata parameters {#section_28952_03 .section}
 
-|Name|Type|Description|
-|CreationDate|Timestamp|The date and time \(UTC format\) when the CMK is created.|
+|Parameter|Type|Description|
+|CreationDate|Timestamp|The date and time when the CMK was created. The time is displayed in UTC.|
 |Description|String|The description of the CMK.|
-|KeyId|String|The globally unique identifier for the CMK.|
-|KeyState|String|The state of the CMK. For more information, see [Impact of CMK states on API call](reseller.en-US/API Reference/Impact of CMK states on API call.md#).|
-|KeyUsage|String|Usage of the CMK.|
-|DeleteDate|Timestamp|The date and time after which KMS deletes the CMK. For more information, see [ScheduleKeyDeletion](reseller.en-US/API Reference/API list/ScheduleKeyDeletion.md#). This value is present only when `KeyState` is `PendingDeletion`.|
+|KeyId|String|The globally unique ID of the CMK.|
+|KeyState|String|The status of the CMK. For more information, see [Impact of CMK states on API call](reseller.en-US/API Reference/Impact of CMK states on API call.md#).|
+|KeyUsage|String|The purpose of the CMK.|
+|DeleteDate|Timestamp|The scheduled period before the CMK is deleted. For more information, see [ScheduleKeyDeletion](reseller.en-US/API Reference/API list/ScheduleKeyDeletion.md#). This value is returned only when the KeyState value is PendingDeletion.|
 |Creator|String|The creator of the CMK.|
 |Arn|String|The Alibaba Cloud Resource Name \(ARN\) of the CMK.|
-|Origin|String|The source of the CMK’s key material.|
-|MaterialExpireTime|String|The date and time the key expires \(UTC format\). If the value is null, the key does not expire.|
+|Origin|String|The source of the key material for the CMK.|
+|MaterialExpireTime|String|The time when the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.|
+|ProtectionLevel|String|The protection level of the CMK.|
 
-## Examples { .section}
+## Examples {#section_qpb_yao_9gf .section}
 
-**Request example**
+Sample requests
 
-```
+``` {#codeblock_cua_lpn_ph6}
 https://kms.cn-hangzhou.aliyuncs.com/?Action=DescribeKey
 &KeyId=<your-key-id>
-&<Common Request Parameters>
-
+&<Common request parameters>
 ```
 
-**Response example**
+Sample responses
 
- `JSON` format
+`JSON` format
 
-```
+``` {#codeblock_evq_bp7_mrg}
 //json response
 {
         "KeyMetadata": {
@@ -54,16 +54,16 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=DescribeKey
                 "Creator":"123456",
                 "Arn":"acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddf****",
                 "Origin":"Aliyun_KMS",
-                "MaterialExpireTime":""
+                "MaterialExpireTime":"",
+                "ProtectionLevel":"HSM"
         },
         "RequestId": "3455b9b4-95c1-419d-b310-db6a53b09a39"
 }
-
 ```
 
- `XML` format
+`XML` format
 
-```
+``` {#codeblock_zim_dmw_wid}
 //xml response
 <KMS>
  <KeyMetadata>
@@ -77,9 +77,9 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=DescribeKey
         <Arn>acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddf****</Arn>
         <Origin>Aliyun_KMS</Origin>
         <MaterialExpireTime></MaterialExpireTime>
+        <ProtectionLevel>HSM</ProtectionLevel>
  </KeyMetadata>
  <RequestId>6cb4bf6b-d9c9-4660-af5f-2328378e7257</RequestId>
 </KMS>
-
 ```
 
