@@ -20,7 +20,7 @@ You can call this operation to query detailed information about a specified CMK.
 |KeyId|String|The globally unique ID of the CMK.|
 |KeyState|String|The status of the CMK. For more information, see [Impact of CMK states on API call](reseller.en-US/API Reference/Impact of CMK states on API call.md#).|
 |KeyUsage|String|The purpose of the CMK.|
-|DeleteDate|Timestamp|The scheduled period before the CMK is deleted. For more information, see [ScheduleKeyDeletion](reseller.en-US/API Reference/API list/ScheduleKeyDeletion.md#). This value is returned only when the KeyState value is PendingDeletion.|
+|DeleteDate|Timestamp|The scheduled date to delete CMK. For more information, see [ScheduleKeyDeletion](reseller.en-US/API Reference/API list/ScheduleKeyDeletion.md#). This value is returned only when the KeyState value is PendingDeletion.|
 |Creator|String|The creator of the CMK.|
 |Arn|String|The Alibaba Cloud Resource Name \(ARN\) of the CMK.|
 |Origin|String|The source of the key material for the CMK.|
