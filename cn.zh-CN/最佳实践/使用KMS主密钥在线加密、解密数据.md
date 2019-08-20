@@ -1,6 +1,6 @@
 # 使用KMS主密钥在线加密、解密数据 {#concept_221280 .concept}
 
-阿里云用户在云上部署IT资产，需要对敏感数据进行加密保护。如果被加密的数据对象较小（小于6KB），则可以通过密钥管理服务（Key Management Service，简称KMS）的密码运算API，在线对数据直接加解密。
+阿里云用户在云上部署IT资产，需要对敏感数据进行加密保护。如果被加密的数据对象较小（小于6KB），则可以通过密钥管理服务（Key Management Service，简称：KMS）的密码运算API，在线对数据直接加解密。
 
 ## 使用场景 {#section_juu_hzi_mmc .section}
 
@@ -13,9 +13,9 @@
 
 ## 产品架构 {#section_lpf_ze9_kkk .section}
 
-用户的数据会通过安全信道传递到KMS服务端，服务端完成加密、解密后，操作结果通过安全信道返回给用户。具体架构如下图所示。
+用户的数据会通过安全信道传递到KMS服务端，服务端完成加密、解密后，操作结果通过安全信道返回给用户。具体架构如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156628482456539_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/188761/156629136145810_zh-CN.png)
 
 操作流程如下：
 
