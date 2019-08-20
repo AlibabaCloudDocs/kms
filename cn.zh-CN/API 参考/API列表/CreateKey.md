@@ -2,7 +2,7 @@
 
 创建一个主密钥。
 
-主密钥可直接用于加密少量数据（少于 6 KB），但通常用于生成可以加密大量数据的 DataKey，详情请参见[GenerateDataKey](cn.zh-CN/API 参考/API列表/GenerateDataKey.md#) 。
+主密钥可直接用于加密少量数据（少于 6 KB），但通常用于生成可以加密大量数据的 DataKey，详情请参见[GenerateDataKey](intl.zh-CN/API 参考/API列表/GenerateDataKey.md#) 。
 
 ## 请求参数 {#section_28947_01 .section}
 
@@ -11,7 +11,7 @@
 
  **说明：** 有效值默认为 Aliyun\_KMS。请注意区分大小写。
 
- 如果选择 EXTERNAL，您需要[导入密钥材料](../../../../cn.zh-CN/用户指南/导入密钥材料.md#)。|
+ 如果选择 EXTERNAL，您需要[导入密钥材料](../../../../intl.zh-CN/用户指南/导入密钥材料.md#)。|
 |Description|String|否|密钥的描述。长度必须在 0 到 8192 个字符之间。|
 |KeyUsage|String|否|密钥的用途。默认值：ENCRYPT/DECRYPT。|
 |ProtectionLevel|String|否|密钥的保护级别。 有效值：SOFTWARE 或 HSM。当指定值为 HSM 时：
@@ -34,7 +34,7 @@
 |CreationDate|Timestamp|创建密钥时的日期和时间（UTC时间）。|
 |Description|String|密钥的描述。|
 |KeyId|String|密钥的全局唯一标识符。|
-|KeyState|String|密钥的状态，详情请参见[用户主密钥（CMK）的状态（KeyState）对API调用的影响](cn.zh-CN/API 参考/用户主密钥（CMK）的状态（KeyState）对API调用的影响.md#) 。|
+|KeyState|String|密钥的状态，详情请参见[用户主密钥（CMK）的状态（KeyState）对API调用的影响](intl.zh-CN/API 参考/用户主密钥（CMK）的状态（KeyState）对API调用的影响.md#) 。|
 |KeyUsage|String|密钥的用途，加密或解密。|
 |DeleteDate|Timestamp|密钥预计被删除的时间（UTC时间）。 -   当该值为空时，表示密钥不会被删除。
 -   只有当 KeyState 值为 PendingDeletion 时，会返回此参数。

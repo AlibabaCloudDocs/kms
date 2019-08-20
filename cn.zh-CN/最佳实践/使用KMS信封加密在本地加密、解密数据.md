@@ -17,7 +17,7 @@
 
 -   [信封加密](#li_7t1_wkl_j1k)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156628479956487_zh-CN.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156629136656487_zh-CN.jpg)
 
     操作流程如下：
 
@@ -27,7 +27,7 @@
     4.  用户将密文数据密钥和密文文件一同存储到持久化存储设备或服务中。
 -   [信封解密](#li_jr5_gbw_ni2)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156628479956499_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156629136656499_zh-CN.png)
 
     操作流程如下：
 

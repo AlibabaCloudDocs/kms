@@ -9,7 +9,7 @@ Common request parameters are used in each API.
 |Format|String|No|The format of the response text. JSON and XML are supported. The default format is XML.|
 |Version|String|Yes|The API version in the format YYYY-MM-DD. The current version is 2016-01-20.|
 |AccessKeyId|String|Yes|An alphanumeric token issued by Alibaba Cloud for user authentication.|
-|Signature|String|Yes|Signing requests. For more information, see [Signature](reseller.en-US/API Reference/Calling method/Signature.md#).|
+|Signature|String|Yes|Signing requests. For more information, see [Signature](intl.en-US/API Reference/Calling method/Signature.md#).|
 |SignatureMethod|String|Yes|The hash algorithm to create the request signature. HMAC-SHA1 is used.|
 |Timestamp|String|Yes|The time stamp of the request. The date and time at which a request is signed, in the format YYYY-MM-DDThh:mm:ssZ. Example: 2014-05-26T12:00:00Z|
 |SignatureVersion|String|Yes|The signature version used to sign a request. The current version is 1.0.|

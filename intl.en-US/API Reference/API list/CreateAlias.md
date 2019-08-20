@@ -6,7 +6,7 @@ Creates an alias for a CMK.
 
 -   Each CMK can have multiple aliases, but each alias points to only one CMK.
 -   The alias name must be unique in one account and region.
--   You can use [UpdateAlias](reseller.en-US/API Reference/API list/UpdateAlias.md#) to update the mapping between the alias and the key.
+-   You can use [UpdateAlias](intl.en-US/API Reference/API list/UpdateAlias.md#) to update the mapping between the alias and the key.
 
 ## Request parameters { .section}
 
