@@ -21,7 +21,7 @@ The following table lists the service access endpoints of the KMS API.
 |China South 1 \(Shenzhen\)|cn-shenzhen|kms.cn-shenzhen.aliyuncs.com|kms-vpc.cn-shenzhen.aliyuncs.com|
 |EU Central 1 \(Frankfurt\)|eu-central-1|kms.eu-central-1.aliyuncs.com|kms-vpc.eu-central-1.aliyuncs.com|
 |Middle East 1 \(Dubai\)|me-east-1|kms.me-east-1.aliyuncs.com|kms-vpc.me-east-1.aliyuncs.com|
-|Hong Kong|cn-hongkong|kms.cn-hongkong.aliyuncs.com|kms-vpc.cn-hongkong.aliyuncs.com|
+|China \(Hong Kong\)|cn-hongkong|kms.cn-hongkong.aliyuncs.com|kms-vpc.cn-hongkong.aliyuncs.com|
 |US East 1 \(Virginia\)|us-east-1|kms.us-east-1.aliyuncs.com|kms-vpc.us-east-1.aliyuncs.com|
 |US West 1 \(Silicon Valley\)|us-west-1|kms.us-west-1.aliyuncs.com|kms-vpc.us-west-1.aliyuncs.com|
 |China East 1 \(Hangzhou finance cloud\)|cn-hangzhou-finance|kms.cn-hangzhou-finance.aliyuncs.com|None|
@@ -29,21 +29,21 @@ The following table lists the service access endpoints of the KMS API.
 |China South 1 \(Shenzhen finance cloud\)|cn-shenzhen-finance-1|kms.cn-shenzhen-finance-1.aliyuncs.com|kms-vpc.cn-shenzhen-finance-1.aliyuncs.com|
 |UK \(London\)|eu-west-1|kms.eu-west-1.aliyuncs.com|kms-vpc.eu-west-1.aliyuncs.com|
 
-## Interaction protocol { .section}
+## Interaction protocol {#section_cms_ycg_ngo .section}
 
 KMS API requests are HTTPS POST and GET request messages.
 
 SSLv2 and SSLv3 are not supported. TLS1.0 and later versions are supported.
 
-## Request method { .section}
+## Request method {#section_42r_wog_ins .section}
 
 A POST or GET request is a URL encoded with the parameter value that the interface you access requires.
 
-## Request parameters { .section}
+## Request parameters {#section_mfq_zyg_lqp .section}
 
 For each request, the operation to be executed, namely, the `Action` parameters \(for example, [CreateKey](reseller.en-US/API Reference/API list/CreateKey.md#)\), must be specified. Each operation must include the [Common parameters](reseller.en-US/API Reference/Calling method/Common parameters.md#) and the specific request parameters of the specified operations.
 
-## Character encoding { .section}
+## Character encoding {#section_yp4_eze_6yb .section}
 
 Requests and returned results are both encoded using `UTF-8`.
 
