@@ -10,7 +10,7 @@ You can use Managed HSM in the following regions. This feature will be provided 
 
 |Region|City|Region ID|
 |------|----|---------|
-|Hong Kong|Hong Kong|cn-hongkong|
+|China（Hong Kong）|Hong Kong|cn-hongkong|
 |Singapore|Singapore|ap-southeast-1|
 
 ## Regulatory compliance {#section_vyz_io3_a0v .section}
