@@ -36,7 +36,7 @@ A CMK is used to directly encrypt a small amout of data \(up to 6 KB of data\). 
 |KeyId|String|The globally unique ID of the CMK.|
 |KeyState|String|The status of the CMK. For more information, see [Impact of CMK states on API call](reseller.en-US/API Reference/Impact of CMK states on API call.md#).|
 |KeyUsage|String|The purpose of the CMK. Default value: ENCRYPT/DECRYPT.|
-|DeleteDate|Timestamp|The scheduled period before the CMK is deleted. The time is displayed in UTC. -   If the value is empty, the CMK will not be deleted.
+|DeleteDate|Timestamp|The scheduled date to delete CMK. The time is displayed in UTC. -   If the value is empty, the CMK will not be deleted.
 -   This value is returned only when the KeyState value is PendingDeletion.
 
  |
