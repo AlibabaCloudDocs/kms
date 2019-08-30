@@ -5,12 +5,13 @@
 ## 请求参数 {#section_28952_01 .section}
 
 |名称|类型|是否必需|描述|
-|KeyId|String|是|CMK 的全局唯一标识符。该 API 支持使用别名，详情请参见[别名使用说明](../../../../intl.zh-CN/用户指南/别名使用说明.md#)。|
+|KeyId|String|是|CMK 的全局唯一标识符。该参数也可以被指定为CMK绑定的别名，详情请参见[别名使用说明](../../../../intl.zh-CN/用户指南/别名使用说明.md#)。|
 
 ## 返回参数 {#section_28952_02 .section}
 
 |名称|类型|描述|
 |KeyMetadata|[KeyMetadata](#section_28952_03)|CMK 的 metadata。|
+|RequestId|String|本次请求的 ID。|
 
 ## KeyMetadata {#section_28952_03 .section}
 
@@ -18,14 +19,19 @@
 |CreationDate|Timestamp|创建主密钥（CMK）的日期和时间（UTC）。|
 |Description|String|CMK 的描述。|
 |KeyId|String|CMK 全局唯一标识符。|
-|KeyState|String|CMK 的状态，详情请参见[用户主密钥（CMK）的状态（KeyState）对API调用的影响](intl.zh-CN/API 参考/用户主密钥（CMK）的状态（KeyState）对API调用的影响.md#)。|
+|KeyState|String|CMK 的状态，详情请参见[用户主密钥（CMK）的状态（KeyState）对API调用的影响](intl.zh-CN/API 参考/用户主密钥的状态对API调用的影响.md#)。|
 |KeyUsage|String|CMK 的用途。|
+|PrimaryKeyVersion|String|当前的主版本标志符。主版本是CMK的活跃加密密钥，KMS使用主版本处理加密请求。|
 |DeleteDate|Timestamp|CMK 的预计删除时间，详情请参见[ScheduleKeyDeletion](intl.zh-CN/API 参考/API列表/ScheduleKeyDeletion.md#)。只有当 KeyState 值为 PendingDeletion 时，返回该值。|
 |Creator|String|CMK 创建者。|
 |Arn|String|阿里云资源名称。|
 |Origin|String|CMK 的密钥材料来源。|
 |MaterialExpireTime|String|密钥材料的过期时间（UTC）。当该值为空时，表示密钥材料不会过期。|
 |ProtectionLevel|String|密钥的保护级别。|
+|LastRotationDate|Timestamp|最近一次轮转的时间（UTC）。对新创建密钥，为初始密钥版本生成时间。|
+|EnableAutoRotation|Boolean|是否开启自动密钥轮转。|
+|RotationIntervalInDays|Integer|密钥自动轮转的周期（天数）。只有EnableAutoRotation为true时才返回。|
+|NextRotationDate|Timestamp|下一次轮转的时间。只有EnableAutoRotation为true时才返回|
 
 ## 示例 {#section_qpb_yao_9gf .section}
 
@@ -50,12 +56,17 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=DescribeKey
                 "KeyId": "08c33a6f-4e0a-4a1b-a3fa-7ddf****",
                 "KeyState": "Enabled",
                 "KeyUsage": "ENCRYPT/DECRYPT",
+                "PrimaryKeyVersion": "0ec2d249-9f64-4d8f-9587-1215525e****",
                 "DeleteDate": "",
                 "Creator":"123456",
                 "Arn":"acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddf****",
                 "Origin":"Aliyun_KMS",
                 "MaterialExpireTime":"",
-                "ProtectionLevel":"HSM"
+                "ProtectionLevel":"HSM",
+                "LastRotationDate": "2019-06-06T18:22:03Z",
+                "EnableAutoRotation": true,
+                "RotationIntervalInDays": 30,
+                "NextRotationDate": "2020-07-06T18:22:03Z"
         },
         "RequestId": "3455b9b4-95c1-419d-b310-db6a53b09a39"
 }
@@ -72,12 +83,17 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=DescribeKey
         <KeyId>08c33a6f-4e0a-4a1b-a3fa-7ddf****</KeyId>
         <KeyState>Enabled</KeyState>
         <KeyUsage>ENCRYPT/DECRYPT</KeyUsage>
+        <PrimaryKeyVersion>0ec2d249-9f64-4d8f-9587-1215525e****</PrimaryKeyVersion>
         <DeleteDate></DeleteDate>
         <Creator>123456</Creator>
         <Arn>acs:kms:cn-hangzhou:123456:key/08c33a6f-4e0a-4a1b-a3fa-7ddf****</Arn>
         <Origin>Aliyun_KMS</Origin>
         <MaterialExpireTime></MaterialExpireTime>
         <ProtectionLevel>HSM</ProtectionLevel>
+        <LastRotationDate>2016-03-25T10:42:40Z</LastRotationDate>
+        <EnableAutoRotation>true</EnableAutoRotation>
+        <RotationIntervalInDays>365</RotationIntervalInDays>
+        <NextRotationDate>2017-03-25T10:42:40Z</NextRotationDate>
  </KeyMetadata>
  <RequestId>6cb4bf6b-d9c9-4660-af5f-2328378e7257</RequestId>
 </KMS>
