@@ -28,6 +28,7 @@
 |ListKeys|kms:ListKeys|抽象密钥容器|
 |CreateKey|kms:CreateKey|抽象密钥容器|
 |DescribeKey|kms:DescribeKey|密钥|
+|UpdateKeyDescription|kms:UpdateKeyDescription|密钥|
 |EnableKey|kms:EnableKey|密钥|
 |DisableKey|kms:DisableKey|密钥|
 |ScheduleKeyDeletion|kms:ScheduleKeyDeletion|密钥|
@@ -37,6 +38,7 @@
 |DeleteKeyMaterial|kms:DeleteKeyMaterial|密钥|
 |Encrypt|kms:Encrypt|密钥|
 |GenerateDataKey|kms:GenerateDataKey|密钥|
+|GenerateDataKeyWithoutPlaintext|kms:GenerateDataKeyWithoutPlaintext|密钥|
 |Decrypt|kms:Decrypt|密钥|
 |ListAliases|kms:ListAliases|抽象别名容器|
 |CreateAlias|kms:CreateAlias|别名，密钥|
@@ -46,6 +48,10 @@
 |TagResource|kms:TagResource|密钥|
 |UntagResource|kms:UntagResource|密钥|
 |ListResourceTags|kms:ListResourceTags|密钥|
+|CreateKeyVersion|kms:CreateKeyVersion|密钥|
+|DescribeKeyVersion|kms:DescribeKeyVersion|密钥|
+|ListKeyVersions|kms:ListKeyVersions|密钥|
+|UpdateRotationPolicy|kms:UpdateRotationPolicy|密钥|
 
 ## KMS支持的策略条件 {#section_sk5_2yr_6gn .section}
 
