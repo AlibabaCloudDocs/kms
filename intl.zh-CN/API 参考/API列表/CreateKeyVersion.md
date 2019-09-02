@@ -17,7 +17,7 @@
 
 |名称|类型|描述|
 |RequestId|String|本次请求的ID|
-|KeyVersion|[KeyVersion](intl.zh-CN/.md#section_qvb_ed3_i6n)|新创建密钥版本的元数据|
+|KeyVersion|[KeyVersion](intl.zh-CN/API 参考/API列表/DescribeKeyVersion.md#section_qvb_ed3_i6n)|新创建密钥版本的元数据|
 
 ## 示例 {#section_ozr_bt0_5pt .section}
 
