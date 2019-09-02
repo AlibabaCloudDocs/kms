@@ -15,7 +15,7 @@ This topic describes how to call the KMS API to encrypt and decrypt private keys
 
 User data is transmitted to the KMS server through an encrypted connection. The KMS server encrypts or decrypts the data, and then returns the data to the user through the encrypted connection. The following figure shows the entire procedure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156707369758524_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156741282458524_en-US.png)
 
 Procedure:
 
@@ -30,10 +30,10 @@ You can call the following API operations to encrypt and decrypt data.
 
 |Operation|Description|
 |---------|-----------|
-|[CreateKey](https://help.aliyun.com/document_detail/28947.html)|Creates a CMK.|
-|[CreateAlias](https://help.aliyun.com/document_detail/68624.html)|Assigns an alias to a CMK.|
-|[Encrypt](https://help.aliyun.com/document_detail/28949.html)|Encrypts data with a specified CMK.|
-|[Decrypt](https://help.aliyun.com/document_detail/28950.html)|Decrypts data that is encrypted by KMS. You do not need to specify a CMK.|
+|[CreateKey](../../../../reseller.en-US/API Reference/API list/CreateKey.md#)|Creates a CMK.|
+|[CreateAlias](../../../../reseller.en-US/API Reference/API list/CreateAlias.md#)|Assigns an alias to a CMK.|
+|[Encrypt](../../../../reseller.en-US/API Reference/API list/Encrypt.md#)|Encrypts data with a specified CMK.|
+|[Decrypt](../../../../reseller.en-US/API Reference/API list/Decrypt.md#)|Decrypts data that is encrypted by KMS. You do not need to specify a CMK.|
 
 ## Encrypt and decrypt the private key of an SSL certificate {#section_2b8_ixl_dd3 .section}
 
