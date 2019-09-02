@@ -1,8 +1,8 @@
 # API 概览 {#concept_vdd_rmk_xdb .concept}
 
-本文列举了密钥管理服务（KMS）提供的 API 接口，具体 API 接口信息请参考相关文档。
+本文列举了密钥管理服务（KMS）提供的API接口，API接口详情请参见相关文档。
 
-阿里云也提供命令行工具，供您学习 API 或用于命令行自动化。关于命令行工具的安装和使用，详情请参见[阿里云 CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm)。
+阿里云也提供命令行工具，供您学习 API 或用于命令行自动化。关于命令行工具的安装和使用，请参见[阿里云 CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm)。
 
 ## 用户主密钥管理接口 {#section_i54_gmj_3gb .section}
 
@@ -10,7 +10,7 @@
 
 |API|描述|
 |:--|:-|
-|[CreateKey](intl.zh-CN/API 参考/API列表/CreateKey.md#)|创建用户主密钥。用户可以选择由 KMS 生成密钥材料；也可以选择自己上传密钥材料（也就是BYOK，此时CreateKey是 BYOK 的第一步）。|
+|[CreateKey](intl.zh-CN/API 参考/API列表/CreateKey.md#)|创建用户主密钥。用户可以选择由KMS生成密钥材料；也可以选择自己上传密钥材料（也就是BYOK，此时CreateKey是BYOK的第一步）。|
 |[GetParametersForImport](intl.zh-CN/API 参考/API列表/GetParametersForImport.md#)|创建外部密钥（BYOK）的第二步：获取导入主密钥的材料。|
 |[ImportKeyMaterial](intl.zh-CN/API 参考/API列表/ImportKeyMaterial.md#)|创建外部密钥（BYOK）的第三步：导入密钥材料到用户主密钥中，完成外部密钥的创建。|
 |[EnableKey](intl.zh-CN/API 参考/API列表/EnableKey.md#)|修改密钥的状态为：启用|
@@ -20,33 +20,33 @@
 |[DeleteKeyMaterial](intl.zh-CN/API 参考/API列表/DeleteKeyMaterial.md#)|直接删除用户主密钥的密钥材料。针对导入的外部密钥（BYOK），可以直接删除导入的密钥材料，删除密钥材料后的用户主密钥状态为：等待导入。|
 |[DescribeKey](intl.zh-CN/API 参考/API列表/DescribeKey.md#)|查询指定密钥的信息|
 |[ListKeys](intl.zh-CN/API 参考/API列表/ListKeys.md#)|列出云帐号在本地域的所有密钥|
-|[UpdateKeyDescription](intl.zh-CN/.md#)|更新用户主密钥的描述信息|
+|[UpdateKeyDescription](intl.zh-CN/API 参考/API列表/UpdateKeyDescription.md#)|更新用户主密钥的描述信息|
 
 ## 密钥版本管理接口 {#section_n3k_9xz_3h4 .section}
 
-密钥版本管理接口用于对主密钥进行密钥轮转
+密钥版本管理接口用于对主密钥进行密钥轮转。
 
 |API|描述|
 |---|--|
-|[CreateKeyVersion](intl.zh-CN/.md#)|创建一个新的密钥版本|
-|[DescribeKeyVersion](intl.zh-CN/.md#)|查看一个密钥版本|
-|[ListKeyVersions](intl.zh-CN/.md#)|列出主密钥的所有密钥版本|
-|[UpdateRotationPolicy](intl.zh-CN/.md#)|更新主密钥的轮转策略，可以配置自动轮转，KMS周期性自动生成新的密钥版本|
+|[CreateKeyVersion](intl.zh-CN/API 参考/API列表/CreateKeyVersion.md#)|创建一个新的密钥版本|
+|[DescribeKeyVersion](intl.zh-CN/API 参考/API列表/DescribeKeyVersion.md#)|查看一个密钥版本|
+|[ListKeyVersions](intl.zh-CN/API 参考/API列表/ListKeyVersions.md#)|列出主密钥的所有密钥版本|
+|[UpdateRotationPolicy](intl.zh-CN/API 参考/API列表/UpdateRotationPolicy.md#)|更新主密钥的轮转策略。如果配置自动轮转，KMS将周期性自动生成新的密钥版本。|
 
 ## 密码运算接口 {#section_bmq_3mj_3gb .section}
 
-密码运算接口用于对数据进行密码运算，例如：数据的加密和解密。
+密码运算接口用于对数据进行密码运算，例如数据的加密和解密。
 
 |API|描述|
 |:--|:-|
 |[Encrypt](intl.zh-CN/API 参考/API列表/Encrypt.md#)|使用指定用户主密钥加密数据，用于少量数据（不多于6KB）的在线加密。|
 |[GenerateDataKey](intl.zh-CN/API 参考/API列表/GenerateDataKey.md#)|产生一个随机数，并用指定的用户主密钥加密后，返回随机数的密文以及明文。随机数可被用作数据密钥，在本地做大量数据加密或解密。|
-|[GenerateDataKeyWithoutPlaintext](intl.zh-CN/.md#)|产生一个随机数，并用指定的用户主密钥加密后，返回随机数的密文。随机数可被用作数据密钥，在本地做大量数据加密或解密。|
-|[Decrypt](intl.zh-CN/API 参考/API列表/Decrypt.md#)|解密 Encrypt 或 GenerateDataKey接口产生的密文，不需要指定用于解密的用户主密钥。|
+|[GenerateDataKeyWithoutPlaintext](intl.zh-CN/API 参考/API列表/GenerateDataKeyWithoutPlaintext.md#)|产生一个随机数，并用指定的用户主密钥加密后，返回随机数的密文。随机数可被用作数据密钥，在本地做大量数据加密或解密。|
+|[Decrypt](intl.zh-CN/API 参考/API列表/Decrypt.md#)|解密Encrypt或GenerateDataKey接口产生的密文，不需要指定用于解密的用户主密钥。|
 
 ## 别名管理接口 {#section_dcl_lmj_3gb .section}
 
-别名是独立的对象，但是必须和唯一的用户主密钥进行绑定，从而可以在特定 API 中代替 KeyId 参数来指代用户主密钥。
+别名是独立的对象，但是必须和唯一的用户主密钥进行绑定，从而可以在特定API中代替KeyId参数来指代用户主密钥。
 
 |API|描述|
 |:--|:-|
@@ -58,7 +58,7 @@
 
 ## 标签管理接口 {#section_hb4_mmj_3gb .section}
 
-用户主密钥支持标签。用户可以为用户主密钥添加多个标签，每一个标签为一组标签键（TagKey）和标签值（TagValue）。
+用户主密钥支持标签。您可以为用户主密钥添加多个标签，每一个标签为一组标签键（TagKey）和标签值（TagValue）。
 
 |API|描述|
 |:--|:-|
