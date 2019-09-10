@@ -13,9 +13,9 @@
 
 使用KMS创建一个主密钥，使用主密钥生成一个数据密钥，再使用数据密钥在本地加解密数据。这种场景适用于大量数据的加解密。具体架构如下所示。
 
--   [信封加密](#li_7t1_wkl_j1k)
+-   信封加密
 
-    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811325656487_zh-CN.jpg)
+    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811344456487_zh-CN.jpg)
 
     操作流程如下：
 
@@ -23,9 +23,9 @@
     2.  调用KMS服务的GenerateDataKey接口创建一个数据密钥。KMS会返回一个明文的数据密钥和一个密文的数据密钥。
     3.  使用明文的数据密钥加密文件，产生密文文件，然后销毁内存中的明文密钥。
     4.  用户将密文数据密钥和密文文件一同存储到持久化存储设备或服务中。
--   [信封解密](#li_jr5_gbw_ni2)
+-   信封解密
 
-    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811325656499_zh-CN.png)
+    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811344556499_zh-CN.png)
 
     操作流程如下：
 
