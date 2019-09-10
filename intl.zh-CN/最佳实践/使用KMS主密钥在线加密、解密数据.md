@@ -15,14 +15,14 @@
 
 用户的数据会通过安全信道传递到KMS服务端，服务端完成加密、解密后，操作结果通过安全信道返回给用户。具体架构如下图所示。
 
-![产品架构](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156810768656539_zh-CN.png)
+![产品架构](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156810854356539_zh-CN.png)
 
 操作流程如下：
 
-1.  通过[KMS控制台](https://kms.console.aliyun.com/?spm=a2c4g.11186623.2.21.aa46717dmqOatF)或者调用CreateKey接口，创建一个用户主密钥。具体操作请参见[创建用户主密钥](#li_fuk_c6c_zer)。
-2.  调用KMS服务的Encrypt接口，将明文证书加密为密文证书。具体操作请参见[加密证书私钥](#li_rtd_wae_rgf)。
+1.  通过[KMS控制台](https://kms.console.aliyun.com)或者调用CreateKey接口，创建一个用户主密钥。
+2.  调用KMS服务的Encrypt接口，将明文证书加密为密文证书。
 3.  将密文证书部署在云服务器上。
-4.  当服务器启动需要使用证书时，调用KMS服务的Decrypt接口将密文证书解密为明文证书。具体操作请参见[解密证书私钥](#li_c45_sur_ul0)。
+4.  当服务器启动需要使用证书时，调用KMS服务的Decrypt接口将密文证书解密为明文证书。
 
 ## 相关API {#section_xmq_5l6_lmw .section}
 
