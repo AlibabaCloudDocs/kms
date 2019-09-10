@@ -17,7 +17,7 @@ Use KMS to create a customer master key \(CMK\), use the CMK to generate a data 
 
 -   [Envelope encryption](#li_7t1_wkl_j1k)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741298058526_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741304258526_en-US.png)
 
     Procedure:
 
@@ -27,7 +27,7 @@ Use KMS to create a customer master key \(CMK\), use the CMK to generate a data 
     4.  Store the ciphertext data key and encrypted data files on a storage device or service.
 -   [Envelope decryption](#li_jr5_gbw_ni2)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741298058527_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741304258527_en-US.png)
 
     Procedure:
 
