@@ -1,8 +1,6 @@
-# 使用KMS信封加密在本地加密、解密数据 {#concept_221281 .concept}
+# 使用KMS信封加密在本地加密、解密数据 {#concept_221281 .task}
 
 阿里云用户在云上部署IT资产，需要对敏感数据进行加密保护。如果被加密的数据对象较大，则可以通过KMS的密码运算API在线生成数据密钥，用离线数据密钥在本地加密大量数据。这类加密模式叫作信封加密。
-
-## 场景概述 {#section_r5y_ka6_fsp .section}
 
 典型的场景包括（但不限于）：
 
@@ -11,13 +9,13 @@
 
 本文以加密本地文件为例，介绍如何使用KMS实现对数据的信封加密，以及如何解密被信封加密的数据。
 
-## 产品架构 {#section_a1n_02b_nck .section}
+## 产品架构 {#section_d2e_b3u_lup .section}
 
 使用KMS创建一个主密钥，使用主密钥生成一个数据密钥，再使用数据密钥在本地加解密数据。这种场景适用于大量数据的加解密。具体架构如下所示。
 
 -   [信封加密](#li_7t1_wkl_j1k)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741345356487_zh-CN.jpg)
+    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811325656487_zh-CN.jpg)
 
     操作流程如下：
 
@@ -27,7 +25,7 @@
     4.  用户将密文数据密钥和密文文件一同存储到持久化存储设备或服务中。
 -   [信封解密](#li_jr5_gbw_ni2)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156741345456499_zh-CN.png)
+    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811325656499_zh-CN.png)
 
     操作流程如下：
 
@@ -35,132 +33,129 @@
     2.  调用KMS服务的Decrypt接口，将加密过的密钥解密为明文密钥。
     3.  用明文密钥为本地数据解密，再销毁内存中的明文密钥。
 
-## 相关API {#section_249_y34_gvm .section}
+## 相关API {#section_ad9_1ta_whf .section}
 
 您可以调用以下KMS API，在本地对数据进行加解密。
 
 |API名称|说明|
 |-----|--|
-|[CreateKey](../../../../intl.zh-CN/API 参考/API列表/CreateKey.md#)|创建用户主密钥（CMK）。|
-|[CreateAlias](../../../../intl.zh-CN/API 参考/API列表/CreateAlias.md#)|为指定用户主密钥创建一个别名。|
-|[GenerateDataKey](../../../../intl.zh-CN/API 参考/API列表/GenerateDataKey.md#)|在线生成数据密钥，用指定CMK加密数据密钥后，返回数据密钥的密文和明文。|
-|[Decrypt](../../../../intl.zh-CN/API 参考/API列表/Decrypt.md#)|解密KMS直接加密的数据（包括GenerateDataKey产生的数据密钥的密文），不需要指定CMK。|
+|[CreateKey](../../../../intl.zh-CN/API参考/API列表/CreateKey.md#)|创建用户主密钥（CMK）。|
+|[CreateAlias](../../../../intl.zh-CN/API参考/API列表/CreateAlias.md#)|为指定用户主密钥创建一个别名。|
+|[GenerateDataKey](../../../../intl.zh-CN/API参考/API列表/GenerateDataKey.md#)|在线生成数据密钥，用指定CMK加密数据密钥后，返回数据密钥的密文和明文。|
+|[Decrypt](../../../../intl.zh-CN/API参考/API列表/Decrypt.md#)|解密KMS直接加密的数据（包括GenerateDataKey产生的数据密钥的密文），不需要指定CMK。|
 
-## 加密/解密本地文件 {#section_ydw_24q_sqa .section}
+## 加密/解密证书密钥 {#section_8br_m8l_o6i .section}
 
--   信封加密
-    1.  创建用户主密钥
+1.  创建用户主密钥。 
 
-        ``` {#codeblock_37x_bv0_5em}
-        $ aliyun kms CreateKey
-        {
-          "KeyMetadata": {
-            "CreationDate": "2019-04-08T07:45:54Z",
-            "Description": "",
-            "KeyId": "1234abcd-12ab-34cd-56ef-12345678****",
-            "KeyState": "Enabled",
-            "KeyUsage": "ENCRYPT/DECRYPT",
-            "DeleteDate": "",
-            "Creator": "111122223333",
-            "Arn": "acs:kms:cn-hangzhou:111122223333:key/1234abcd-12ab-34cd-56ef-12345678****",
-            "Origin": "Aliyun_KMS",
-            "MaterialExpireTime": ""
-          },
-          "RequestId": "2a37b168-9fa0-4d71-aba4-2077dd9e80df"
-        }
-        ```
+    ``` {#codeblock_coj_p7n_n8m}
+    $ aliyun kms CreateKey
+    {
+      "KeyMetadata": {
+        "CreationDate": "2019-04-08T07:45:54Z",
+        "Description": "",
+        "KeyId": "1234abcd-12ab-34cd-56ef-12345678****",
+        "KeyState": "Enabled",
+        "KeyUsage": "ENCRYPT/DECRYPT",
+        "DeleteDate": "",
+        "Creator": "111122223333",
+        "Arn": "acs:kms:cn-hangzhou:111122223333:key/1234abcd-12ab-34cd-56ef-12345678****",
+        "Origin": "Aliyun_KMS",
+        "MaterialExpireTime": ""
+      },
+      "RequestId": "2a37b168-9fa0-4d71-aba4-2077dd9e80df"
+    }
+    ```
 
-    2.  给主密钥添加别名（可选）
+2.  给主密钥添加别名（可选）。 
 
-        别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
+    别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
 
-        ``` {#codeblock_ash_cgr_mnt}
-        $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-1234567890ab
-        ```
+    ``` {#codeblock_lob_y7r_b3i}
+    $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-1234567890ab
+    ```
 
-        **说明：** 其中，Apollo/WorkKey表示Apollo项目中的工作密钥（当前被用于加密的密钥），并在后续示例代码中使用此别名。即表示应用可以使用alias/Apollo/WorkKey调用加密API。
+    **说明：** 其中，Apollo/WorkKey表示Apollo项目中的工作密钥（当前被用于加密的密钥），并在后续示例代码中使用此别名。即表示应用可以使用alias/Apollo/WorkKey调用加密API。
 
-    3.  加密本地文件
+3.  加密本地文件。 
 
-        示例代码中：
+    示例代码中：
 
-        -   用户主密钥：别名为`alias/Apollo/WorkKey`
-        -   明文数据文件：./data/sales.csv
-        -   输出的密文数据文件：./data/sales.csv.cipher
-        ``` {#codeblock_f6g_z14_ro9}
-        #!/usr/bin/env python
-        #coding=utf-8
-        
-        import json
-        import base64
-        
-        from Crypto.Cipher import AES
-        
-        from aliyunsdkcore import client
-        from aliyunsdkkms.request.v20160120 import GenerateDataKeyRequest
-        
-        def KmsGenerateDataKey(client, key_alias):
-            request = GenerateDataKeyRequest.GenerateDataKeyRequest()
-            request.set_accept_format('JSON')
-            request.set_KeyId(key_alias)
-            request.set_NumberOfBytes(32)
-            response = json.loads(client.do_action(request))
-        
-            datakey_encrypted = response["CiphertextBlob"]
-            datakey_plaintext = response["Plaintext"]
-            return (datakey_plaintext, datakey_encrypted)
-        
-        def ReadTextFile(in_file):
-          file = open(in_file, 'r')
-          content = file.read()
-          file.close()
-          return content
-        
-        def WriteTextFile(out_file, lines):
-          file = open(out_file, 'w')
-          for ln in lines:
-            file.write(ln)
-            file.write('\n')
-          file.close()
-        
-        # Out file format (text)
-        # Line 1: b64 encoded data key
-        # Line 2: b64 encoded IV
-        # Line 3: b64 encoded ciphertext
-        # Line 4: b64 encoded authentication tag
-        def LocalEncrypt(datakey_plaintext, datakey_encrypted, in_file, out_file):
-          data_key_binary = base64.b64decode(datakey_plaintext)
-          cipher = AES.new(data_key_binary, AES.MODE_EAX)
-        
-          in_content = ReadTextFile(in_file)
-          ciphertext, tag = cipher.encrypt_and_digest(in_content)
-        
-          lines = [datakey_encrypted, base64.b64encode(cipher.nonce), base64.b64encode(ciphertext), base64.b64encode(tag)];
-          WriteTextFile(out_file, lines)
-        
-        clt = client.AcsClient('Access-Key-Id','Access-Key-Secret','Region-Id')
-        
-        key_alias = 'alias/Apollo/WorkKey'
-        
-        in_file = './data/sales.csv'
-        out_file = './data/sales.csv.cipher'
-        
-        # Generate Data Key
-        datakey = KmsGenerateDataKey(clt, key_alias)
-        
-        # Locally Encrypt the sales record
-        LocalEncrypt(datakey[0], datakey[1], in_file, out_file)
-        ```
+    -   用户主密钥：别名为`alias/Apollo/WorkKey`
+    -   明文数据文件：./data/sales.csv
+    -   输出的密文数据文件：./data/sales.csv.cipher
+    ``` {#codeblock_4rg_fpe_zha}
+    #!/usr/bin/env python
+    #coding=utf-8
+    
+    import json
+    import base64
+    
+    from Crypto.Cipher import AES
+    
+    from aliyunsdkcore import client
+    from aliyunsdkkms.request.v20160120 import GenerateDataKeyRequest
+    
+    def KmsGenerateDataKey(client, key_alias):
+        request = GenerateDataKeyRequest.GenerateDataKeyRequest()
+        request.set_accept_format('JSON')
+        request.set_KeyId(key_alias)
+        request.set_NumberOfBytes(32)
+        response = json.loads(client.do_action(request))
+    
+        datakey_encrypted = response["CiphertextBlob"]
+        datakey_plaintext = response["Plaintext"]
+        return (datakey_plaintext, datakey_encrypted)
+    
+    def ReadTextFile(in_file):
+      file = open(in_file, 'r')
+      content = file.read()
+      file.close()
+      return content
+    
+    def WriteTextFile(out_file, lines):
+      file = open(out_file, 'w')
+      for ln in lines:
+        file.write(ln)
+        file.write('\n')
+      file.close()
+    
+    # Out file format (text)
+    # Line 1: b64 encoded data key
+    # Line 2: b64 encoded IV
+    # Line 3: b64 encoded ciphertext
+    # Line 4: b64 encoded authentication tag
+    def LocalEncrypt(datakey_plaintext, datakey_encrypted, in_file, out_file):
+      data_key_binary = base64.b64decode(datakey_plaintext)
+      cipher = AES.new(data_key_binary, AES.MODE_EAX)
+    
+      in_content = ReadTextFile(in_file)
+      ciphertext, tag = cipher.encrypt_and_digest(in_content)
+    
+      lines = [datakey_encrypted, base64.b64encode(cipher.nonce), base64.b64encode(ciphertext), base64.b64encode(tag)];
+      WriteTextFile(out_file, lines)
+    
+    clt = client.AcsClient('Access-Key-Id','Access-Key-Secret','Region-Id')
+    
+    key_alias = 'alias/Apollo/WorkKey'
+    
+    in_file = './data/sales.csv'
+    out_file = './data/sales.csv.cipher'
+    
+    # Generate Data Key
+    datakey = KmsGenerateDataKey(clt, key_alias)
+    
+    # Locally Encrypt the sales record
+    LocalEncrypt(datakey[0], datakey[1], in_file, out_file)
+    ```
 
--   信封解密
-
-    解密本地文件
+4.  解密本地文件。 
 
     示例代码中：
 
     -   密文数据文件：./data/sales.csv.cipher
     -   输出的明文数据文件：./data/decrypted\_sales.csv
-    ``` {#codeblock_2hq_0j2_hxt}
+    ``` {#codeblock_pw3_qk7_r9i}
     #!/usr/bin/env python
     #coding=utf-8
     
