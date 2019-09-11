@@ -15,7 +15,7 @@
 
 用户的数据会通过安全信道传递到KMS服务端，服务端完成加密、解密后，操作结果通过安全信道返回给用户。具体架构如下图所示。
 
-![产品架构](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156810854356539_zh-CN.png)
+![产品架构](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1423112/156816865656539_zh-CN.png)
 
 操作流程如下：
 
@@ -58,7 +58,7 @@
     }
     ```
 
-2.  给主密钥添加别名。 别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
+2.  给主密钥添加别名（推荐步骤）。 别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
 
     ``` {#codeblock_6qp_ac5_5un}
     $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-12345678****
