@@ -15,7 +15,7 @@
 
 -   信封加密
 
-    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811344456487_zh-CN.jpg)
+    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156816862256487_zh-CN.jpg)
 
     操作流程如下：
 
@@ -25,7 +25,7 @@
     4.  用户将密文数据密钥和密文文件一同存储到持久化存储设备或服务中。
 -   信封解密
 
-    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156811344556499_zh-CN.png)
+    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156816862256499_zh-CN.png)
 
     操作流程如下：
 
@@ -67,12 +67,12 @@
     }
     ```
 
-2.  给主密钥添加别名（可选）。 
+2.  给主密钥添加别名（推荐步骤）。 
 
     别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
 
     ``` {#codeblock_lob_y7r_b3i}
-    $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-1234567890ab
+    $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-12345678****
     ```
 
     **说明：** 其中，Apollo/WorkKey表示Apollo项目中的工作密钥（当前被用于加密的密钥），并在后续示例代码中使用此别名。即表示应用可以使用alias/Apollo/WorkKey调用加密API。
