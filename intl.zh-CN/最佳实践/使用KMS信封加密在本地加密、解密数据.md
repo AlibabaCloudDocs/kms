@@ -2,6 +2,8 @@
 
 阿里云用户在云上部署IT资产，需要对敏感数据进行加密保护。如果被加密的数据对象较大，则可以通过KMS的密码运算API在线生成数据密钥，用离线数据密钥在本地加密大量数据。这类加密模式叫作信封加密。
 
+进行操作前，请确保您已经注册了阿里云账号。如还未注册，请先完成[账号注册](https://account.alibabacloud.com/register/intl_register.htm)。
+
 典型的场景包括（但不限于）：
 
 -   对业务数据文件的加密
@@ -15,7 +17,7 @@
 
 -   信封加密
 
-    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156816862256487_zh-CN.jpg)
+    ![信封加密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156818733756487_zh-CN.jpg)
 
     操作流程如下：
 
@@ -25,7 +27,7 @@
     4.  用户将密文数据密钥和密文文件一同存储到持久化存储设备或服务中。
 -   信封解密
 
-    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156816862256499_zh-CN.png)
+    ![信封解密](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1422781/156818733756499_zh-CN.png)
 
     操作流程如下：
 
