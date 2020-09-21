@@ -1,8 +1,10 @@
-# Overview {#task68 .task}
+# Overview
 
-This topic describes how to quickly get started with Key Management Service \(KMS\).
+You can use Key Management Service \(KMS\) to encrypt and protect sensitive data assets. This topic describes a series of operations that help you get started with KMS.
 
-1.  Activate KMS.
-2.  Log on to the [KMS console](https://partners-intl.console.aliyun.com/#/kms). You can create and view customer master keys \(CMKs\) in the console.
-3.  Call KMS API operations.
+## Activate KMS
+
+## Manage and use keys
+
+## Manage and use secrets
 
