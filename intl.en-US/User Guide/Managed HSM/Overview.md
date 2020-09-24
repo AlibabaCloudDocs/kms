@@ -4,8 +4,6 @@ Managed HSM is an important feature of Key Management Service \(KMS\) to enable 
 
 An HSM is a highly secure hardware device that performs cryptographic operations and generates and stores keys. You can host the keys for your most sensitive Alibaba Cloud workloads and assets in HSMs that are managed on Alibaba Cloud \(referred to as managed HSMs\).
 
-**Note:**
-
 ## Supported regions
 
 You can use Managed HSM in the following regions. This feature is scheduled to be available in more regions in the future.
