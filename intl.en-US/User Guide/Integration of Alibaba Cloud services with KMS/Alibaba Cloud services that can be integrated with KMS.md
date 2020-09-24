@@ -49,7 +49,7 @@ ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server support TDE. The keys use
 |PolarDB|The encryption method for PolarDB is similar to that for ApsaraDB for RDS.|[Configure TDE](/intl.en-US/User Guide/Data Security and Encryption/Configure TDE.md)|
 |Apsara File Storage NAS|By default, Apsara File Storage NAS uses the service key to encrypt your data. Each volume has its own CMK and DK and uses the envelope encryption mechanism to encrypt your data.
 
-|[Encrypt data]()|
+| |
 |Tablestore|By default, the encryption feature of Tablestore uses the service key to encrypt your data. This feature also supports user-managed keys. Each table has its own CMK and DK and uses the envelope encryption mechanism to encrypt your data.
 
 |None|
