@@ -1,0 +1,15 @@
+# 开通方法
+
+密钥管理服务KMS（Key Management Service）需要开通后才能使用。本文为您介绍KMS的开通方法。
+
+请确保您已完成阿里云[账号注册](https://account.alibabacloud.com/register/intl_register.htm)和[实名认证](https://account-intl.console.aliyun.com/#/intlAuth)。
+
+1.  登录[密钥管理服务开通页](https://common-buy-intl.aliyun.com/?spm=a2c63.p38356.879954.8.23de173enKcA29&commodityCode=kms_intl#/open)。
+
+2.  在密钥管理服务开通页，勾选**密钥管理服务协议**。
+
+3.  单击**立即开通**。
+
+    服务开通后会按照实际使用量进行收费，详情请参见[计费说明](/intl.zh-CN/产品定价/计费说明.md)。
+
+
