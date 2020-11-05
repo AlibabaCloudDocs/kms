@@ -61,8 +61,8 @@
     |API|描述|
     |:--|:-|
     |[CreateAlias](/intl.zh-CN/API参考/密钥/CreateAlias.md)|创建一个别名，并且将别名与一个用户主密钥绑定。|
-    |[UpdateAlias](/intl.zh-CN/API参考/密钥/UpdateAlias.md)|绑定指定别名到新的用户主密钥。|
-    |[DeleteAlias](/intl.zh-CN/API参考/密钥/DeleteAlias.md)|删除指定别名。|
+    |[UpdateAlias](/intl.zh-CN/API参考/密钥/UpdateAlias.md)|更新已存在的别名所代表的主密钥（CMK）ID。|
+    |[DeleteAlias](/intl.zh-CN/API参考/密钥/DeleteAlias.md)|删除别名。|
     |[ListAliases](/intl.zh-CN/API参考/密钥/ListAliases.md)|列出云账号在本地域的所有别名。|
     |[ListAliasesByKeyId](/intl.zh-CN/API参考/密钥/ListAliasesByKeyId.md)|列出与指定用户主密钥绑定的别名。|
 
@@ -99,5 +99,7 @@ KMS凭据管家提供凭据的托管、保护、分发和轮转能力。
 
 |API|描述|
 |:--|:-|
-|[DescribeRegions](/intl.zh-CN/API参考/密钥/DescribeRegions.md)|查询当前账户的可用地域列表。|
+|[DescribeRegions](/intl.zh-CN/API参考/其他/DescribeRegions.md)|查询当前账户的可用地域列表。|
+|[OpenKmsService]()|为当前阿里云账号开通密钥管理服务。|
+|[DescribeAccountKmsStatus]()|查询当前阿里云账号的密钥管理服务状态。|
 
