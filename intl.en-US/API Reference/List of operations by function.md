@@ -2,7 +2,7 @@
 
 The following tables list API operations available for use in KMS. For more information, see OpenAPI Explorer.
 
-Alibaba Cloud also provides a command line tool for you to learn APIs and for the purpose of command line automation. For more information about how to install and use the command line tool, see [Alibaba Cloud CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm).
+Alibaba Cloud also provides a command line tool for you to learn APIs and for the purpose of command line automation. For more information about how to install and use the command line tool, see[Alibaba Cloud CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm).
 
 ## Key API operations
 
@@ -21,7 +21,7 @@ Alibaba Cloud also provides a command line tool for you to learn APIs and for th
     |[CancelKeyDeletion](/intl.en-US/API Reference/Key/CancelKeyDeletion.md)|Cancels the scheduled deletion of a CMK. You can cancel the scheduled deletion of a CMK before the scheduled waiting period elapses. After the deletion is canceled, the CMK enters the Enabled state again.|
     |[DeleteKeyMaterial](/intl.en-US/API Reference/Key/DeleteKeyMaterial.md)|Deletes key material of a CMK. You can directly delete key material that is imported from an external source. After key material of a CMK is deleted, the CMK enters the Pending Import state.|
     |[DescribeKey](/intl.en-US/API Reference/Key/DescribeKey.md)|Queries the detailed information of a CMK.|
-    |[ListKeys](/intl.en-US/API Reference/Key/ListKeys.md)|Lists all CMKs of the current Alibaba Cloud account in the current region.|
+    |[ListKeys](/intl.en-US/API Reference/Key/ListKeys.md)|Queries all CMKs of the current Alibaba Cloud account in the current region.|
     |[UpdateKeyDescription](/intl.en-US/API Reference/Key/UpdateKeyDescription.md)|Updates the description of a CMK.|
 
 -   **Key version management**
@@ -61,10 +61,10 @@ Alibaba Cloud also provides a command line tool for you to learn APIs and for th
     |Operation|Description|
     |:--------|:----------|
     |[t22697.md\#](/intl.en-US/API Reference/Key/CreateAlias.md)|Creates an alias and binds it to a CMK.|
-    |[UpdateAlias](/intl.en-US/API Reference/Key/UpdateAlias.md)|Binds an alias to a different CMK.|
+    |[UpdateAlias](/intl.en-US/API Reference/Key/UpdateAlias.md)|Changes the CMK to which a specified alias is bound.|
     |[DeleteAlias](/intl.en-US/API Reference/Key/DeleteAlias.md)|Deletes an alias.|
-    |[ListAliases](/intl.en-US/API Reference/Key/ListAliases.md)|Lists all aliases under the current Alibaba Cloud account in the current region.|
-    |[ListAliasesByKeyId](/intl.en-US/API Reference/Key/ListAliasesByKeyId.md)|Lists all aliases bound to a specified CMK.|
+    |[ListAliases](/intl.en-US/API Reference/Key/ListAliases.md)|Queries all aliases under the current Alibaba Cloud account in the current region.|
+    |[ListAliasesByKeyId](/intl.en-US/API Reference/Key/ListAliasesByKeyId.md)|Queries all aliases bound to a specified CMK.|
 
 
 ## Secrets Manager API operations
@@ -87,17 +87,19 @@ KMS Secrets Manager hosts, protects, distributes, and rotates secrets.
 
 ## Tag management API operations
 
-CMKs support tags. You can add multiple tags to a CMK. Each tag is defined by a pair of TagKey and TagValue.
+CMKs support tags. You can add multiple tags to a CMK. A tag is defined by a pair of TagKey and TagValue.
 
 |Operation|Description|
 |:--------|:----------|
 |[TagResource](/intl.en-US/API Reference/Tag/TagResource.md)|Adds tags to or modifies existing tags of a CMK or secret.|
 |[UntagResource](/intl.en-US/API Reference/Tag/UntagResource.md)|Removes a tag from a CMK or secret.|
-|[ListResourceTags](/intl.en-US/API Reference/Tag/ListResourceTags.md)|Lists all tags of a CMK or secret.|
+|[ListResourceTags](/intl.en-US/API Reference/Tag/ListResourceTags.md)|Queries all tags of a CMK or secret.|
 
 ## Other API operations
 
 |Operation|Description|
 |:--------|:----------|
-|[DescribeRegions](/intl.en-US/API Reference/Key/DescribeRegions.md)|Queries available regions under your Alibaba Cloud account.|
+|[DescribeRegions](/intl.en-US/API Reference/Other API operations/DescribeRegions.md)|Queries available regions under your Alibaba Cloud account.|
+|[t1960054.md\#]()|Activates KMS under your Alibaba cloud account.|
+|[t1960064.md\#]()|Queries the status of KMS under your Alibaba cloud account.|
 
