@@ -1,55 +1,55 @@
-# 管理密钥
+# Manage CMKs
 
-您可以使用密钥管理服务KMS（Key Management Service）轻松地创建和管理密钥，使用密钥加密自己的数据。
+This topic describes how to use Key Management Service \(KMS\) to create and manage customer master keys \(CMKs\). CMKs are used to encrypt data.
 
-## 创建密钥
+## Create a CMK
 
-1.  登录[密钥管理服务控制台](https://kms.console.aliyun.com)[密钥管理服务控制台](https://partners-intl.console.aliyun.com/#/kms)。
+1.  Log on to the [KMS console](https://kms.console.aliyun.com)[KMS console](https://partners-intl.console.aliyun.com/#/kms).
 
-2.  在密钥列表中，单击**创建密钥**。
+2.  In the upper-left corner of the Keys page, click **Create Key**.
 
-3.  在弹出的创建密钥对话框，填写**别名**和**描述**。
+3.  In the Create Key dialog box, set **Alias Name** and **Description**.
 
-4.  单击**高级选项**，选择**密钥材料来源**。
+4.  Click **Advanced** and specify **Key Material Source**.
 
-    -   **阿里云KMS**：密钥材料将由KMS生成。
-    -   **外部**：KMS将不会生成密钥材料，您需要将自己的密钥材料导入KMS，详情请参见[导入密钥材料](/intl.zh-CN/密钥服务/密钥种类/使用对称密钥/导入密钥材料.md)。
+    -   **Alibaba Cloud KMS**: Use KMS to generate key material.
+    -   **External**: Import key material from an external source. For more information about how to import key material, see [Import key material](/intl.en-US/Key service/Key type/Use symmetric keys/Import key material.md).
 
-        **说明：** 此时需要选中**我了解使用外部密钥材料的方法和意义**复选框。
+        **Note:** If you select External, you must also select **I understand the implications of using the external key materials key**.
 
-5.  单击**确认**。
-
-
-**说明：** 密钥创建完成后，您可以查看密钥ID、密钥状态、密钥保护级别等信息。
-
-## 禁用密钥
-
-密钥创建完成后，默认为启用状态。被禁用的密钥无法用于加密和解密。禁用密钥的步骤如下：
-
-1.  在密钥列表中，找到需要禁用的密钥。
-
-2.  在**操作**列，单击**禁用**。
-
-3.  在弹出的禁用密钥对话框，单击**确定**。
+5.  Click **OK**.
 
 
-## 计划删除密钥
+**Note:** After the CMK is created, you can view the detailed information, such as the CMK ID, status, and protection level on the Keys page.
 
-主密钥一旦删除，将无法恢复，使用该主密钥加密的内容及产生的数据密钥也将无法解密。因此，对于主密钥的删除，KMS只提供申请删除的方式，而不提供直接删除的方式。如果您有删除密钥方面的需求，推荐您使用禁用密钥功能。
+## Disable a CMK
 
-1.  在密钥列表中，找到计划删除的密钥。
+After you create a CMK, it is in the Enabled state by default. You cannot use a disabled CMK to encrypt or decrypt data. Follow these steps to disable a CMK:
 
-2.  在**操作**列，单击**更多** \> **计划删除密钥**。
+1.  On the Keys page, find the CMK that you want to disable.
 
-3.  在弹出的计划删除密钥对话框，填写**预删除周期**。
+2.  In the **Actions** column, click **Disable**.
 
-    **预删除周期**取值为：7~30天，默认值：30天。
-
-4.  单击**确认**。
+3.  In the Disable Key message, click **OK**.
 
 
-**说明：**
+## Schedule a key deletion task
 
--   处于待删除状态的密钥无法用于加密、解密和产生数据密钥。
--   您可以单击**更多** \> **取消删除密钥**来撤销删除密钥的申请。
+After a CMK is deleted, it cannot be recovered, and the data and ciphertext data keys encrypted by using this CMK cannot be decrypted. Therefore, to prevent you from deleting CMKs by mistake, KMS only allows you to schedule key deletion tasks. You cannot immediately delete CMKs. Rather than deleting a CMK, we recommend that you disable the CMK.
+
+1.  On the Keys page, find the CMK that you want to delete.
+
+2.  In the **Actions** column, choose **More** \> **Schedule Key Deletion**.
+
+3.  In the Schedule Key Deletion dialog box, specify **Delete In \(7-30 days\)**.
+
+    The value ranges from 7 to 30. Unit: days. Default value: 30.****
+
+4.  Click **OK**.
+
+
+**Note:**
+
+-   A CMK in the Pending Deletion state cannot be used to encrypt data, decrypt data, or generate data keys.
+-   You can choose **More** \> **Cancel Key Deletion** to cancel a scheduled key deletion task.
 
