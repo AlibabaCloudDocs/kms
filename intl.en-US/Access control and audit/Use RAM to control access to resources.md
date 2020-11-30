@@ -124,7 +124,7 @@ For more information, see [Policy elements](/intl.en-US/Policy Management/Policy
     }               
     ```
 
--   A RAM policy that allows users to only query keys, aliases, and key usage permissions
+-   A RAM policy that allows users only to query keys, aliases, and key usage permissions
 
     ```
     {
