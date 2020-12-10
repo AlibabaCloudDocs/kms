@@ -2,8 +2,6 @@
 
 本文列出了密钥管理服务KMS（Key Management Service）提供的API接口及相关描述。
 
-阿里云也提供了命令行工具，供您学习API或用于自动化执行命令行。关于命令行工具的安装和使用，请参见[阿里云CLI](https://help.aliyun.com/document_detail/66653.html)。
-
 ## 密钥服务接口
 
 -   **用户主密钥管理**
