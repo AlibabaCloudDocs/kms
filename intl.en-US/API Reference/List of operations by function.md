@@ -2,8 +2,6 @@
 
 The following tables list API operations available for use in KMS. For more information, see OpenAPI Explorer.
 
-Alibaba Cloud also provides a command line tool for you to learn APIs and for the purpose of command line automation. For more information about how to install and use the command line tool, see[Alibaba Cloud CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm).
-
 ## Key API operations
 
 -   **CMK management**
@@ -100,6 +98,6 @@ CMKs support tags. You can add multiple tags to a CMK. A tag is defined by a pai
 |Operation|Description|
 |:--------|:----------|
 |[DescribeRegions](/intl.en-US/API Reference/Other API operations/DescribeRegions.md)|Queries available regions under your Alibaba Cloud account.|
-|[t1960054.md\#]()|Activates KMS under your Alibaba cloud account.|
-|[t1960064.md\#]()|Queries the status of KMS under your Alibaba cloud account.|
+|[OpenKmsService](/intl.en-US/API Reference/Other API operations/OpenKmsService.md)|Activates KMS under your Alibaba cloud account.|
+|[DescribeAccountKmsStatus](/intl.en-US/API Reference/Other API operations/DescribeAccountKmsStatus.md)|Queries the status of KMS under your Alibaba cloud account.|
 
