@@ -2,8 +2,6 @@
 
 本文列出了密钥管理服务KMS（Key Management Service）提供的API接口及相关描述。
 
-阿里云也提供了命令行工具，供您学习API或用于自动化执行命令行。关于命令行工具的安装和使用，请参见[阿里云CLI](https://www.alibabacloud.com/help/doc-detail/66653.htm)。
-
 ## 密钥服务接口
 
 -   **用户主密钥管理**
@@ -100,6 +98,6 @@ KMS凭据管家提供凭据的托管、保护、分发和轮转能力。
 |API|描述|
 |:--|:-|
 |[DescribeRegions](/intl.zh-CN/API参考/其他/DescribeRegions.md)|查询当前账户的可用地域列表。|
-|[OpenKmsService]()|为当前阿里云账号开通密钥管理服务。|
-|[DescribeAccountKmsStatus]()|查询当前阿里云账号的密钥管理服务状态。|
+|[OpenKmsService](/intl.zh-CN/API参考/其他/OpenKmsService.md)|为当前阿里云账号开通密钥管理服务。|
+|[DescribeAccountKmsStatus](/intl.zh-CN/API参考/其他/DescribeAccountKmsStatus.md)|查询当前阿里云账号的密钥管理服务状态。|
 
