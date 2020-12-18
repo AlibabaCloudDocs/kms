@@ -1,6 +1,6 @@
 # 动态RDS凭据服务关联角色
 
-当您使用KMS的动态RDS凭据功能时，需要通过服务服务关联角色，访问阿里云关系型数据库RDS（Relational Database Service）相关资源。本文为您介绍动态RDS凭据服务关联角色（AliyunServiceRoleForKMSSecretsManagerForRDS）的权限策略、创建及删除操作。
+当您使用KMS的动态RDS凭据功能时，需要通过服务关联角色，访问阿里云关系型数据库RDS（Relational Database Service）相关资源。本文为您介绍动态RDS凭据服务关联角色（AliyunServiceRoleForKMSSecretsManagerForRDS）的权限策略、创建及删除操作。
 
 ## 权限说明
 
