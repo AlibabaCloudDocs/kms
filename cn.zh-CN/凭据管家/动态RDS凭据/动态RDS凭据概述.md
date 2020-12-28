@@ -26,5 +26,18 @@ KMS凭据管家支持动态RDS凭据，不仅对RDS凭据提供加密保护的�
 
 使用动态RDS凭据，应用程序将无需配置静态数据库账号口令。管理员在凭据管家创建全托管RDS凭据，设置自动轮转周期之后，应用程序调用[GetSecretValue](/cn.zh-CN/API参考/凭据/GetSecretValue.md)接口获取仅在下次轮转前有效的账号口令，用于访问RDS托管数据库。
 
-![架构](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4027918061/p202872.png)
+![架构](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0473219061/p206606.png)
+
+## 使用限制
+
+动态RDS凭据支持特定的RDS数据库。
+
+-   支持的数据库
+
+    RDS MySQL、RDS MariaDB TX和RDS SQL Server（2017集群版除外）。
+
+-   不支持的数据库
+
+    RDS SQL Server 2017集群版、RDS PostgreSQL和RDS PPAS。
+
 
