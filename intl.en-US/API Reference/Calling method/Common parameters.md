@@ -1,55 +1,55 @@
-# Common parameters {#concept_69007_zh .concept}
+# Common parameters
 
-Common request parameters are used in each API.
+Common request parameters must be included in all API requests.
 
-## Common request parameters {#section_zf5_djp_kfb .section}
+## Common request parameters
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Format|String|No|The format of the response text. JSON and XML are supported. The default format is XML.|
-|Version|String|Yes|The API version in the format YYYY-MM-DD. The current version is 2016-01-20.|
-|AccessKeyId|String|Yes|An alphanumeric token issued by Alibaba Cloud for user authentication.|
-|Signature|String|Yes|Signing requests. For more information, see [Signature](intl.en-US/API Reference/Calling method/Signature.md#).|
-|SignatureMethod|String|Yes|The hash algorithm to create the request signature. HMAC-SHA1 is used.|
-|Timestamp|String|Yes|The time stamp of the request. The date and time at which a request is signed, in the format YYYY-MM-DDThh:mm:ssZ. Example: 2014-05-26T12:00:00Z|
-|SignatureVersion|String|Yes|The signature version used to sign a request. The current version is 1.0.|
+|Parameter|Type|Required|Description|
+|:--------|:---|:-------|:----------|
+|Format|String|No|The format in which to return the response. Valid values: JSON and XML. Default value: XML.|
+|Version|String|Yes|The version number of the API. The value is in the format of YYYY-MM-DD. The current version is 2016-01-20.|
+|AccessKeyId|String|Yes|The AccessKey ID provided to you by Alibaba Cloud.|
+|Signature|String|Yes|The signature string of the current request. For more information about how signatures are calculated, see [Request signatures](/intl.en-US/API Reference/Calling method/Request signatures.md).|
+|SignatureMethod|String|Yes|The encryption method of the signature string. Set the value to HMAC-SHA1.|
+|Timestamp|String|Yes|The timestamp of the request. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2015-12-01T12:00:00Z.|
+|SignatureVersion|String|Yes|The version of the signature encryption algorithm. Set the value to 1.0.|
 
-**Example**
+Examples
 
 ```
 https://kms.cn-hangzhou.aliyuncs.com/?
 Format=json
 &Version=2016-01-20
-&AccessKeyId=testid
+&AccessKeyId=te****
 &Signature=YlrFhyqDZQ1ThNYARrv3Ptaxqf****
 &SignatureMethod=HMAC-SHA1
 &Timestamp=2016-03-25T09:36:58Z
 &SignatureVersion=1.0
-
+            
 ```
 
-## Common response parameters { .section}
+## Common response parameters
 
-Each time you send an API request, a unique RequestId is returned, whether the request is successful or not.
+Every response returns a unique request ID regardless of whether the call is successful.
 
-**Example**
+Examples
 
- `XML` example
+`XML` format
 
 ```
 <KMS>
-<RequestId>348d9445-e39a-4d80-907d-298cc6c94447</RequestId>
-<!—Returned results-->
+  <RequestId>348d9445-e39a-4d80-907d-298cc6c94447</RequestId>
+  <!-Return Result Data-->
 </KMS>
-
+            
 ```
 
- `JSON` example
+`JSON` format
 
 ```
 {
-"RequestId": "284b2b80-9b17-4546-a093-adfbae512a54"
+  "RequestId": "284b2b80-9b17-4546-a093-adfbae512a54"
 }
-
+            
 ```
 
