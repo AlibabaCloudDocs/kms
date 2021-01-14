@@ -73,7 +73,7 @@ These features enable rapid integration of your applications with HSMs, as well 
 
 Managed HSM allows you to better control encryption keys on the cloud and move the most sensitive computing tasks and assets to the cloud.
 
-If you use both Managed HSM and[BYOK \(Bring Your Own Key\)](https://www.alibabacloud.com/help/doc-detail/68523.htm), you can have full control over the following items:
+If you use both Managed HSM and [BYOK \(Bring Your Own Key\)](https://www.alibabacloud.com/help/doc-detail/68523.htm), you can have full control over the following items:
 
 -   Generation modes of key material.
 -   Processing of key material: The key material that you import to a managed HSM can be destroyed but cannot be exported.
