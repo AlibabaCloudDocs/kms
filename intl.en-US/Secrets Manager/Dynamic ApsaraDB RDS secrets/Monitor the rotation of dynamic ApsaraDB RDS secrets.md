@@ -19,7 +19,7 @@ Secrets Manager can deliver rotation events of dynamic ApsaraDB RDS secrets to C
 
 You can create event-triggered alert rules to monitor the rotation of dynamic ApsaraDB RDS secrets and automate the event handling process. For example, you can monitor failed rotation of dynamic ApsaraDB RDS secrets and use Function Compute to automatically resolve the failure.
 
-1.  Log on to the[Cloud Monitor console](https://cms-intl.console.aliyun.com).
+1.  Log on to the [Cloud Monitor console](https://cms-intl.console.aliyun.com).
 
 2.  In the left-side navigation pane, click **Event Monitoring**.
 
