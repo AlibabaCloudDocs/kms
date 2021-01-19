@@ -106,5 +106,7 @@ Sample success responses
 }
 ```
 
-## Error code
+## Error codes
+
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Kms).
 
