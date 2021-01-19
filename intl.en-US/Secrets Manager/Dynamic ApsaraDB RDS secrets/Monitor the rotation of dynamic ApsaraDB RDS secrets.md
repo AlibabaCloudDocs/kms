@@ -4,7 +4,7 @@ Secrets Manager can deliver rotation events of dynamic ApsaraDB RDS secrets to C
 
 ## Query rotation events
 
-1.  Log on to the[Cloud Monitor console](https://cms-intl.console.aliyun.com).
+1.  Log on to the [Cloud Monitor console](https://cms-intl.console.aliyun.com).
 
 2.  In the left-side navigation pane, click **Event Monitoring**.
 
