@@ -83,6 +83,17 @@ KMS凭据管家提供凭据的托管、保护、分发和轮转能力。
 |[ListSecretVersionIds](/intl.zh-CN/API参考/凭据/ListSecretVersionIds.md)|查询凭据的所有版本信息。|
 |[GetRandomPassword](/intl.zh-CN/API参考/凭据/GetRandomPassword.md)|获得一个随机密码串。|
 
+## 证书接口
+
+证书接口用于证书的创建、删除、更新、查询等操作。
+
+|API|描述|
+|:--|:-|
+|[CreateCertificate]()|创建证书。|
+|[DeleteCertificate]()|删除证书及其对应的私钥和证书链。|
+|[DescribeCertificate]()|获取证书信息。|
+|[UpdateCertificateStatus]()|更新证书状态。|
+
 ## 标签管理接口
 
 用户主密钥支持标签。您可以为用户主密钥添加多个标签，每一个标签为一组标签键（TagKey）和标签值（TagValue）。
