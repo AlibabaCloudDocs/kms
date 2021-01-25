@@ -1,20 +1,20 @@
 # List of operations by function
 
-The following tables list API operations available for use in KMS. For more information, see OpenAPI Explorer.
+The following tables list API operations available for use in Key Management Service \(KMS\).
 
-## Key API operations
+## Key service operations
 
 -   **CMK management**
 
-    CMK management API operations are used to create and modify CMKs and manage their lifecycle.
+    Customer master key \(CMK\) management operations are used to create and modify CMKs and manage their lifecycle.
 
-    |Operation|Description|
-    |:--------|:----------|
-    |[CreateKey](/intl.en-US/API Reference/Key/CreateKey.md)|Creates a CMK. You can use key material created in KMS or import external key material to the CMK. Importing external key material is known as Bring Your Own Key \(BYOK\). Calling CreateKey is the first step of BYOK.|
+    |API|Description|
+    |:--|:----------|
+    |[CreateKey](/intl.en-US/API Reference/Key/CreateKey.md)|Creates a CMK. You can use key material created in KMS or import external key material to the CMK. Importing external key material is known as Bring Your Own Key \(BYOK\). This operation is the first step of BYOK.|
     |[GetParametersForImport](/intl.en-US/API Reference/Key/GetParametersForImport.md)|Obtains key material to be imported. This operation is the second step of BYOK.|
     |[ImportKeyMaterial](/intl.en-US/API Reference/Key/ImportKeyMaterial.md)|Imports key material to a CMK. This operation is the final step of BYOK.|
-    |[EnableKey](/intl.en-US/API Reference/Key/EnableKey.md)|Changes the state of a CMK to Enabled.|
-    |[DisableKey](/intl.en-US/API Reference/Key/DisableKey.md)|Changes the state of a CMK to Disabled.|
+    |[EnableKey](/intl.en-US/API Reference/Key/EnableKey.md)|Changes the status of a CMK to Enabled.|
+    |[DisableKey](/intl.en-US/API Reference/Key/DisableKey.md)|Changes the status of a CMK to Disabled.|
     |[ScheduleKeyDeletion](/intl.en-US/API Reference/Key/ScheduleKeyDeletion.md)|Schedules the deletion of a CMK. After you call this operation, the CMK enters the Pending Deletion state. The CMK is automatically deleted after the specified waiting period elapses.|
     |[CancelKeyDeletion](/intl.en-US/API Reference/Key/CancelKeyDeletion.md)|Cancels the scheduled deletion of a CMK. You can cancel the scheduled deletion of a CMK before the scheduled waiting period elapses. After the deletion is canceled, the CMK enters the Enabled state again.|
     |[DeleteKeyMaterial](/intl.en-US/API Reference/Key/DeleteKeyMaterial.md)|Deletes key material of a CMK. You can directly delete key material that is imported from an external source. After key material of a CMK is deleted, the CMK enters the Pending Import state.|
@@ -24,28 +24,28 @@ The following tables list API operations available for use in KMS. For more info
 
 -   **Key version management**
 
-    Key version management API operations are used for CMK rotation.
+    Key version management operations are used for CMK rotation.
 
-    |Operation|Description|
-    |---------|-----------|
+    |API|Description|
+    |---|-----------|
     |[DescribeKeyVersion](/intl.en-US/API Reference/Key/DescribeKeyVersion.md)|Queries the detailed information of a key version.|
     |[ListKeyVersions](/intl.en-US/API Reference/Key/ListKeyVersions.md)|Queries all key versions of a CMK.|
-    |[UpdateRotationPolicy](/intl.en-US/API Reference/Key/UpdateRotationPolicy.md)|Updates the rotation policy of a symmetric CMK. If automatic rotation is configured, KMS automatically generates a new key version on a periodic basis.|
-    |[CreateKeyVersion](/intl.en-US/API Reference/Key/CreateKeyVersion.md)|Creates a new version for a CMK. This operation is available only for asymmetric CMKs.|
+    |[UpdateRotationPolicy](/intl.en-US/API Reference/Key/UpdateRotationPolicy.md)|Updates the rotation policy of a symmetric CMK. If automatic rotation is configured, KMS automatically generates a key version on a regular basis.|
+    |[CreateKeyVersion](/intl.en-US/API Reference/Key/CreateKeyVersion.md)|Creates a version for a CMK. This operation is available only for asymmetric CMKs.|
 
 -   **Cryptographic operation**
 
-    Cryptographic API operations are used to perform cryptographic operations such as data encryption and decryption.
+    You can perform cryptographic operations on data, such as data encryption and decryption. The operations in the following table are used to perform cryptographic operations.
 
-    |Operation|Description|
-    |:--------|:----------|
+    |API|Description|
+    |:--|:----------|
     |[Encrypt](/intl.en-US/API Reference/Key/Encrypt.md)|Uses a specified CMK to encrypt data. This operation is used to encrypt data of no more than 6 KB.|
     |[GenerateDataKey](/intl.en-US/API Reference/Key/GenerateDataKey.md)|Generates a random number and encrypts the random number with a specified CMK. The ciphertext and plaintext of the random number are returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
     |[GenerateDataKeyWithoutPlaintext](/intl.en-US/API Reference/Key/GenerateDataKeyWithoutPlaintext.md)|Generates a random number and encrypts the random number with a specified CMK. The ciphertext of the random number is returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
     |[ExportDataKey](/intl.en-US/API Reference/Key/ExportDataKey.md)|Encrypts a data key by using a specific public key and exports the data key.|
     |[GenerateAndExportDataKey](/intl.en-US/API Reference/Key/GenerateAndExportDataKey.md)|Generates a random data key, encrypts the data key by using a specific CMK and public key, and returns the ciphertext encrypted by using the CMK and that encrypted by using the public key.|
     |[Decrypt](/intl.en-US/API Reference/Key/Decrypt.md)|Decrypts the ciphertext that is generated by calling the Encrypt or GenerateDataKey operation. You do not need to specify a CMK for decryption.|
-    |[ReEncrypt](/intl.en-US/API Reference/Key/ReEncrypt.md)|Re-encrypts ciphertext. Decrypts the specified ciphertext, uses a different CMK to encrypt the obtained plaintext data or data key, and returns ciphertext.|
+    |[ReEncrypt](/intl.en-US/API Reference/Key/ReEncrypt.md)|Re-encrypts ciphertext. When you call this operation, KMS first decrypts the specified ciphertext and then uses a different CMK to encrypt the obtained plaintext data or data key and return ciphertext.|
     |[AsymmetricSign](/intl.en-US/API Reference/Key/AsymmetricSign.md)|Uses the private key of an asymmetric key pair to generate a digital signature.|
     |[AsymmetricVerify](/intl.en-US/API Reference/Key/AsymmetricVerify.md)|Uses the public key of an asymmetric key pair to verify a digital signature that is generated by using the private key.|
     |[AsymmetricDecrypt](/intl.en-US/API Reference/Key/AsymmetricDecrypt.md)|Uses the private key of an asymmetric key pair to decrypt the data that is encrypted by using the public key.|
@@ -54,25 +54,25 @@ The following tables list API operations available for use in KMS. For more info
 
 -   **Alias management**
 
-    An alias is an independent object in KMS. It must be bound to a unique CMK. You can set the KeyId parameter in certain API operations to an alias to specify a CMK.
+    An alias is an independent object in KMS. It must be bound to a unique CMK. You can set the KeyId parameter in specific operations to an alias to specify a CMK.
 
-    |Operation|Description|
-    |:--------|:----------|
+    |API|Description|
+    |:--|:----------|
     |[t22697.md\#](/intl.en-US/API Reference/Key/CreateAlias.md)|Creates an alias and binds it to a CMK.|
-    |[UpdateAlias](/intl.en-US/API Reference/Key/UpdateAlias.md)|Changes the CMK to which a specified alias is bound.|
+    |[UpdateAlias](/intl.en-US/API Reference/Key/UpdateAlias.md)|Associates an existing alias with a different CMK ID.|
     |[DeleteAlias](/intl.en-US/API Reference/Key/DeleteAlias.md)|Deletes an alias.|
-    |[ListAliases](/intl.en-US/API Reference/Key/ListAliases.md)|Queries all aliases under the current Alibaba Cloud account in the current region.|
+    |[ListAliases](/intl.en-US/API Reference/Key/ListAliases.md)|Queries all aliases of the current Alibaba Cloud account in the current region.|
     |[ListAliasesByKeyId](/intl.en-US/API Reference/Key/ListAliasesByKeyId.md)|Queries all aliases bound to a specified CMK.|
 
 
-## Secrets Manager API operations
+## Secrets Manager operations
 
-KMS Secrets Manager hosts, protects, distributes, and rotates secrets.
+KMS Secrets Manager manages, protects, distributes, and rotates secrets.
 
-|Operation|Description|
-|---------|-----------|
+|API|Description|
+|---|-----------|
 |[CreateSecret](/intl.en-US/API Reference/Secrets/CreateSecret.md)|Creates a secret and stores the secret value in the initial version.|
-|[ListSecrets](/intl.en-US/API Reference/Secrets/ListSecrets.md)|Queries all secrets created by your Alibaba Cloud account in the current region.|
+|[ListSecrets](/intl.en-US/API Reference/Secrets/ListSecrets.md)|Queries all secrets of the current Alibaba Cloud account in the current region.|
 |[DeleteSecret](/intl.en-US/API Reference/Secrets/DeleteSecret.md)|Deletes a secret.|
 |[DescribeSecret](/intl.en-US/API Reference/Secrets/DescribeSecret.md)|Obtains the metadata of a secret.|
 |[GetSecretValue](/intl.en-US/API Reference/Secrets/GetSecretValue.md)|Obtains a secret value.|
@@ -83,21 +83,32 @@ KMS Secrets Manager hosts, protects, distributes, and rotates secrets.
 |[ListSecretVersionIds](/intl.en-US/API Reference/Secrets/ListSecretVersionIds.md)|Queries all versions of a secret.|
 |[GetRandomPassword](/intl.en-US/API Reference/Secrets/GetRandomPassword.md)|Obtains a random password string.|
 
-## Tag management API operations
+## Certificate operations
+
+Certificate operations are used to create, delete, update, and query certificates.
+
+|API|Description|
+|:--|:----------|
+|[t2014147.md\#]()|Creates a certificate.|
+|[t2014163.md\#]()|Deletes a certificate and its private key and certificate chain.|
+|[t2017159.md\#]()|Queries information about a certificate.|
+|[t2017163.md\#]()|Updates the status of a certificate.|
+
+## Tag management operations
 
 CMKs support tags. You can add multiple tags to a CMK. A tag is defined by a pair of TagKey and TagValue.
 
-|Operation|Description|
-|:--------|:----------|
+|API|Description|
+|:--|:----------|
 |[TagResource](/intl.en-US/API Reference/Tag/TagResource.md)|Adds tags to or modifies existing tags of a CMK or secret.|
 |[UntagResource](/intl.en-US/API Reference/Tag/UntagResource.md)|Removes a tag from a CMK or secret.|
 |[ListResourceTags](/intl.en-US/API Reference/Tag/ListResourceTags.md)|Queries all tags of a CMK or secret.|
 
-## Other API operations
+## Other operations
 
-|Operation|Description|
-|:--------|:----------|
-|[DescribeRegions](/intl.en-US/API Reference/Other API operations/DescribeRegions.md)|Queries available regions under your Alibaba Cloud account.|
-|[OpenKmsService](/intl.en-US/API Reference/Other API operations/OpenKmsService.md)|Activates KMS under your Alibaba cloud account.|
-|[DescribeAccountKmsStatus](/intl.en-US/API Reference/Other API operations/DescribeAccountKmsStatus.md)|Queries the status of KMS under your Alibaba cloud account.|
+|API|Description|
+|:--|:----------|
+|[DescribeRegions](/intl.en-US/API Reference/Other API operations/DescribeRegions.md)|Queries available regions for the current Alibaba Cloud account.|
+|[OpenKmsService](/intl.en-US/API Reference/Other API operations/OpenKmsService.md)|Activates KMS for the current Alibaba Cloud account.|
+|[DescribeAccountKmsStatus](/intl.en-US/API Reference/Other API operations/DescribeAccountKmsStatus.md)|Queries the status of KMS for the current Alibaba Cloud account.|
 
