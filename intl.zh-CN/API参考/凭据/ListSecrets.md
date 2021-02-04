@@ -4,6 +4,8 @@
 
 此接口返回凭据对象的元数据信息，不返回被加密存储的凭据值。
 
+本文将提供一个示例，返回当前用户在当前地域创建的凭据，其中当前页数`PageNumber`设置为`1`，每页中返回的个数`PageSize`设置为`2`，共返回2个凭据信息。
+
 ## 调试
 
 [您可以在OpenAPI Explorer中直接运行该接口，免去您计算签名的困扰。运行成功后，OpenAPI Explorer可以自动生成SDK代码示例。](https://api.aliyun.com/#product=Kms&api=ListSecrets&type=RPC&version=2016-01-20)
@@ -22,12 +24,12 @@
  取值范围：大于0。
 
  默认值：1。 |
-|PageSize|Integer|否|10|每页返回值的个数。
+|PageSize|Integer|否|2|每页返回值的个数。
 
  取值范围：1~100。
 
  默认值：10。 |
-|Filters|String|否|\[\{"Key":"SecretName", "Values":\["$Val1","$Val2"\]\}\]|凭据过滤器。由Key-Values键值对组成，长度为0~1。
+|Filters|String|否|\[\{"Key":"SecretName", "Values":\["$Val1","$Val2"\]\}\]|凭据过滤器。由Key-Values键值对组成，长度为0~1。使用一个标签键值过滤资源时，查询到的资源数量不能超过4000个。如果资源数量超过4000个，请使用[ListResourceTags](~~120090~~)接口进行查询。
 
  -   Key
     -   描述：需要过滤的属性。
@@ -54,68 +56,65 @@
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |PageNumber|Integer|1|当前页数。 |
-|PageSize|Integer|10|每页返回值的个数。 |
-|RequestId|String|e8818e65-5c5b-4a0e-a571-8f50b59920a7|请求ID。 |
+|PageSize|Integer|2|每页返回值的个数。 |
+|RequestId|String|6a6287a0-ff34-4780-a790-fdfca900557f|请求ID。 |
 |SecretList|Array of Secret| |凭据列表。 |
 |Secret| | | |
-|CreateTime|String|2020-02-21T01:24:45Z|创建时间。 |
-|PlannedDeleteTime|String|2020-03-21T01:24:45Z|计划删除时间。 |
+|CreateTime|String|2020-07-17T07:59:05Z|创建时间。 |
+|PlannedDeleteTime|String|2020-08-17T07:59:05Z|计划删除时间。 |
 |SecretName|String|secret001|凭据名称。 |
-|Tags|Array of Tag| |凭据的资源标签。如果请求中未指定获取资源标签，则不包含此参数。 |
+|SecretType|String|Generic|凭据类型。取值：
+
+ -   Generic：普通凭据。
+-   Rds：托管RDS凭据。 |
+|Tags|Array of Tag| |凭据的资源标签。
+
+ 如果FetchTags取值为false或者未指定，则不返回该参数。 |
 |Tag| | | |
 |TagKey|String|key1|标签键。 |
 |TagValue|String|val1|标签值。 |
-|UpdateTime|String|2020-02-21T15:22:45Z|更新时间。 |
-|TotalCount|Integer|20|凭据列表中的凭据个数。 |
+|UpdateTime|String|2020-07-17T07:59:05Z|更新时间。 |
+|TotalCount|Integer|55|凭据列表中的凭据个数。 |
 
 ## 示例
 
 请求示例
 
 ```
-ttps://kms.cn-hangzhou.aliyuncs.com/?Action=ListSecrets
+http(s)://[Endpoint]/?Action=ListSecrets
 &PageNumber=1
-&PageSize=10
-&Filters=[{"Key":"SecretName", "Values":["$Val1","$Val2"]}]
+&PageSize=2
 &<公共请求参数>
 ```
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
-<SecretList>
-    <Secret>
-        <SecretName>secret001</SecretName>
-        <CreateTime>2020-02-21T01:24:45Z</CreateTime>
-        <UpdateTime>2020-02-21T01:24:45Z</UpdateTime>
-        <Tags>
-        </Tags>
-    </Secret>
-    <Secret>
-        <SecretName>secret004</SecretName>
-        <CreateTime>2020-02-21T15:22:45Z</CreateTime>
-        <UpdateTime>2020-02-21T15:22:45Z</UpdateTime>
-        <Tags>
-            <Tag>
-                <TagKey>key1</TagKey>
-                <TagValue>val1</TagValue>
-            </Tag>
-            <Tag>
-                <TagKey>key2</TagKey>
-                <TagValue>val2</TagValue>
-            </Tag>
-        </Tags>
-    </Secret>
-</SecretList>
-<RequestId>edbdc10d-3bcb-4690-95cb-3bf5664e1f02</RequestId>
-<PageNumber>1</PageNumber>
-<PageSize>10</PageSize>
-<TotalCount>2</TotalCount>
+<KMS>
+	  <SecretList>
+		    <Secret>
+			      <SecretName>secret001</SecretName>
+			      <SecretType>Generic</SecretType>
+			      <CreateTime>2020-07-17T07:59:05Z</CreateTime>
+			      <UpdateTime>2020-07-17T07:59:05Z</UpdateTime>
+		    </Secret>
+		    <Secret>
+			      <SecretName>cache_client</SecretName>
+			      <SecretType>Generic</SecretType>
+			      <CreateTime>2020-07-23T11:56:29Z</CreateTime>
+			      <UpdateTime>2021-01-12T02:15:42Z</UpdateTime>
+		    </Secret>
+	  </SecretList>
+	  <RequestId>6a6287a0-ff34-4780-a790-fdfca900557f</RequestId>
+	  <PageNumber>1</PageNumber>
+	  <PageSize>2</PageSize>
+	  <TotalCount>55</TotalCount>
+</KMS>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -123,35 +122,22 @@ ttps://kms.cn-hangzhou.aliyuncs.com/?Action=ListSecrets
 		"Secret": [
 			{
 				"SecretName": "secret001",
-				"CreateTime": "2020-02-21T01:24:45Z",
-				"UpdateTime": "2020-02-21T01:24:45Z",
-				"Tags": {
-					"Tag": []
-				}
+				"SecretType": "Generic",
+				"CreateTime": "2020-07-17T07:59:05Z",
+				"UpdateTime": "2020-07-17T07:59:05Z"
 			},
 			{
-				"SecretName": "secret004",
-				"CreateTime": "2020-02-21T15:22:45Z",
-				"UpdateTime": "2020-02-21T15:22:45Z",
-				"Tags": {
-					"Tag": [
-						{
-							"TagKey": "key1",
-							"TagValue": "val1"
-						},
-						{
-							"TagKey": "key2",
-							"TagValue": "val2"
-						}
-					]
-				}
+				"SecretName": "cache_client",
+				"SecretType": "Generic",
+				"CreateTime": "2020-07-23T11:56:29Z",
+				"UpdateTime": "2021-01-12T02:15:42Z"
 			}
 		]
 	},
-	"RequestId": "edbdc10d-3bcb-4690-95cb-3bf5664e1f02",
+	"RequestId": "6a6287a0-ff34-4780-a790-fdfca900557f",
 	"PageNumber": 1,
-	"PageSize": 10,
-	"TotalCount": 2
+	"PageSize": 2,
+	"TotalCount": 55
 }
 ```
 
