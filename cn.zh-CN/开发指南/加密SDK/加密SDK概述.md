@@ -23,7 +23,10 @@
     加密SDK可配置不同地域的用户主密钥，一行代码加密数据后，可在不同地域解密使用，从而保证数据跨地域可用和灾备能力。
 
 
-## 代码示例
+## 快速入门
 
-您可以访问[alibabacloud-encryption-sdk-java-examples](https://github.com/aliyun/alibabacloud-encryption-sdk-java/tree/master/src/examples)，查看代码示例。
+以下为您提供不同语言的加密SDK快速入门：
+
+-   [加密SDK快速入门（Java）](/cn.zh-CN/开发指南/加密SDK/快速入门/加密SDK快速入门（Java）.md)
+-   [加密SDK快速入门（Python）](/cn.zh-CN/开发指南/加密SDK/快速入门/加密SDK快速入门（Python）.md)
 
