@@ -1,10 +1,10 @@
 # Sample code for data encryption
 
-After you create a CMK of the AES or SM4 type, you can use code of KMS SDK for Java to encrypt data. This topic provides sample code of KMS SDK for Java to describe how to encrypt data.
+After you create a customer master key \(CMK\) of the Advanced Encryption Standard \(AES\) or SM4 type, you can use code of Key Management Service \(KMS\) SDKs to encrypt data. In the example provided in this topic, KMS SDK for Java is used to encrypt data.
 
 ## Preparations
 
-1.  Obtain the dependency declaration of KMS SDK for Java. For information about the required SDK version, see [SDK overview](/intl.en-US/SDK Reference/SDK overview.md). Example:
+1.  Obtain the dependency declaration of KMS SDK for Java. For information about the required SDK version, see [SDK overview](/intl.en-US/Developer Guide/KMS SDK/SDK overview.md). Sample code:
 
     ```
     <dependency>
@@ -15,13 +15,13 @@ After you create a CMK of the AES or SM4 type, you can use code of KMS SDK for J
     <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-kms</artifactId>
-        <version>2.11.1</version>
+        <version>2.14.0</version>
     </dependency>
     ```
 
-2.  Obtain the endpoints to access KMS based on the region where you use KMS. For more information, see [Endpoints](/intl.en-US/API Reference/Calling method/Request structure.md).
+2.  Obtain the endpoints to access KMS based on the region where you use KMS. For more information, see [Endpoints](/intl.en-US/API Reference/Calling method/Request syntax.md).
 
-    **Note:** In the example, you can specify the region ID to access the public endpoint of KMS. For more information about how to access the VPC endpoint of KMS, see [SDK code samples](/intl.en-US/SDK Reference/SDK code samples.md).
+    **Note:** In this example, you can specify the region ID to access the public endpoint of KMS. For more information about how to access the Virtual Private Cloud \(VPC\) endpoint of KMS, see [Code samples of SDK for Java](/intl.en-US/Developer Guide/KMS SDK/Code samples of SDK for Java.md).
 
 
 ## Encrypt data
@@ -37,6 +37,7 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.google.gson.Gson;
 import java.util.*;
 import com.aliyuncs.kms.model.v20160120.*;
+import com.aliyuncs.utils.Base64Helper;
 
 public class Encrypt {
 
@@ -52,7 +53,7 @@ public class Encrypt {
         
         // Specify the CMK alias or CMK ID that is used to encrypt "Hello world".
         request.setKeyId("alias/Apollo/SalaryEncryptionKey");
-        request.setPlaintext("Hello world");
+        request.setPlaintext(Base64Helper.encode("Hello world", null));
 
         try {
             EncryptResponse response = client.getAcsResponse(request);
@@ -68,5 +69,5 @@ public class Encrypt {
 }
 ```
 
-For more sample code, see [KMS code development sample library](https://github.com/aliyun/alibabacloud-kms-demo).
+For more information about the sample code, visit [alibabacloud-kms-demo](https://github.com/aliyun/alibabacloud-kms-demo).
 
