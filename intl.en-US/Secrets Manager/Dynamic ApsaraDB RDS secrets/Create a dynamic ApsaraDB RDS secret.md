@@ -3,7 +3,7 @@
 You can create a dynamic ApsaraDB RDS secret that is automatically rotated on a regular basis. This way, the risks of data leaks can be reduced. This topic describes how to create a dynamic ApsaraDB RDS secret in the Key Management Service \(KMS\) console.
 
 -   An ApsaraDB RDS instance is created. For more information, see [Create an ApsaraDB RDS for MySQL instance](/intl.en-US/RDS MySQL Database/Quick start/Create an ApsaraDB RDS for MySQL instance.md).
--   When a RAM user or RAM role is used to manage secrets, the system policy [AliyunKMSSecretAdminAccess](https://ram.console.aliyun.com/policies/AliyunKMSSecretAdminAccess/System/content) is attached to the RAM user or RAM role. This policy grants the following permissions:
+-   If a RAM user or RAM role is used to manage secrets, the system policy [AliyunKMSSecretAdminAccess](https://ram.console.aliyun.com/policies/AliyunKMSSecretAdminAccess/System/content) is attached to the RAM user or RAM role. This policy grants the following permissions:
     -   The permission to use the features of Secrets Manager.
     -   The permissions to query ApsaraDB RDS instances and manage accounts.
     -   The permission to create the service-linked role used by managed ApsaraDB RDS secrets.
@@ -58,5 +58,5 @@ You can create a dynamic ApsaraDB RDS secret that is automatically rotated on a 
 
 -   [Allow applications to access Secrets Manager](/intl.en-US/Secrets Manager/Allow applications to access Secrets Manager.md)
 -   [Use ActionTrail to query KMS event logs](/intl.en-US/Access Control and Audit/Use ActionTrail to query KMS event logs.md)
--   [t2005681.md\#]()
+-   [Monitor the rotation of dynamic ApsaraDB RDS secrets](/intl.en-US/Secrets Manager/Dynamic ApsaraDB RDS secrets/Monitor the rotation of dynamic ApsaraDB RDS secrets.md)
 
