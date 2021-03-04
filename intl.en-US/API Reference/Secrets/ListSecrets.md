@@ -4,6 +4,8 @@ Queries all secrets created by your Alibaba Cloud account in the current region.
 
 This operation returns the metadata information stored in secret objects and does not return encrypted secret values.
 
+In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned.
+
 ## Debugging
 
 [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Kms&api=ListSecrets&type=RPC&version=2016-01-20)
@@ -13,70 +15,75 @@ This operation returns the metadata information stored in secret objects and doe
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|ListSecrets|The operation that you want to perform. Set the value to ListSecrets. |
-|FetchTags|String|No|false|Specifies whether to return the resource tags of the secrets. Valid values:
+|FetchTags|String|No|false|Specifies whether to return the resource tags of the secret. Valid values:
 
--   true: The resource tags are returned.
+ -   true: The resource tags are returned.
 -   false: The resource tags are not returned. This is the default value. |
 |PageNumber|Integer|No|1|The number of the page to return.
 
-Pages start from page 1.
+ Pages start from page 1.
 
-Default value: 1. |
-|PageSize|Integer|No|10|The number of entries to return on each page.
+ Default value: 1. |
+|PageSize|Integer|No|2|The number of entries to return on each page.
 
-Valid values: 1 to 100.
+ Valid values: 1 to 100
 
-Default value: 10. |
-|Filters|String|No|\[\{"Key":"SecretName", "Values":\["$Val1","$Val2"\]\}\]|The secret filter. The filter consists of one key-values pair.
+ Default value: 10. |
+|Filters|String|No|\[\{"Key":"SecretName", "Values":\["$Val1","$Val2"\]\}\]|The secret filter. Filters are key-values pairs. You can specify one key-values pair or leave this parameter empty. If you filter resources based on tag keys or values, up to 4,000 resources can be returned in the response. To query more than 4,000 resources, call the [ListTagResources](~~120090~~) operation.
 
--   Key
+ -   Key
     -   Description: the property that you want to filter.
     -   Type: string.
     -   Valid values:
         -   SecretName: the secret name.
         -   Description: the description of the secret.
-        -   TagKey: the tag key
-        -   TagValue: the tag value
+        -   TagKey: the tag key.
+        -   TagValue: the tag value.
 -   Values
     -   Description: the value to be included after filtering.
     -   Type: string.
     -   Length: 0 to 10.
     -   Valid values:
-        -   When Key is set to SecretName, the value must be 1 to 192 characters in length and can contain letters, digits, and special characters`_ / + = @ -`.
-        -   When Key is set to Description, the value must be 1 to 256 characters in length.
-        -   When Key is set to TagKey, the value must be 1 to 256 characters in length and can contain letters, digits, and special characters`/ _ - + =@:`.
-        -   When Key is set to TagValue, the value must be 1 to 256 characters in length and can contain letters, numbers, and special characters`/ _ - + =@:`.
+        -   If the Key field is set to SecretName, the value must be 1 to 192 characters in length and can contain letters, digits, and special characters. The special characters include `underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), at signs (@), and hyphens (-)`.
+        -   If the Key field is set to Description, the value must be 1 to 256 characters in length.
+        -   If the Key field is set to TagKey, the value must be 1 to 256 characters in length and can contain letters, digits, and special characters. The special characters include `forward slashes (/), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), at signs (@), and colons (:)`.
+        -   If the Key field is set to TagValue, the value must be 1 to 256 characters in length and can contain letters, numbers, and special characters. The special characters include `forward slashes (/), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), at signs (@), and colons (:)`.
 
-The logical relationship between values for a key is OR. Example: `[ {"Key":"SecretName", "Values":["sec1","sec2"]}]`. In this example, the semantics are:`(secretname=sec 1OR secretname=sec 2)` |
+ The logical relationship between values for a key in the Filters parameter is OR. Example: `[ {"Key":"SecretName", "Values":["sec1","sec2"]} ]`. In this example, the semantics are `SecretName=sec 1 OR SecretName=sec 2` |
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
 |PageNumber|Integer|1|The page number of the returned page. |
-|PageSize|Integer|10|The number of entries returned per page. |
-|RequestId|String|e8818e65-5c5b-4a0e-a571-8f50b59920a7|The ID of the request. |
+|PageSize|Integer|2|The number of entries returned per page. |
+|RequestId|String|6a6287a0-ff34-4780-a790-fdfca900557f|The ID of the request. |
 |SecretList|Array of Secret| |The list of secrets. |
 |Secret| | | |
-|CreateTime|String|2020-02-21T01:24:45Z|The time when a secret was created. |
-|PlannedDeleteTime|String|2020-03-21T01:24:45Z|The time when a secret is scheduled to be deleted. |
-|SecretName|String|secret001|The name of a secret. |
-|Tags|Array of Tag| |The resource tags of secrets. If the request parameter FetchTags is set to false, this parameter is not returned. |
+|CreateTime|String|2020-07-17T07:59:05Z|The time when the secret was created. |
+|PlannedDeleteTime|String|2020-08-17T07:59:05Z|The time when the secret is scheduled to be deleted. |
+|SecretName|String|secret001|The name of the secret. |
+|SecretType|String|Generic|The type of the secret. Valid values:
+
+ -   Generic: indicates a standard secret.
+-   Rds: indicates a managed ApsaraDB RDS secret. |
+|Tags|Array of Tag| |The resource tags of the secret.
+
+ If the FetchTags parameter is set to false or is not specified, this parameter is not returned. |
 |Tag| | | |
-|TagKey|String|key1|The key of a resource tag. |
-|TagValue|String|val1|The value of a resource tag. |
-|UpdateTime|String|2020-02-21T15:22:45Z|The time when a secret was updated. |
-|TotalCount|Integer|20|The number of returned secrets. |
+|TagKey|String|key1|The tag key. |
+|TagValue|String|val1|The tag value. |
+|UpdateTime|String|2020-07-17T07:59:05Z|The time when the secret was updated. |
+|TotalCount|Integer|55|The number of returned secrets. |
 
 ## Examples
 
 Sample requests
 
 ```
-ttps://kms.cn-hangzhou.aliyuncs.com/? Action=ListSecrets
+http(s)://[Endpoint]/? Action=ListSecrets
 &PageNumber=1
-&PageSize=10
-&Filters=[{"Key":"SecretName", "Values":["$Val1","$Val2"]}]
+&PageSize=2
 &<Common request parameters>
 ```
 
@@ -85,73 +92,52 @@ Sample success responses
 `XML` format
 
 ```
-<SecretList>
-    <Secret>
-        <SecretName>secret001</SecretName>
-        <CreateTime>2020-02-21T01:24:45Z</CreateTime>
-        <UpdateTime>2020-02-21T01:24:45Z</UpdateTime>
-        <Tags>
-        </Tags>
-    </Secret>
-    <Secret>
-        <SecretName>secret004</SecretName>
-        <CreateTime>2020-02-21T15:22:45Z</CreateTime>
-        <UpdateTime>2020-02-21T15:22:45Z</UpdateTime>
-        <Tags>
-            <Tag>
-                <TagKey>key1</TagKey>
-                <TagValue>val1</TagValue>
-            </Tag>
-            <Tag>
-                <TagKey>key2</TagKey>
-                <TagValue>val2</TagValue>
-            </Tag>
-        </Tags>
-    </Secret>
-</SecretList>
-<RequestId>edbdc10d-3bcb-4690-95cb-3bf5664e1f02</RequestId>
-<PageNumber>1</PageNumber>
-<PageSize>10</PageSize>
-<TotalCount>2</TotalCount>
+<KMS>
+	  <SecretList>
+		    <Secret>
+			      <SecretName>secret001</SecretName>
+			      <SecretType>Generic</SecretType>
+			      <CreateTime>2020-07-17T07:59:05Z</CreateTime>
+			      <UpdateTime>2020-07-17T07:59:05Z</UpdateTime>
+		    </Secret>
+		    <Secret>
+			      <SecretName>cache_client</SecretName>
+			      <SecretType>Generic</SecretType>
+			      <CreateTime>2020-07-23T11:56:29Z</CreateTime>
+			      <UpdateTime>2021-01-12T02:15:42Z</UpdateTime>
+		    </Secret>
+	  </SecretList>
+	  <RequestId>6a6287a0-ff34-4780-a790-fdfca900557f</RequestId>
+	  <PageNumber>1</PageNumber>
+	  <PageSize>2</PageSize>
+	  <TotalCount>55</TotalCount>
+</KMS>
 ```
 
 `JSON` format
 
 ```
 {
-    "SecretList": {
-        "Secret": [
-            {
-                "SecretName": "secret001",
-                "CreateTime": "2020-02-21T01:24:45Z",
-                "UpdateTime": "2020-02-21T01:24:45Z",
-                "Tags": {
-                    "Tag": []
-                }
-            },
-            {
-                "SecretName": "secret004",
-                "CreateTime": "2020-02-21T15:22:45Z",
-                "UpdateTime": "2020-02-21T15:22:45Z",
-                "Tags": {
-                    "Tag": [
-                        {
-                            "TagKey": "key1",
-                            "TagValue": "val1"
-                        },
-                        {
-                            "TagKey": "key2",
-                            "TagValue": "val2"
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    "RequestId": "edbdc10d-3bcb-4690-95cb-3bf5664e1f02",
-    "PageNumber": 1,
-    "PageSize": 10,
-    "TotalCount": 2
+	"SecretList": {
+		"Secret": [
+			{
+				"SecretName": "secret001",
+				"SecretType": "Generic",
+				"CreateTime": "2020-07-17T07:59:05Z",
+				"UpdateTime": "2020-07-17T07:59:05Z"
+			},
+			{
+				"SecretName": "cache_client",
+				"SecretType": "Generic",
+				"CreateTime": "2020-07-23T11:56:29Z",
+				"UpdateTime": "2021-01-12T02:15:42Z"
+			}
+		]
+	},
+	"RequestId": "6a6287a0-ff34-4780-a790-fdfca900557f",
+	"PageNumber": 1,
+	"PageSize": 2,
+	"TotalCount": 55
 }
 ```
 
