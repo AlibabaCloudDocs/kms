@@ -89,7 +89,7 @@
 
 ## 删除服务关联角色
 
-删除服务关联角色前，您需要在密钥管理控制台当前阿里云账号下的Private Key Store。具体操作，请参见[删除Private Key Store](/intl.zh-CN/密钥服务/Key Store/删除Private Key Store.md)。
+删除服务关联角色前，您需要在密钥管理控制台删除当前阿里云账号下的Private Key Store。具体操作，请参见[删除Private Key Store](/intl.zh-CN/密钥服务/Key Store/删除Private Key Store.md)。
 
 您可以在RAM控制台删除服务关联角色。具体操作，请参见[删除RAM角色](/intl.zh-CN/角色管理/删除RAM角色.md)。
 
