@@ -2,6 +2,8 @@
 
 Updates the metadata of a secret.
 
+In this example, the metadata of the `secret001` secret is updated. The `Description` parameter is set to `datainfo`.
+
 ## Debugging
 
 [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Kms&api=UpdateSecret&type=RPC&version=2016-01-20)
@@ -11,8 +13,16 @@ Updates the metadata of a secret.
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|UpdateSecret|The operation that you want to perform. Set the value to UpdateSecret. |
-|SecretName|String|Yes|secret001|The name of the secret whose metadata you want to update. |
-|Description|String|No|datainfo|The description of the updated secret. |
+|SecretName|String|Yes|secret001|The name of the secret. |
+|Description|String|No|datainfo|The description of the secret. |
+|ExtendedConfig.CustomData|Json|No|\{"DBName":"app1","Port":"3306"\}|The custom data in the extended configuration of the secret.
+
+ **Note:**
+
+-   If this parameter is specified, the existing extended configuration of the secret is updated.
+-   This parameter is unavailable for standard secrets. |
+
+For more information about common request parameters, see [Common parameters](~~69007~~).
 
 ## Response parameters
 
@@ -26,7 +36,7 @@ Updates the metadata of a secret.
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=UpdateSecret
+http(s)://[Endpoint]/? Action=UpdateSecret
 &Description=datainfo
 &SecretName=secret001
 &<Common request parameters>
@@ -37,8 +47,10 @@ Sample success responses
 `XML` format
 
 ```
-<SecretName>secret001</SecretName>
-<RequestId>5b75d8b1-5b6a-4ec0-8e0c-c08befdfad47</RequestId>
+<KMS>
+	  <SecretName>secret001</SecretName>
+	  <RequestId>5b75d8b1-5b6a-4ec0-8e0c-c08befdfad47</RequestId>
+</KMS>
 ```
 
 `JSON` format
