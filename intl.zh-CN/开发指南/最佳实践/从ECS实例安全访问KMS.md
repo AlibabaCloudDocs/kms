@@ -6,7 +6,7 @@
 
 1.  创建实例RAM角色。
 
-    在OpenAPI Explorer中调用RAM的[CreateRole](https://api.aliyun.com/#/?product=Ram&api=CreateRole)接口，创建实例RAM角色（EcsRamRoleTest）。请求参数设置如下：
+    在OpenAPI开发者门户中调用RAM的[CreateRole](https://next.api.aliyun.com/api/Ram/2015-05-01/CreateRole)接口，创建实例RAM角色（EcsRamRoleTest）。请求参数设置如下：
 
     -   RoleName：填写实例RAM角色名称（EcsRamRoleTest）。
     -   AssumeRolePolicyDocument： 填写如下策略内容，表示允许ECS扮演该角色。
@@ -30,7 +30,7 @@
 
 2.  授予实例RAM角色访问KMS的权限。
 
-    在OpenAPI Explorer中调用RAM的[AttachPolicyToRole](https://api.aliyun.com/#/?product=Ram&version=2015-05-01&api=AttachPolicyToRole)接口，为实例RAM角色（EcsRamRoleTest）添加AliyunKMSFullAccess系统权限。请求参数设置如下：
+    在OpenAPI开发者门户中调用RAM的[AttachPolicyToRole](https://next.api.aliyun.com/api/Ram/2015-05-01/AttachPolicyToRole)接口，为实例RAM角色（EcsRamRoleTest）添加AliyunKMSFullAccess系统权限。请求参数设置如下：
 
     -   PolicyType：填写System，表示系统策略。
     -   PolicyName：填写KMS系统策略名称（AliyunKMSFullAccess）。
@@ -42,7 +42,7 @@
 
 -   为已有ECS实例授予实例RAM角色
 
-    在OpenAPI Explorer中调用ECS的[AttachInstanceRamRole](https://api.aliyun.com/#/?product=Ecs&version=2014-05-26&api=AttachInstanceRamRole)接口，为已有的VPC类型ECS实例授予实例RAM角色。请求参数设置如下：
+    在OpenAPI开发者门户中调用ECS的[AttachInstanceRamRole](https://next.api.aliyun.com/api/Ecs/2014-05-26/AttachInstanceRamRole)接口，为已有的VPC类型ECS实例授予实例RAM角色。请求参数设置如下：
 
     -   RegionId：选择实例所在的地域ID。
     -   RamRoleName：填写实例RAM角色名称（EcsRamRoleTest）。
@@ -50,7 +50,7 @@
 -   创建ECS实例时指定实例RAM角色
     1.  创建实例。
 
-        在OpenAPI Explorer中调用ECS的[CreateInstance](https://api.aliyun.com/#/?product=Ecs&version=2014-05-26&api=CreateInstance)接口，创建ECS实例。请求参数设置如下：
+        在OpenAPI开发者门户中调用ECS的[CreateInstance](https://next.api.aliyun.com/api/Ecs/2014-05-26/CreateInstance)接口，创建ECS实例。请求参数设置如下：
 
         -   RegionId：选择实例所在地域（cn-hangzhou）。
         -   ImageId：填写实例的镜像（centos\_7\_03\_64\_40G\_alibase\_20170503.vhd）。
