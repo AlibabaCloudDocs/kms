@@ -6,7 +6,7 @@ You can create a RAM role for an Elastic Compute Service \(ECS\) instance. This 
 
 1.  Create a RAM role.
 
-    Use OpenAPI Explorer to call the [CreateRole](https://api.aliyun.com/#/?product=Ram&api=CreateRole) operation of RAM to create the RAM role EcsRamRoleTest. Specify the following request parameters for the operation:
+    Use OpenAPI Developer Portal to call the [CreateRole](https://next.api.aliyun.com/api/Ram/2015-05-01/CreateRole) operation of RAM to create the RAM role EcsRamRoleTest. Specify the following request parameters for the operation:
 
     -   RoleName: the name of the RAM role. In this example, the RAM role is EcsRamRoleTest.
     -   AssumeRolePolicyDocument: Enter the following policy, which indicates that ECS instances can assume this RAM role:
@@ -30,7 +30,7 @@ You can create a RAM role for an Elastic Compute Service \(ECS\) instance. This 
 
 2.  Grant the RAM role the permission to access KMS.
 
-    Use OpenAPI Explorer to call the [AttachPolicyToRole](https://api.aliyun.com/#/?product=Ram&version=2015-05-01&api=AttachPolicyToRole) operation of RAM to attach the system policy AliyunKMSFullAccess to the RAM role EcsRamRoleTest. Specify the following request parameters for the operation:
+    Use OpenAPI Developer Portal to call the [AttachPolicyToRole](https://next.api.aliyun.com/api/Ram/2015-05-01/AttachPolicyToRole) operation of RAM to attach the system policy AliyunKMSFullAccess to the RAM role EcsRamRoleTest. Specify the following request parameters for the operation:
 
     -   PolicyType: the type of the policy. Set this parameter to System, which indicates a system policy.
     -   PolicyName: the name of the KMS system policy. In this example, the system policy is AliyunKMSFullAccess.
@@ -42,7 +42,7 @@ You can use one of the following methods to assign the RAM role to an ECS instan
 
 -   Assign the RAM role to an existing ECS instance.
 
-    Use OpenAPI Explorer to call the [AttachInstanceRamRole](https://api.aliyun.com/#/?product=Ecs&version=2014-05-26&api=AttachInstanceRamRole) operation of ECS instances to assign the RAM role to an existing ECS instance in a Virtual Private Cloud \(VPC\). Specify the following request parameters for the operation:
+    Use OpenAPI Developer Portal to call the [AttachInstanceRamRole](https://next.api.aliyun.com/api/Ecs/2014-05-26/AttachInstanceRamRole) operation of ECS instances to assign the RAM role to an existing ECS instance in a Virtual Private Cloud \(VPC\). Specify the following request parameters for the operation:
 
     -   RegionId: the ID of the region where the ECS instance resides.
     -   RamRoleName: the name of the RAM role. In this example, the RAM role is EcsRamRoleTest.
@@ -50,7 +50,7 @@ You can use one of the following methods to assign the RAM role to an ECS instan
 -   Specify the RAM role when you create an ECS instance.
     1.  Create an instance.
 
-        Use OpenAPI Explorer to call the [CreateInstance](https://api.aliyun.com/#/?product=Ecs&version=2014-05-26&api=CreateInstance) operation of ECS to create an ECS instance. Specify the following request parameters for the operation:
+        Use OpenAPI Developer Portal to call the [CreateInstance](https://next.api.aliyun.com/api/Ecs/2014-05-26/CreateInstance) operation of ECS to create an ECS instance. Specify the following request parameters for the operation:
 
         -   RegionId: the ID of the region where the instance resides. In this example, the region ID is cn-hangzhou.
         -   ImageId: the ID of the image used by the instance. In this example, the image ID is centos\_7\_03\_64\_40G\_alibase\_20170503.vhd.
@@ -72,7 +72,7 @@ You can obtain a temporary authorization token for the RAM role. You can use the
 1.  Query the temporary authorization token of the RAM role EcsRamRoleTest.
 
     -   Linux instance: Run the `http://100.100.100.200/latest/meta-data/ram/security-credentials/EcsRamRoleTest` command.
-    -   Windows instance: For more information, see [Overview](/intl.en-US/Instance/Manage instances/Metadata/Overview.md).
+    -   Windows instance: For more information, see [Overview](/intl.en-US/Instance/Manage instances/Metadata/Overview of instance metadata.md).
 2.  Obtain the temporary authorization token.
 
     Sample success response:
