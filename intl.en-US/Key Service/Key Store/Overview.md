@@ -18,6 +18,8 @@ KMS provides a default key store and allows you to create private key stores. Ke
 
 Private key stores are associated with HSM clusters in Alibaba Cloud Data Encryption Service. The customer master keys \(CMKs\) in the private key stores are stored and used within HSM clusters. This provides higher security when you manage and use the keys.
 
+![Architecture](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0582635161/p247594.png)
+
 ## Use a private key store
 
 To use a private key store to manage your CMKs, perform the following steps:
