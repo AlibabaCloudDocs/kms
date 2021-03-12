@@ -27,11 +27,11 @@ Private Key Store和加密服务（Alibaba Cloud Data Encryption Service）中�
 1.  在[加密服务控制台](https://yundun.console.aliyun.com/?p=hsm)进行设置。
     1.  创建HSM集群。
     2.  在HSM集群中添加HSM实例。
-    3.  初始化HSM集群。具体操作，请参见[Initialize HSM](/intl.zh-CN/Quick Start/Step 6: Initialize HSM.md)。
-    4.  创建一个用户名为`kmsuser`的加密用户，并为`kmsuser`设置口令。具体操作，请参见[Create a crypto user](/intl.zh-CN/Quick Start/Step 8: Create a key.md)。
+    3.  初始化HSM集群。具体操作，请参见[Initialize the cluster]()。
+    4.  创建一个用户名为`kmsuser`的加密用户，并为`kmsuser`设置口令。具体操作，请参见[Create a crypto user]()。
 2.  在[密钥管理服务控制台](https://kms.console.aliyun.com)进行设置。
-    1.  [创建Private Key Store]()。
-    2.  [连接Private Key Store]()。
+    1.  [创建Private Key Store](/intl.zh-CN/密钥服务/Key Store/创建Private Key Store.md)。
+    2.  [连接Private Key Store](/intl.zh-CN/密钥服务/Key Store/连接或断开Private Key Store.md)。
     3.  [创建密钥](/intl.zh-CN/快速入门/管理和使用密钥/创建密钥.md)。
 
 密钥创建完成后，你可以通过API、CLI或SDK使用HSM中的密钥。
