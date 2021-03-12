@@ -6,8 +6,8 @@ Private Key Store需要关联同一阿里云账号下加密服务（Alibaba Clou
 
 1.  已经创建HSM集群。
 2.  集群中已经添加HSM实例。为了HSM集群高可用，建议您添加两个及以上HSM实例。
-3.  已经完成集群的初始化。当前集群状态为**已初始化**。初始化时您设置的**ClusterOwnerCertificate**将作为KMS访问HSM的安全域证书。具体操作，请参见[Initialize HSM](/intl.zh-CN/Quick Start/Step 6: Initialize HSM.md)。
-4.  创建一个用户名为`kmsuser`的加密用户，并为`kmsuser`设置口令。KMS将使用该用户身份访问您的HSM集群，进行密钥创建和密码运算。具体操作，请参见[Create a crypto user](/intl.zh-CN/Quick Start/Step 8: Create a key.md)。
+3.  已经完成集群的初始化。当前集群状态为**已初始化**。初始化时您设置的**ClusterOwnerCertificate**将作为KMS访问HSM的安全域证书。具体操作，请参见[Initialize the cluster]()。
+4.  创建一个用户名为`kmsuser`的加密用户，并为`kmsuser`设置口令。KMS将使用该用户身份访问您的HSM集群，进行密钥创建和密码运算。具体操作，请参见[Create a crypto user]()。
 
 1.  登录[密钥管理服务控制台](https://kms.console.aliyun.com)。
 
@@ -31,6 +31,6 @@ Private Key Store需要关联同一阿里云账号下加密服务（Alibaba Clou
 
 Private Key Store创建成功后，默认处于**连接断开**状态。如果需要在Private Key Store中创建用户主密钥，您需要先连接Private Key Store。具体操作，请参见：
 
-1.  [连接Private Key Store]()
+1.  [连接Private Key Store](/intl.zh-CN/密钥服务/Key Store/连接或断开Private Key Store.md)
 2.  [创建密钥](/intl.zh-CN/快速入门/管理和使用密钥/创建密钥.md)
 
