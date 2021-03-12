@@ -31,6 +31,6 @@ Private Key Store需要关联同一阿里云账号下加密服务（Alibaba Clou
 
 Private Key Store创建成功后，默认处于**连接断开**状态。如果需要在Private Key Store中创建用户主密钥，您需要先连接Private Key Store。具体操作，请参见：
 
-1.  [连接Private Key Store]()
+1.  [连接Private Key Store](/cn.zh-CN/密钥服务/Key Store/连接或断开Private Key Store.md)
 2.  [创建密钥](/cn.zh-CN/快速入门/管理和使用密钥/创建密钥.md)
 
