@@ -27,8 +27,8 @@ To use a private key store to manage your CMKs, perform the following steps:
 1.  Log on to the [Data Encryption Service console](https://yundun.console.aliyun.com/?p=hsm) and perform the following steps:
     1.  Create an HSM cluster.
     2.  Add an HSM instance in the HSM cluster.
-    3.  Initialize the HSM cluster. For more information, see [Initialize HSM](/intl.en-US/Quick Start/Step 6: Initialize HSM.md).
-    4.  Create a crypto user named `kmsuser` and set a password for the `kmsuser` user. For more information, see [Create a crypto user](/intl.en-US/Quick Start/Step 8: Create a key.md).
+    3.  Initialize the HSM cluster. For more information, see [Initialize the cluster](/intl.en-US/Quick Start/Step 7: Initialize the cluster.md).
+    4.  Create a crypto user named `kmsuser` and set a password for the `kmsuser` user. For more information, see [Create a crypto user](/intl.en-US/Quick Start/Step 9: Create a key.md).
 2.  Log on to the [KMS console](https://kms.console.aliyun.com) and perform the following steps:
     1.  [Create a private key store](/intl.en-US/Key Service/Key Store/Create a private key store.md).
     2.  [Connect to a private key store](/intl.en-US/Key Service/Key Store/Connect to or disconnect from a private key store.md).
