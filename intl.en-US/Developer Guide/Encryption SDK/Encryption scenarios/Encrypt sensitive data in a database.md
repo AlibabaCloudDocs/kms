@@ -1,6 +1,6 @@
 # Encrypt sensitive data in a database
 
-Encryption is a proactive measure to protect data in a database. Encryption prevents data leaks that are caused by plaintext storage and data theft by privileged users. Encryption also helps defend against hackers that break through the security boundary. This way, the issue of sensitive data leaks can be fundamentally resolved. This topic describes the scenarios of sensitive data encryption in a database and how to encrypt and decrypt data. This topic also provides an example on how to encrypt sensitive data in a database.
+Encryption is a proactive measure to protect data in a database. Encryption prevents data leaks that are caused by plaintext storage and data theft by privileged users. Encryption also helps defend against hackers that break through the security boundary. This way, the issue of sensitive data leaks can be fundamentally resolved. The data encrypted on the client-side by the encryption SDK can be stored in a relational database or a non-relational database. This topic describes the scenarios of sensitive data encryption in a database and how to encrypt and decrypt data. This topic also provides an example on how to encrypt sensitive data in a database.
 
 ## Scenarios
 
