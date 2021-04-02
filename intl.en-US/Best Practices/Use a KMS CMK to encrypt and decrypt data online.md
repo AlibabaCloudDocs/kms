@@ -88,7 +88,7 @@ You can call the following KMS API operations to encrypt and decrypt data.
       request.set_accept_format('JSON')
       request.set_KeyId(key_alias)
       request.set_Plaintext(plaintext)
-      response = json.loads(clt.do_action(request))
+      response = json.loads(client.do_action(request))
       return response.get("CiphertextBlob")
     
     def ReadTextFile(in_file):
@@ -139,7 +139,7 @@ You can call the following KMS API operations to encrypt and decrypt data.
       request = DecryptRequest.DecryptRequest()
       request.set_accept_format('JSON')
       request.set_CiphertextBlob(ciphertext)
-      response = json.loads(clt.do_action(request))
+      response = json.loads(client.do_action(request))
       return response.get("Plaintext")
     
     def ReadTextFile(in_file):
