@@ -1,8 +1,8 @@
 # DescribeCertificate
 
-调用DescribeCertificate接口获取证书信息。
+调用DescribeCertificate接口查询证书信息。
 
-本文将提供一个示例，获取一个ID为`9a28de48-8d8b-484d-a766-dec4****`的证书信息，包括证书ID、创建时间、签发者信息、有效期、序列号、签名算法等。
+本文将提供一个示例，查询一个ID为`9a28de48-8d8b-484d-a766-dec4****`的证书信息，包括证书ID、创建时间、签发者信息、有效期、序列号、签名算法等。
 
 ## 调试
 
@@ -21,19 +21,17 @@
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|Arn|String|acs:kms:cn-hangzhou:159498693826\*\*\*\*:certificate/9a28de48-8d8b-484d-a766-dec4\*\*\*\*"|阿里云资源名称。 |
+|Arn|String|acs:kms:cn-hangzhou:159498693826\*\*\*\*:certificate/9a28de48-8d8b-484d-a766-dec4\*\*\*\*"|证书ARN。 |
 |CertificateId|String|9a28de48-8d8b-484d-a766-dec4\*\*\*\*|证书ID。证书管家中证书的全局唯一标识符。 |
 |CreatedAt|String|2020-10-13T03:05:03Z|证书的创建时间。 |
+|ExportablePrivateKey|Boolean|true|证书密钥是否支持导出。取值：
+
+ -   true（默认值）：支持导出。
+-   false：不支持导出。 |
 |Issuer|String|CN=testCA,OU=kms,O=aliyun,C=CN|证书的签发者信息，使用限定名DN（Distinguished Names）形式标识。 |
-|KeySpec|String|RSA\_2048|证书对应的非对称算法名称。 |
+|KeySpec|String|RSA\_2048|密钥类型。 |
 |NotAfter|String|2022-10-13T03:09:00Z|证书有效期的截止时间。 |
 |NotBefore|String|2020-10-13T03:09:00Z|证书有效期的开始时间。 |
-|ProtectionLevel|String|SOFTWARE|证书私钥的保护级别，取值：
-
- -   SOFTWARE（默认值）
--   HSM
-
-**说明：** HSM保护级别仅在支持托管密码机的地域支持。具体信息，请参见[支持的地域](~~125803~~)。 |
 |RequestId|String|edb671a3-c5a1-4ebe-a1de-d748b640bdf2|请求ID。 |
 |Serial|String|12345678|证书序列号。 |
 |SignatureAlgorithm|String|ECDSA-SHA256|证书签名算法，取值：
@@ -53,7 +51,7 @@
  支持域名列表，最多支持10个域名。 |
 |SubjectKeyIdentifier|String|79 36 26 DE 9F F5 15 E3 56 DC \*\*\*\*|主体公钥识别符。 |
 |SubjectPublicKey|String|-----BEGIN PUBLIC KEY----- MIIBIjA -----END PUBLIC KEY-----|证书中的公钥。 |
-|Tags|Map|\[\{"key1":"value"\},"key2":"value2"\]|证书对应的标签。 |
+|Tags|Map|\[\{\\"TagKey\\":\\"S1key1\\",\\"TagValue\\":\\"S1val1\\"\},\{\\"TagKey\\":\\"S1key2\\",\\"TagValue\\":\\"S2val2\\"\}\]|证书对应的标签。 |
 |UpdatedAt|String|2020-12-23T06:10:13Z|证书的更新时间。 |
 
 ## 示例
@@ -68,12 +66,11 @@ http(s)://[Endpoint]/?Action=DescribeCertificate
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <KMS>
 	  <Status>ACTIVE</Status>
-	  <ProtectionLevel>SOFTWARE</ProtectionLevel>
 	  <RequestId>edb671a3-c5a1-4ebe-a1de-d748b640bdf2</RequestId>
 	  <Issuer>CN=testCA,OU=kms,O=aliyun,C=CN</Issuer>
 	  <CertificateId>9a28de48-8d8b-484d-a766-dec4****</CertificateId>
@@ -83,22 +80,22 @@ http(s)://[Endpoint]/?Action=DescribeCertificate
 	  <SignatureAlgorithm>ECDSA-SHA256</SignatureAlgorithm>
 	  <SubjectKeyIdentifier>79 36 26 DE 9F F5 15 E3 56 DC ********</SubjectKeyIdentifier>
 	  <NotAfter>2022-10-13T03:09:00Z</NotAfter>
+      <ExportablePrivateKey>true</ExportablePrivateKey>
 	  <UpdatedAt>2020-10-13T03:15:00Z</UpdatedAt>
 	  <Subject>CN=userName,OU=aliyun,O=aliyun,C=CN</Subject>
 	  <Serial>12345678</Serial>
 	  <SubjectPublicKey>-----BEGIN PUBLIC KEY----- MIIBIjA -----END PUBLIC KEY-----</SubjectPublicKey>
 	  <NotBefore>2020-10-13T03:09:00Z</NotBefore>
 	  <Arn>acs:kms:cn-hangzhou:159498693826****:certificate/9a28de48-8d8b-484d-a766-dec4****</Arn>
-	  <Tags>[{\"key1\":\"value\"},\"key2\":\"value2\"]</Tags>
+	  <Tags>[{\"TagKey\":\"S1key1\",\"TagValue\":\"S1val1\"},{\"TagKey\":\"S1key2\",\"TagValue\":\"S2val2\"}]</Tags>
 </KMS>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
     "Status": "ACTIVE",
-    "ProtectionLevel": "SOFTWARE",
     "RequestId": "edb671a3-c5a1-4ebe-a1de-d748b640bdf2",
     "Issuer": "CN=testCA,OU=kms,O=aliyun,C=CN",
     "CertificateId": "9a28de48-8d8b-484d-a766-dec4****",
@@ -108,13 +105,14 @@ http(s)://[Endpoint]/?Action=DescribeCertificate
     "SignatureAlgorithm": "ECDSA-SHA256",
     "SubjectKeyIdentifier": "79 36 26 DE 9F F5 15 E3 56 DC ********",
     "NotAfter": "2022-10-13T03:09:00Z",
+    "ExportablePrivateKey": "true",
     "UpdatedAt": "2020-10-13T03:15:00Z",
     "Subject": "CN=userName,OU=aliyun,O=aliyun,C=CN",
     "Serial": "12345678",
     "SubjectPublicKey": "-----BEGIN PUBLIC KEY----- MIIBIjA -----END PUBLIC KEY-----",
     "NotBefore": "2020-10-13T03:09:00Z",
     "Arn": "acs:kms:cn-hangzhou:159498693826****:certificate/9a28de48-8d8b-484d-a766-dec4****",
-    "Tags": "[{\"key1\":\"value\"},\"key2\":\"value2\"]"
+    "Tags": "[{\"TagKey\":\"S1key1\",\"TagValue\":\"S1val1\"},{\"TagKey\":\"S1key2\",\"TagValue\":\"S2val2\"}]"
  }
 ```
 
