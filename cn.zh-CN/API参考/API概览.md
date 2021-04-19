@@ -85,14 +85,20 @@ KMS凭据管家提供凭据的托管、保护、分发和轮转能力。
 
 ## 证书接口
 
-证书接口用于证书的创建、删除、更新、查询等操作。
+证书接口用于证书的创建、删除、更新、查询、签名验签等操作。
 
 |API|描述|
 |:--|:-|
 |[CreateCertificate](/cn.zh-CN/API参考/证书/CreateCertificate.md)|创建证书。|
-|[DeleteCertificate](/cn.zh-CN/API参考/证书/DeleteCertificate.md)|删除证书及其对应的私钥和证书链。|
-|[DescribeCertificate](/cn.zh-CN/API参考/证书/DescribeCertificate.md)|获取证书信息。|
+|[UploadCertificate](/cn.zh-CN/API参考/证书/UploadCertificate.md)|将CA机构颁发的证书和证书链导入证书管家。|
+|[GetCertificate](/cn.zh-CN/API参考/证书/GetCertificate.md)|查询证书管家托管的证书。|
+|[DescribeCertificate](/cn.zh-CN/API参考/证书/DescribeCertificate.md)|查询证书信息。|
 |[UpdateCertificateStatus](/cn.zh-CN/API参考/证书/UpdateCertificateStatus.md)|更新证书状态。|
+|[DeleteCertificate](/cn.zh-CN/API参考/证书/DeleteCertificate.md)|删除证书及其对应的私钥和证书链。|
+|[CertificatePrivateKeySign](/cn.zh-CN/API参考/证书/CertificatePrivateKeySign.md)|使用指定证书生成数字签名。|
+|[CertificatePublicKeyVerify](/cn.zh-CN/API参考/证书/CertificatePublicKeyVerify.md)|使用指定证书验证数字签名。|
+|[CertificatePublicKeyEncrypt](/cn.zh-CN/API参考/证书/CertificatePublicKeyEncrypt.md)|使用指定证书加密数据。|
+|[CertificatePrivateKeyDecrypt](/cn.zh-CN/API参考/证书/CertificatePrivateKeyDecrypt.md)|使用指定证书解密数据。|
 
 ## 标签管理接口
 
