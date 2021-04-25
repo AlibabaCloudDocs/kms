@@ -7,12 +7,20 @@ Applications can access Secrets Manager by using multiple methods to dynamically
 Applications can access Secrets Manager by using one of the following methods:
 
 -   [Use KMS SDK](#section_hzp_rfv_3dl)
--   [Use Secrets Manager Client](/intl.en-US/Developer Guide/Secrets Manager Client.md)
+-   Use Secrets Manager SDK
+    -   [Secrets Manager Client](/intl.en-US/Developer Guide/Secrets Manager SDK/Secrets Manager Client.md)
+
+        Secrets Manager Client helps you efficiently use Secrets Manager.
+
+    -   [Secrets Manager JDBC](/intl.en-US/Developer Guide/Secrets Manager SDK/Secrets Manager JDBC.md)
+
+        Secrets Manager JDBC is a Java client that helps you use dynamic ApsaraDB RDS secrets of Secrets Manager to access databases.
+
 -   [Use the Kubernetes plug-in](#section_0vz_zbn_5us)
 
 ## Use KMS SDK
 
-This section shows you how to use KMS SDK for Java to allow applications to use dynamic ApsaraDB RDS secrets. You can also use this method if you use other secrets instead of dynamic ApsaraDB RDS secrets.
+This section shows you how to use Key Management Service \(KMS\) SDK for Java to allow applications to use dynamic ApsaraDB RDS secrets. You can also use this method if you use other secrets instead of dynamic ApsaraDB RDS secrets.
 
 1.  Obtain the dependency declaration of KMS SDK for Java.
 
@@ -90,21 +98,21 @@ This section shows you how to use KMS SDK for Java to allow applications to use 
             }
         }
     
-        // Obtain the connection string of the MySQL database by using the secret information.
+        // Obtain the connection string of the ApsaraDB RDS for MySQL database by using the secret information. 
         public static Connection getMySQLConnectionBySecret(String secretName, String jdbcUrl) throws ClassNotFoundException, SQLException, ClientException {
             Class.forName(MYSQL_JDBC_DRIVER);
             Pair<String, String> userAndPasswordPair = getUserAndPasswordPair(secretName);
             return DriverManager.getConnection(jdbcUrl, userAndPasswordPair.getKey(), userAndPasswordPair.getValue());
         }
     
-        // Obtain the connection string of the SQL Server database by using the secret information.
+        // Obtain the connection string of the ApsaraDB RDS for MySQL database by using the secret information. 
         public static Connection getMSSQLConnectionBySecret(String secretName, String jdbcUrl) throws ClassNotFoundException, SQLException, ClientException {
             Class.forName(MSSQL_JDBC_DRIVER);
             Pair<String, String> userAndPasswordPair = getUserAndPasswordPair(secretName);
             return DriverManager.getConnection(jdbcUrl, userAndPasswordPair.getKey(), userAndPasswordPair.getValue());
         }
     
-        // Obtains the account and password of the specified database by using the secret information.
+        // Obtains the account and password of the specified database by using the secret information. 
         private static Pair<String, String> getUserAndPasswordPair(String secretName) throws ClientException {
             final GetSecretValueRequest request = new GetSecretValueRequest();
             request.setProtocol(ProtocolType.HTTPS);
@@ -123,12 +131,12 @@ This section shows you how to use KMS SDK for Java to allow applications to use 
 
 If you use a self-managed Kubernetes cluster or Container Service for Kubernetes \(ACK\) cluster, you can use one of the following methods to integrate Secrets Manager in a codeless way:
 
--   Install the plug-in by using the Console Service console
+-   Install the plug-in by using the ACK console
 
-    1.  Log on to the [Container Service console](https://cs.console.aliyun.com).
+    1.  Log on to the [ACK console](https://cs.console.aliyun.com).
     2.  In the left-side navigation pane, choose **Marketplace** \> **App Catalog**.
     3.  On the App Catalog page, click the **Alibaba Cloud Apps** tab.
-    4.  Enter **ack-secret-manager** in the upper-right corner of the page and click the Search icon.
+    4.  Enter **ack-secret-manager** in the upper part of the page and click the Search icon.
     5.  Click **ack-secret-manager** to install the plug-in.
     **Note:** You can also visit [ack-secret-manager](https://github.com/AliyunContainerService/ack-secret-manager) and install the plug-in.
 
