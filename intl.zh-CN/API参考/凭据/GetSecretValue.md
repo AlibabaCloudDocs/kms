@@ -22,10 +22,10 @@
 
  默认值：ACSCurrent。
 
- **说明：** 托管RDS凭据只能获取ACSPrevious和ACSCurrent对应版本的凭据值。 |
+ **说明：** 托管RDS和RAM凭据只能获取ACSPrevious和ACSCurrent对应版本的凭据值。 |
 |VersionId|String|否|00000000000000000000000000000001|版本号。如果指定该参数，则凭据管家返回指定版本号的凭据值。
 
- **说明：** 托管RDS凭据不支持指定VersionId，设置该参数将被忽略。 |
+ **说明：** 托管RDS和RAM凭据不支持指定VersionId，设置该参数将被忽略。 |
 |FetchExtendedConfig|Boolean|否|true|是否获取凭据的拓展配置。取值：
 
  -   true
@@ -45,9 +45,9 @@
 -   Disabled：不开启自动轮转。
 -   Invalid：轮转状态异常，凭据管家无法为您自动轮转。
 
- **说明：** 仅托管RDS凭据返回该参数。 |
+ **说明：** 仅托管RDS和RAM凭据返回该参数。 |
 |CreateTime|String|2020-02-21T15:39:26Z|创建凭据的时间。 |
-|ExtendedConfig|String|\{\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955\*\*\*\*\\", \\"CustomData\\":\{\} \}|凭据的拓展配置。当SecretType取值为Rds，且FetchExtendedConfig取值为true时返回该参数。 |
+|ExtendedConfig|String|\{\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955\*\*\*\*\\", \\"CustomData\\":\{\} \}|凭据的拓展配置。当SecretType取值为Rds或RAMCredentials，且FetchExtendedConfig取值为true时返回该参数。 |
 |LastRotationDate|String|2020-07-05T08:22:03Z|最近一次轮转的时间。
 
  **说明：** 当凭据发生过轮转时返回该参数。 |
@@ -62,9 +62,8 @@
  **说明：** 当AutomaticRotation取值为Enabled或Invalid时，返回该参数。 |
 |SecretData|String|testdata1|凭据值。凭据管家将存储的密文凭据值进行解密后返回该参数。
 
- 托管RDS凭据返回的凭据值满足以下格式：
-
- `{"AccountName":"","AccountPassword":""}`|
+ -   托管RDS凭据返回的凭据值满足格式：`{"AccountName":"","AccountPassword":""}` 。
+-   托管RAM凭据返回的凭据值满足格式：`{"AccessKeyId":"Adfdsfd","AccessKeySecret":"fdsfdsf","GenerateTimestamp": "2016-03-25T10:42:40Z"}` 。 |
 |SecretDataType|String|binary|凭据值类型。取值：
 
  -   text
@@ -73,7 +72,8 @@
 |SecretType|String|Generic|凭据类型。取值：
 
  -   Generic：普通凭据。
--   Rds：托管RDS凭据。 |
+-   Rds：托管RDS凭据。
+-   RAMCredentials：托管RAM凭据。 |
 |VersionId|String|00000000000000000000000000000001|凭据版本的标识符。 |
 |VersionStages|List|\{ "VersionStage": \[ "ACSCurrent" \] \}|凭据版本的状态标记。 |
 
