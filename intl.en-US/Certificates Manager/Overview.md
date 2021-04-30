@@ -6,6 +6,8 @@ Certificates Manager provides a highly available and secure system for managing 
 
 Applications that require certificates can use Certificates Manager to generate certificate signing requests \(CSRs\) and import or export digital certificates and their certificate chains. Certificates Manager use hardware security modules \(HSMs\) to protect the security of digital keys and certificates.
 
+![Arcitecture](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3989679161/p270295.png)
+
 ## Benefits
 
 -   Secure key storage
