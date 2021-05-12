@@ -1,6 +1,6 @@
 # Formats of encrypted data and signatures
 
-This topic describes the formats of encrypted data and signatures to help you understand the encryption data and signatures.
+This topic describes the formats of encrypted data and signatures to help you understand encryption output and signatures.
 
 ## Formats of encrypted data
 
@@ -10,13 +10,13 @@ This topic describes the formats of encrypted data and signatures to help you un
     |----------------------|---------|-----------|
     |Message header|Version|The current version is 1.|
     |Algorithm|For more information, see [Algorithms](#table_u66_m34_mts). |
-    |Data key \(DK\) list|The DK list contains at least one DK. The information of each DK consists of the following parts:
+    |Data key list|The data key list contains at least one data key. The information of each data key consists of the following parts:
 
-    -   The Alibaba Cloud Resource Name \(ARN\) of the customer master key \(CMK\) that is used to encrypt the DK. An ARN includes the region ID, user ID, and CMK ID, and is presented in the format of `acs:kms:RegionId:UserId:key/CmkId`.
-    -   The ciphertext of the DK encrypted by using the primary version of the specified CMK. The ciphertext is the value of the CipherBlob parameter that is returned by the [GenerateDataKey](/intl.en-US/API Reference/Key/GenerateDataKey.md) operation. |
+    -   The Alibaba Cloud Resource Name \(ARN\) of the customer master key \(CMK\) that is used to encrypt the data key. An ARN includes the region ID, user ID, and CMK ID, and is presented in the format of `acs:kms:RegionId:UserId:key/CmkId`.
+    -   The ciphertext of the data key encrypted by using the primary version of the specified CMK. The ciphertext is the value of the CipherBlob parameter that is returned by the [GenerateDataKey](/intl.en-US/API Reference/Key/GenerateDataKey.md) operation. |
     |EncryptionContext|The encryption context data that is used as additional authentication data for symmetric encryption algorithms.|
-    |Initialization vector for header authentication|The initialization vector that is used to calculate header authentication information. The value is a random number.|
-    |Header authentication information|The system calculates the header authentication information based on Galois Message Authentication Code \(GMAC\). If verification fails, an error is returned, indicating that the format of the encryption message is invalid.|
+    |Initialization vector for header authentication|The initialization vector that is used to compute header authentication information. The value is a random number.|
+    |Header authentication information|The system computes the header authentication information based on Galois Message Authentication Code \(GMAC\). If verification fails, an error is returned, indicating that the format of the encryption message is invalid.|
     |Message body|Initialization vector|An initialization vector is an input value with a fixed length. In most cases, it is a random number or pseudo-random number.|
     |Ciphertext data|The ciphertext returned after data is encrypted.|
     |Authentication data|The authentication data returned when Galois/Counter Mode \(GCM\) is used. Authentication data is used to verify data integrity. If the verification fails, a decryption failure is reported.|
@@ -38,36 +38,36 @@ This topic describes the formats of encrypted data and signatures to help you un
     |11|SM4\_CBC\_PKCS5\_128|SM4|CBC|128|16|
     |12|SM4\_CTR\_NOPADDING\_128|SM4|CTR|128|16|
 
-    **Note:** Only AES\_GCM\_NOPADDING\_128 and AES\_GCM\_NOPADDING\_256 contain authentication data, which is 16 bytes in length.
+    **Note:** Only AES\_GCM\_NOPADDING\_128, AES\_GCM\_NOPADDING\_256, and SM4\_GCM\_NOPADDING\_128 contain authentication data, which is 16 bytes in length.
 
 -   Format definition of data encryption output
 
-    Data encryption output is encoded in ASN.1. The following code the format of data encryption output in the ASN.1 syntax:
+    Data encryption output is encoded in ASN.1. The following code shows the format of data encryption output in the ASN.1 syntax:
 
     ```
     EncryptionMessage ::== SEQUENCE {
-        encryptionHead        EncryptionHead           -- Message header
-        encryptionBody        EncryptionBody           -- Message body
+        encryptionHead        EncryptionHead           --Message header
+        encryptionBody        EncryptionBody           --Message body
     }
     
     EncryptionHead ::== SEQUENCE {
-        version               INTEGER                  -- Version
-        algorithm             INTEGER                  -- Algorithm
-        encryptedDataKeys     SET EncryptedDataKey     -- DK list
-        encryptionContext     SET EncryptionContext    -- Encryption context
-        headerIv              OCTECT STRING            -- Initialization vector for header authentication
-        headerAuthTag         OCTECT STRING            -- Header authentication information
+        version               INTEGER                  --Version
+        algorithm             INTEGER                  --Algorithm
+        encryptedDataKeys     SET EncryptedDataKey     --Data key list
+        encryptionContext     SET EncryptionContext    --Encryption context
+        headerIv              OCTECT STRING            --Initialization vector for header authentication
+        headerAuthTag         OCTECT STRING            --Header authentication information
     }
     
     EncryptionBody ::== SEQUENCE{
-        iv                    OCTECT STRING            -- Initialization vector
-        cipherText            OCTECT STRING            -- Ciphertext data
-        authTag               OCTECT STRING            -- GCM authentication information
+        iv                    OCTECT STRING            --Initialization vector
+        cipherText            OCTECT STRING            --Ciphertext data
+        authTag               OCTECT STRING            --GCM authentication information
     }
     
     EncryptedDataKey ::== SEQUENCE {
-        cmkArn                OCTECT STRING            -- ARN of the KMS CMK
-        encryptedDataKey      OCTECT STRING            -- Ciphertext of the DK
+        cmkArn                OCTECT STRING            --ARN of the KMS CMK
+        encryptedDataKey      OCTECT STRING            --Ciphertext of the data key
     }
     
     EncryptionContext ::== SEQUENCE {
@@ -83,14 +83,14 @@ This topic describes the formats of encrypted data and signatures to help you un
       SEQUENCE (6 elem)
         INTEGER 1                                                       // Version
         INTEGER 2                                                       // Algorithm
-        SET (2 elem)                                                    // DK list
+        SET (2 elem)                                                    // Data key list
           SEQUENCE (2 elem)
             OCTET STRING (77 byte) acs:kms:cn-beijing:1540355698xxxxx:key/2fad5f44-9573-4f28-8956-xxxx…
             OCTET STRING (108 byte) 36613739356232362D626163642xxxx262642D383630612D323563313839316131663…
           SEQUENCE (2 elem)
             OCTET STRING (77 byte) acs:kms:cn-hangzhou:1540355698xxxxx:key/f6d61352-82bb-450a-b105-xxxx…
             OCTET STRING (108 byte) 62623630646439352D343165302xxxx237382D616233332D356262636136643633643…
-        SET (5 elem)                                                    // Encryption context set
+        SET (5 elem)                                                    // EncryptionContext set
           SEQUENCE (2 elem)
             OCTET STRING (11 byte) encryption
             OCTET STRING (7 byte) context
