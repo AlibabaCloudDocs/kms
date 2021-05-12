@@ -6,55 +6,55 @@ The following tables list API operations available for use in Key Management Ser
 
 -   **CMK management**
 
-    Customer master key \(CMK\) management operations are used to create and modify CMKs and manage their lifecycle.
+    Customer master key \(CMK\) management operations are used to create and modify CMKs and manage their lifecycles.
 
     |API|Description|
     |:--|:----------|
-    |[CreateKey](/intl.en-US/API Reference/Key/CreateKey.md)|Creates a CMK. You can use key material created in KMS or import external key material to the CMK. Importing external key material is known as Bring Your Own Key \(BYOK\). This operation is the first step of BYOK.|
-    |[GetParametersForImport](/intl.en-US/API Reference/Key/GetParametersForImport.md)|Obtains key material to be imported. This operation is the second step of BYOK.|
-    |[ImportKeyMaterial](/intl.en-US/API Reference/Key/ImportKeyMaterial.md)|Imports key material to a CMK. This operation is the final step of BYOK.|
+    |[CreateKey](/intl.en-US/API Reference/Key/CreateKey.md)|Creates a CMK. You can use key materials created in KMS or import external key materials to the CMK. Importing external key materials is known as Bring Your Own Key \(BYOK\). This operation is the first step of BYOK.|
+    |[GetParametersForImport](/intl.en-US/API Reference/Key/GetParametersForImport.md)|Queries key materials to be imported. This operation is the second step of BYOK.|
+    |[ImportKeyMaterial](/intl.en-US/API Reference/Key/ImportKeyMaterial.md)|Imports key materials to a CMK. This operation is the final step of BYOK.|
     |[EnableKey](/intl.en-US/API Reference/Key/EnableKey.md)|Changes the status of a CMK to Enabled.|
     |[DisableKey](/intl.en-US/API Reference/Key/DisableKey.md)|Changes the status of a CMK to Disabled.|
     |[ScheduleKeyDeletion](/intl.en-US/API Reference/Key/ScheduleKeyDeletion.md)|Schedules the deletion of a CMK. After you call this operation, the CMK enters the Pending Deletion state. The CMK is automatically deleted after the specified waiting period elapses.|
-    |[CancelKeyDeletion](/intl.en-US/API Reference/Key/CancelKeyDeletion.md)|Cancels the scheduled deletion of a CMK. You can cancel the scheduled deletion of a CMK before the scheduled waiting period elapses. After the deletion is canceled, the CMK enters the Enabled state again.|
-    |[DeleteKeyMaterial](/intl.en-US/API Reference/Key/DeleteKeyMaterial.md)|Deletes key material of a CMK. You can directly delete key material that is imported from an external source. After key material of a CMK is deleted, the CMK enters the Pending Import state.|
-    |[DescribeKey](/intl.en-US/API Reference/Key/DescribeKey.md)|Queries the detailed information of a CMK.|
+    |[CancelKeyDeletion](/intl.en-US/API Reference/Key/CancelKeyDeletion.md)|Cancels the scheduled deletion of a CMK. You can cancel the scheduled deletion of a CMK before the specified waiting period elapses. After the deletion is canceled, the CMK enters the Enabled state again.|
+    |[DeleteKeyMaterial](/intl.en-US/API Reference/Key/DeleteKeyMaterial.md)|Deletes key materials of a CMK. You can directly delete key materials that are imported from an external source. After key materials of a CMK are deleted, the CMK enters the Pending Import state.|
+    |[DescribeKey](/intl.en-US/API Reference/Key/DescribeKey.md)|Queries the information about a CMK.|
     |[ListKeys](/intl.en-US/API Reference/Key/ListKeys.md)|Queries all CMKs of the current Alibaba Cloud account in the current region.|
     |[UpdateKeyDescription](/intl.en-US/API Reference/Key/UpdateKeyDescription.md)|Updates the description of a CMK.|
 
 -   **Key version management**
 
-    Key version management operations are used for CMK rotation.
+    Operations for key version management are used to rotate CMKs.
 
     |API|Description|
     |---|-----------|
-    |[DescribeKeyVersion](/intl.en-US/API Reference/Key/DescribeKeyVersion.md)|Queries the detailed information of a key version.|
+    |[DescribeKeyVersion](/intl.en-US/API Reference/Key/DescribeKeyVersion.md)|Queries the information about a key version.|
     |[ListKeyVersions](/intl.en-US/API Reference/Key/ListKeyVersions.md)|Queries all key versions of a CMK.|
-    |[UpdateRotationPolicy](/intl.en-US/API Reference/Key/UpdateRotationPolicy.md)|Updates the rotation policy of a symmetric CMK. If automatic rotation is configured, KMS automatically generates a key version on a regular basis.|
-    |[CreateKeyVersion](/intl.en-US/API Reference/Key/CreateKeyVersion.md)|Creates a version for a CMK. This operation is available only for asymmetric CMKs.|
+    |[UpdateRotationPolicy](/intl.en-US/API Reference/Key/UpdateRotationPolicy.md)|Updates the rotation policy of a symmetric CMK. If automatic rotation is enabled, KMS automatically generates a key version on a regular basis.|
+    |[CreateKeyVersion](/intl.en-US/API Reference/Key/CreateKeyVersion.md)|Creates a key version for a CMK. This operation is available only for asymmetric CMKs.|
 
--   **Cryptographic operation**
+-   **Cryptographic operations**
 
     You can perform cryptographic operations on data, such as data encryption and decryption. The operations in the following table are used to perform cryptographic operations.
 
     |API|Description|
     |:--|:----------|
-    |[Encrypt](/intl.en-US/API Reference/Key/Encrypt.md)|Uses a specified CMK to encrypt data. This operation is used to encrypt data of no more than 6 KB.|
-    |[GenerateDataKey](/intl.en-US/API Reference/Key/GenerateDataKey.md)|Generates a random number and encrypts the random number with a specified CMK. The ciphertext and plaintext of the random number are returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
-    |[GenerateDataKeyWithoutPlaintext](/intl.en-US/API Reference/Key/GenerateDataKeyWithoutPlaintext.md)|Generates a random number and encrypts the random number with a specified CMK. The ciphertext of the random number is returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
+    |[Encrypt](/intl.en-US/API Reference/Key/Encrypt.md)|Encrypts data by using a specific CMK. This operation is used to encrypt data of no more than 6 KB.|
+    |[GenerateDataKey](/intl.en-US/API Reference/Key/GenerateDataKey.md)|Generates a random number and encrypts the random number with a specific CMK. The ciphertext and plaintext of the random number are returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
+    |[GenerateDataKeyWithoutPlaintext](/intl.en-US/API Reference/Key/GenerateDataKeyWithoutPlaintext.md)|Generates a random number and encrypts the random number with a specific CMK. Only the ciphertext of the random number is returned. The random number can be used as a data key to encrypt or decrypt a large amount of local data.|
     |[ExportDataKey](/intl.en-US/API Reference/Key/ExportDataKey.md)|Encrypts a data key by using a specific public key and exports the data key.|
-    |[GenerateAndExportDataKey](/intl.en-US/API Reference/Key/GenerateAndExportDataKey.md)|Generates a random data key, encrypts the data key by using a specific CMK and public key, and returns the ciphertext encrypted by using the CMK and that encrypted by using the public key.|
+    |[GenerateAndExportDataKey](/intl.en-US/API Reference/Key/GenerateAndExportDataKey.md)|Generates a random data key, encrypts the data key by using a specific CMK and public key, and returns the ciphertext generated by using the CMK and that generated by using the public key.|
     |[Decrypt](/intl.en-US/API Reference/Key/Decrypt.md)|Decrypts the ciphertext that is generated by calling the Encrypt or GenerateDataKey operation. You do not need to specify a CMK for decryption.|
-    |[ReEncrypt](/intl.en-US/API Reference/Key/ReEncrypt.md)|Re-encrypts ciphertext. When you call this operation, KMS first decrypts the specified ciphertext and then uses a different CMK to encrypt the obtained plaintext data or data key and return ciphertext.|
-    |[AsymmetricSign](/intl.en-US/API Reference/Key/AsymmetricSign.md)|Uses the private key of an asymmetric key pair to generate a digital signature.|
-    |[AsymmetricVerify](/intl.en-US/API Reference/Key/AsymmetricVerify.md)|Uses the public key of an asymmetric key pair to verify a digital signature that is generated by using the private key.|
-    |[AsymmetricDecrypt](/intl.en-US/API Reference/Key/AsymmetricDecrypt.md)|Uses the private key of an asymmetric key pair to decrypt the data that is encrypted by using the public key.|
-    |[AsymmetricEncrypt](/intl.en-US/API Reference/Key/AsymmetricEncrypt.md)|Uses the public key of an asymmetric key pair to encrypt data.|
-    |[GetPublicKey](/intl.en-US/API Reference/Key/GetPublicKey.md)|Obtains the public key of an asymmetric key pair. You can use the public key to encrypt data or verify digital signatures offline.|
+    |[ReEncrypt](/intl.en-US/API Reference/Key/ReEncrypt.md)|Re-encrypts ciphertext. When you call this operation, KMS first decrypts the specified ciphertext and then uses a different CMK to encrypt the generated plaintext or data key. Ciphertext is returned.|
+    |[AsymmetricSign](/intl.en-US/API Reference/Key/AsymmetricSign.md)|Uses the private key of an asymmetric CMK to generate a digital signature.|
+    |[AsymmetricVerify](/intl.en-US/API Reference/Key/AsymmetricVerify.md)|Uses the public key of an asymmetric CMK to verify a digital signature that is generated by using the private key.|
+    |[AsymmetricDecrypt](/intl.en-US/API Reference/Key/AsymmetricDecrypt.md)|Uses the private key of an asymmetric CMK to decrypt the data that is encrypted by using the public key.|
+    |[AsymmetricEncrypt](/intl.en-US/API Reference/Key/AsymmetricEncrypt.md)|Uses the public key of an asymmetric CMK to encrypt data.|
+    |[GetPublicKey](/intl.en-US/API Reference/Key/GetPublicKey.md)|Queries the public key of an asymmetric CMK. You can use the public key to encrypt data or verify digital signatures offline.|
 
 -   **Alias management**
 
-    An alias is an independent object in KMS. It must be bound to a unique CMK. You can set the KeyId parameter in specific operations to an alias to specify a CMK.
+    An alias is an independent object in KMS. An alias must be bound to a unique CMK. You can set the KeyId parameter in specific operations to an alias to specify a CMK.
 
     |API|Description|
     |:--|:----------|
@@ -62,37 +62,43 @@ The following tables list API operations available for use in Key Management Ser
     |[UpdateAlias](/intl.en-US/API Reference/Key/UpdateAlias.md)|Associates an existing alias with a different CMK ID.|
     |[DeleteAlias](/intl.en-US/API Reference/Key/DeleteAlias.md)|Deletes an alias.|
     |[ListAliases](/intl.en-US/API Reference/Key/ListAliases.md)|Queries all aliases of the current Alibaba Cloud account in the current region.|
-    |[ListAliasesByKeyId](/intl.en-US/API Reference/Key/ListAliasesByKeyId.md)|Queries all aliases bound to a specified CMK.|
+    |[ListAliasesByKeyId](/intl.en-US/API Reference/Key/ListAliasesByKeyId.md)|Queries all aliases that are bound to a specific CMK.|
 
 
 ## Secrets Manager operations
 
-KMS Secrets Manager manages, protects, distributes, and rotates secrets.
+Secrets Manager operations are used to manage, protect, distribute, and rotate secrets.
 
 |API|Description|
 |---|-----------|
 |[CreateSecret](/intl.en-US/API Reference/Secrets/CreateSecret.md)|Creates a secret and stores the secret value in the initial version.|
 |[ListSecrets](/intl.en-US/API Reference/Secrets/ListSecrets.md)|Queries all secrets of the current Alibaba Cloud account in the current region.|
 |[DeleteSecret](/intl.en-US/API Reference/Secrets/DeleteSecret.md)|Deletes a secret.|
-|[DescribeSecret](/intl.en-US/API Reference/Secrets/DescribeSecret.md)|Obtains the metadata of a secret.|
-|[GetSecretValue](/intl.en-US/API Reference/Secrets/GetSecretValue.md)|Obtains a secret value.|
-|[PutSecretValue](/intl.en-US/API Reference/Secrets/PutSecretValue.md)|Stores the secret value of a new version into a secret object.|
+|[DescribeSecret](/intl.en-US/API Reference/Secrets/DescribeSecret.md)|Queries the metadata of a secret.|
+|[GetSecretValue](/intl.en-US/API Reference/Secrets/GetSecretValue.md)|Queries a secret value.|
+|[PutSecretValue](/intl.en-US/API Reference/Secrets/PutSecretValue.md)|Stores the secret value of a new version into a secret.|
 |[UpdateSecret](/intl.en-US/API Reference/Secrets/UpdateSecret.md)|Updates the metadata of a secret.|
 |[UpdateSecretVersionStage](/intl.en-US/API Reference/Secrets/UpdateSecretVersionStage.md)|Updates the stage label that marks a secret version.|
 |[RestoreSecret](/intl.en-US/API Reference/Secrets/RestoreSecret.md)|Restores a deleted secret.|
 |[ListSecretVersionIds](/intl.en-US/API Reference/Secrets/ListSecretVersionIds.md)|Queries all versions of a secret.|
-|[GetRandomPassword](/intl.en-US/API Reference/Secrets/GetRandomPassword.md)|Obtains a random password string.|
+|[GetRandomPassword](/intl.en-US/API Reference/Secrets/GetRandomPassword.md)|Queries a random password string.|
 
 ## Certificate operations
 
-Certificate operations are used to create, delete, update, and query certificates.
+Certificate operations are used to create, delete, update, and query certificates. Certificate operations are also used to verify the signatures on certificates.
 
 |API|Description|
 |:--|:----------|
-|[t2014147.md\#]()|Creates a certificate.|
-|[t2014163.md\#]()|Deletes a certificate and its private key and certificate chain.|
-|[t2017159.md\#]()|Queries information about a certificate.|
-|[t2017163.md\#]()|Updates the status of a certificate.|
+|[CreateCertificate](/intl.en-US/API Reference/Certificate/CreateCertificate.md)|Creates a certificate.|
+|[UploadCertificate](/intl.en-US/API Reference/Certificate/UploadCertificate.md)|Imports a certificate and a certificate chain issued by a certificate authority \(CA\) into Certificates Manager.|
+|[GetCertificate](/intl.en-US/API Reference/Certificate/GetCertificate.md)|Queries a certificate that is managed by Certificates Manager.|
+|[DescribeCertificate](/intl.en-US/API Reference/Certificate/DescribeCertificate.md)|Queries the information about a certificate.|
+|[UpdateCertificateStatus](/intl.en-US/API Reference/Certificate/UpdateCertificateStatus.md)|Updates the status of a certificate.|
+|[DeleteCertificate](/intl.en-US/API Reference/Certificate/DeleteCertificate.md)|Deletes a certificate and the private key and certificate chain of the certificate.|
+|[CertificatePrivateKeySign](/intl.en-US/API Reference/Certificate/CertificatePrivateKeySign.md)|Generates a digital signature by using a specific certificate.|
+|[CertificatePublicKeyVerify](/intl.en-US/API Reference/Certificate/CertificatePublicKeyVerify.md)|Verifies a digital signature by using a specific certificate.|
+|[CertificatePublicKeyEncrypt](/intl.en-US/API Reference/Certificate/CertificatePublicKeyEncrypt.md)|Encrypts data by using a specific certificate.|
+|[CertificatePrivateKeyDecrypt](/intl.en-US/API Reference/Certificate/CertificatePrivateKeyDecrypt.md)|Decrypts data by using a specific certificate.|
 
 ## Tag management operations
 
