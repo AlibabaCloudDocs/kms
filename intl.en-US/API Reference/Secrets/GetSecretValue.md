@@ -4,7 +4,7 @@ Obtains a secret value.
 
 If you do not specify a version number or stage label, Secrets Manager returns the secret value of the version marked with ACSCurrent.
 
-If a Key Management Service \(KMS\) customer master key \(CMK\) is specified to encrypt the secret value, you must have the `kms:Decrypt` permission on the CMK to call this operation.
+If a customer master key \(CMK\) of Key Management Service \(KMS\) is specified to encrypt the secret value, you must have the `kms:Decrypt` permission on the CMK to call the GetSecretValue operation.
 
 In this example, the value of the `secret001` secret is returned in the `SecretData` parameter, which is `testdata1`.
 
@@ -22,16 +22,16 @@ In this example, the value of the `secret001` secret is returned in the `SecretD
 
  Default value: ACSCurrent.
 
- **Note:** For managed ApsaraDB RDS secrets, Secrets Manager returns only the secret values of the versions marked with ACSPrevious and ACSCurrent. |
+ **Note:** For managed ApsaraDB RDS and RAM secrets, Secrets Manager returns only the secret values of the versions marked with ACSPrevious and ACSCurrent. |
 |VersionId|String|No|00000000000000000000000000000001|The version number of the secret value. If you specify this parameter, Secrets Manager returns the secret value of the specified version.
 
- **Note:** The VersionId parameter is unavailable for managed ApsaraDB RDS secrets. If you specify this parameter for a managed ApsaraDB RDS secret, this parameter does not take effect. |
-|FetchExtendedConfig|Boolean|No|true|Specifies whether to obtain the extended configuration of the secret. Valid values:
+ **Note:** The VersionId parameter is unavailable for managed ApsaraDB RDS or RAM secrets. If you specify this parameter for a managed ApsaraDB RDS or RAM secret, this parameter does not take effect. |
+|FetchExtendedConfig|Boolean|No|true|Specifies whether to obtain the extended configuration of the secret. Default value: false. Valid values:
 
  -   true
 -   false: This is the default value.
 
- **Note:** This parameter does not take effect for standard secrets. |
+ **Note:** This parameter does not take effect for generic secrets. |
 
 For more information about common request parameters, see [Common parameters](~~69007~~).
 
@@ -45,9 +45,9 @@ For more information about common request parameters, see [Common parameters](~~
 -   Disabled: indicates that automatic rotation is disabled.
 -   Invalid: indicates that the status of automatic rotation is abnormal. Secrets Manager cannot automatically rotate the secret.
 
- **Note:** This parameter is returned only for managed ApsaraDB RDS secrets. |
+ **Note:** This parameter is returned only for managed ApsaraDB RDS and RAM secrets. |
 |CreateTime|String|2020-02-21T15:39:26Z|The time when the secret was created. |
-|ExtendedConfig|String|\{\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955\*\*\*\*\\", \\"CustomData\\":\{\} \}|The extended configuration of the secret. This parameter is returned if the value of the SecretType parameter is Rds and the FetchExtendedConfig parameter is set to true. |
+|ExtendedConfig|String|\{\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955\*\*\*\*\\", \\"CustomData\\":\{\} \}|The extended configuration of the secret. This parameter is returned if the value of the SecretType parameter is Rds or RAMCredentials and the FetchExtendedConfig parameter is set to true. |
 |LastRotationDate|String|2020-07-05T08:22:03Z|The time when the last rotation was performed.
 
  **Note:** This parameter is returned if the secret was rotated. |
@@ -57,14 +57,13 @@ For more information about common request parameters, see [Common parameters](~~
 |RequestId|String|6a3e9c36-1150-4881-84d3-eb8672fcafad|The ID of the request. |
 |RotationInterval|String|604800s|The interval for automatic rotation.
 
- The interval is in the `integer[unit]` format, where `integer` indicates the interval, and `unit` indicates the time unit. The `unit` field has a fixed value of s. For example, 604800s indicates a seven-day interval.
+ Specify the interval in the `integer[unit]` format, where `integer` indicates the interval and `unit` indicates the time unit. The `unit` field has a fixed value of s. For example, 604800s indicates a seven-day interval.
 
  **Note:** This parameter is returned if the value of the AutomaticRotation parameter is Enabled or Invalid. |
-|SecretData|String|testdata1|The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns the secret value.
+|SecretData|String|testdata1|The secret value. Secrets Manager decrypts the secret value that is stored in ciphertext and returns the secret value in plaintext.
 
- The secret value returned by managed ApsaraDB RDS secrets is in the following format:
-
- `{"AccountName":"","AccountPassword":""}`|
+ -   The value of a managed ApsaraDB RDS secret is returned in the following format:`{"AccountName":"","AccountPassword":""}`.
+-   The value of a managed RAM secret is returned in the following format: `{"AccessKeyId":"Adfdsfd","AccessKeySecret":"fdsfdsf","GenerateTimestamp": "2016-03-25T10:42:40Z"}`. |
 |SecretDataType|String|binary|The type of the secret value. Valid values:
 
  -   text
@@ -72,8 +71,9 @@ For more information about common request parameters, see [Common parameters](~~
 |SecretName|String|secret001|The name of the secret. |
 |SecretType|String|Generic|The type of the secret. Valid values:
 
- -   Generic: indicates a standard secret.
--   Rds: indicates a managed ApsaraDB RDS secret. |
+ -   Generic: indicates a generic secret.
+-   Rds: indicates a managed ApsaraDB RDS secret.
+-   RAMCredentials: indicates a managed RAM secret. |
 |VersionId|String|00000000000000000000000000000001|The version number of the secret value. |
 |VersionStages|List|\{ "VersionStage": \[ "ACSCurrent" \] \}|The stage labels that mark the secret version. |
 
@@ -82,7 +82,7 @@ For more information about common request parameters, see [Common parameters](~~
 Sample requests
 
 ```
-http(s)://[Endpoint]/? Action=GetSecretValue
+http(s)://[Endpoint]/?Action=GetSecretValue
 &SecretName=secret001
 &<Common request parameters>
 ```
