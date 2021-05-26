@@ -24,7 +24,7 @@
 
 ## KMS定义的操作
 
-针对每一个需要进行访问控制的接口，KMS都定义了用于RAM权限策略的操作（Action），通常为`kms:${api-name}`。
+针对每一个需要进行访问控制的接口，KMS都定义了用于RAM权限策略的操作（Action），通常为`kms:<api-name>`。
 
 **说明：** DescribeRegions不需要进行访问控制，只要请求可以通过认证校验，即可调用。调用者可以是阿里云账号、RAM用户或RAM角色。
 
@@ -80,8 +80,16 @@
     |DeleteSecret|kms:DeleteSecret|凭据|
     |UpdateSecret|kms:UpdateSecret|凭据|
     |RestoreSecret|kms:RestoreSecret|凭据|
-    |GetSecretValue|kms:GetSecretValue|凭据|
-    |PutSecretValue|kms:PutSecretValue|凭据|
+    |GetSecretValue|    -   kms:GetSecretValue
+    -   kms:Decrypt
+**说明：** 仅当您使用自己创建的CMK作为通用凭据的加密主密钥时，需要验证kms:Decrypt。
+
+|凭据|
+    |PutSecretValue|    -   kms:PutSecretValue
+    -   kms:GenerateDataKey
+**说明：** 仅当您使用自己创建的CMK作为通用凭据的加密主密钥时，需要验证kms:GenerateDataKey。
+
+|凭据|
     |ListSecretVersionIds|kms:ListSecretVersionIds|凭据|
     |UpdateSecretVersionStage|kms:UpdateSecretVersionStage|凭据|
     |GetRandomPassword|kms:GetRandomPassword|无|
@@ -97,11 +105,11 @@
 
 ## KMS支持的策略条件
 
-您可以在RAM权限策略中设定条件控制对KMS的访问，只有当条件满足时，权限验证才能通过。例如，您可以使用`acs:CurrentTime`条件限制权限策略有效的时间。
+您可以在RAM权限策略中设定条件控制对KMS的访问，只有当条件满足时，权限验证才能通过。例如：您可以使用`acs:CurrentTime`条件限制权限策略有效的时间。
 
-除了阿里云全局条件，您也可以使用标签作为条件关键字，限制对Encrypt、Decrypt、GenerateDataKey等密码运算API的使用。条件关键字的格式为`kms:tag/${tag-key}`。
+除了阿里云全局条件，您也可以使用标签作为条件关键字，限制对Encrypt、Decrypt、GenerateDataKey等密码运算API的使用。条件关键字的格式为`kms:tag/<tag-key>`。
 
-详情请参见[权限策略基本元素](/intl.zh-CN/权限策略管理/权限策略语言/权限策略基本元素.md)。
+更多信息，请参见[权限策略基本元素](/intl.zh-CN/权限策略管理/权限策略语言/权限策略基本元素.md)。
 
 ## 常见的授权策略示例
 
