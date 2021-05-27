@@ -1,8 +1,8 @@
 # UntagResource
 
-调用UntagResource接口删除用户主密钥或凭据的指定标签。
+调用UntagResource接口为主密钥、凭据或证书解绑标签。
 
-请求中至少指定KeyId或者SecretName其中一个参数，以确定删除的对象。
+本文将提供一个示例，为ID为`08c33a6f-4e0a-4a1b-a3fa-7ddf****`的密钥解绑标签键为tagkey1、tagkey2的标签。
 
 ## 调试
 
@@ -20,10 +20,15 @@
  长度为1~128个字节。 |
 |KeyId|String|否|08c33a6f-4e0a-4a1b-a3fa-7ddf\*\*\*\*|密钥ID。主密钥（CMK）的全局唯一标识符。
 
- **说明：** 与参数SecretName只能设置其中一个。 |
+ **说明：** KeyId、SecretName和CertificateId必须且只能指定其中一个参数。 |
 |SecretName|String|否|MyDbC\*\*\*\*|凭据名称。
 
- **说明：** 与参数KeyId只能设置其中一个。 |
+ **说明：** KeyId、SecretName和CertificateId必须且只能指定其中一个参数。 |
+|CertificateId|String|否|770dbe42-e146-43d1-a55a-1355db86\*\*\*\*|证书ID。
+
+ **说明：** KeyId、SecretName和CertificateId必须且只能指定其中一个参数。 |
+
+关于公共请求参数的详情，请参见[公共参数](~~69007~~)。
 
 ## 返回数据
 
@@ -44,7 +49,7 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=UntagResource
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <KMS>
@@ -52,7 +57,7 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=UntagResource
 </KMS>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
