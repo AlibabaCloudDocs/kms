@@ -26,13 +26,31 @@
 |RSAES-OAEP using SHA1 and MGF1 with SHA1
 
 |214 |
+|RSA\_3072
+
+|RSAES\_OAEP\_SHA\_256
+
+|RSAES-OAEP using SHA-256 and MGF1 with SHA-256
+
+|318 |
+|RSA\_3072
+
+|RSAES\_OAEP\_SHA\_1
+
+|RSAES-OAEP using SHA1 and MGF1 with SHA1
+
+|342 |
 |EC\_SM2
 
 |SM2PKE
 
 |SM2椭圆曲线公钥加密算法
 
-|6047 |
+|6047
+
+| |
+
+本文将提供一个示例，使用密钥ID为`5c438b18-05be-40ad-b6c2-3be6752c****`、密钥版本ID为`2ab1a983-7072-4bbc-a582-584b5bd8****`的非对称密钥，通过加密算法`RSAES_OAEP_SHA_1`对明文`SGVsbG8gd29ybGQ=`进行加密。
 
 ## 调试
 
@@ -42,13 +60,15 @@
 
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
-|Action|String|是|AsymmetricEncrypt|要执行的操作，取值：**AsymmetricEncrypt**。 |
+|Action|String|是|AsymmetricEncrypt|要执行的操作，取值：AsymmetricEncrypt。 |
 |Algorithm|String|是|RSAES\_OAEP\_SHA\_1|加密算法。 |
 |KeyId|String|是|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|主密钥（CMK）的全局唯一标识符。
 
- **说明：** 该参数也可以被指定为主密钥绑定的别名，详情请参加见[别名使用说明](~~68522~~)。 |
-|KeyVersionId|String|是|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|密钥版本的全局唯一标识符。 |
+ **说明：** 该参数也可以被指定为主密钥绑定的别名。更多信息，请参加见[别名使用说明](~~68522~~)。 |
+|KeyVersionId|String|是|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|密钥版本ID。密钥版本的全局唯一标识符。 |
 |Plaintext|String|是|SGVsbG8gd29ybGQ=|要加密的明文，使用Base64编码。 |
+
+关于公共请求参数的详情，请参见[公共参数](~~69007~~)。
 
 ## 返回数据
 
@@ -56,7 +76,7 @@
 |--|--|---|--|
 |KeyId|String|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|主密钥的全局唯一标识符。
 
- **说明：** 如果请求中的KeyId参数使用的是主密钥的别名，在响应中会返回别名对应的主密钥标志符。 |
+ **说明：** 如果请求中的KeyId参数使用的是主密钥的别名，在响应中会返回别名对应的主密钥标识符。 |
 |KeyVersionId|String|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|对明文数据进行加密的主密钥版本号。 |
 |CiphertextBlob|String|BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1Wbjwg==|加密后的密文。
 
@@ -78,7 +98,7 @@ https://[Endpoint]/?Action=AsymmetricEncrypt
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <KMS>
@@ -89,7 +109,7 @@ https://[Endpoint]/?Action=AsymmetricEncrypt
 </KMS>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
