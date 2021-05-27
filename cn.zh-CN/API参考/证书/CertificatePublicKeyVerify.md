@@ -1,10 +1,8 @@
 # CertificatePublicKeyVerify
 
-调用CertificatePublicKeyVerify使用指定证书验证数字签名。
+调用CertificatePublicKeyVerify接口使用指定证书验证数字签名。
 
-使用限制：请求参数中签名算法需要跟密钥类型对应。
-
-签名算法和密钥类型对照表如下：
+请求参数中签名算法需要跟密钥类型对应。签名算法和密钥类型对照表如下：
 
 |Algorithm
 
@@ -21,9 +19,7 @@
 |EC\_P256 |
 |SM2DSA
 
-|EC\_SM2
-
-| |
+|EC\_SM2 |
 
 本文将提供一个示例，使用ID为`12345678-1234-1234-1234-12345678****`的证书，通过`ECDSA_SHA_256`签名算法验证原始数据签名`VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=`的数字签名值是否为`ZOyIygCyaOW6Gj****MlNKiuyjfzw=`。
 
