@@ -1,8 +1,8 @@
 # GenerateDataKey
 
-调用GenerateDataKey接口生成一个随机的数据密钥，您可以用数据密钥进行本地数据的加密。
+调用GenerateDataKey接口生成一个随机的数据密钥，用于本地数据加密。
 
-此API随机生成一个数据密钥，并通过您指定的主密钥（CMK）加密后，返回数据密钥的密文和明文。您可以使用返回的数据密钥明文，在KMS之外对数据进行本地离线加密。在存储加密后的数据时，也需要存储数据密钥的密文。您可以通过响应中的Plaintext字段获取到数据密钥的明文，通过CiphertextBlob字段获取到数据密钥的密文。
+API随机生成的数据密钥通过您指定的主密钥（CMK）加密后，返回数据密钥的密文和明文。您可以使用返回的数据密钥明文，在KMS之外对数据进行本地离线加密。在存储加密后的数据时，也需要存储数据密钥的密文。您可以通过响应中的Plaintext字段获取到数据密钥的明文，通过CiphertextBlob字段获取到数据密钥的密文。
 
 在请求中指定的CMK，仅会被用作数据密钥的加密，和数据密钥的生成无关。KMS不会记录或存储随机生成的数据密钥，您需要负责对数据密钥（密文）进行持久化。
 
@@ -14,8 +14,10 @@
 
 在本地解密数据：
 
--   调用[Decrypt](~~28950~~) 接口解密本地存储的数据密钥的密文。这一操作将返回数据密钥的明文。
+-   调用[Decrypt](~~28950~~)接口解密本地存储的数据密钥的密文。这一操作将返回数据密钥的明文。
 -   使用数据密钥的明文，在本地完成离线数据解密，随后清除内存中的数据密钥明文。
+
+本文将提供一个示例，为ID为`1234abcd-12ab-34cd-56ef-12345678****`的密钥生成随机的数据密钥。
 
 ## 调试
 
@@ -26,7 +28,7 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|GenerateDataKey|要执行的操作，取值：GenerateDataKey。 |
-|KeyId|String|是|1234abcd-12ab-34cd-56ef-12345678\*\*\*\*|密钥ID。主密钥（CMK）的全局唯一标识符。
+|KeyId|String|是|1234abcd-12ab-34cd-56ef-12345678\*\*\*\*|主密钥（CMK）的全局唯一标识符。
 
  该参数也可以被指定为主密钥绑定的别名，详情请参见[别名使用说明](~~68522~~)。 |
 |KeySpec|String|否|AES\_256|指定生成的数据密钥的长度，取值：
@@ -42,12 +44,14 @@
  单位：字节。 |
 |EncryptionContext|Json|否|\{"Example":"Example"\}|key/value对的JSON字符串。如果指定了该参数，则在调用Decrypt时需要提供同样的参数，详情请参见[EncryptionContext](~~42975~~)。 |
 
+关于公共请求参数的详情，请参见[公共参数](~~69007~~)。
+
 ## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|CiphertextBlob|String|ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTSl0oQ|数据密钥被指定CMK的主版本加密后的密文。 |
-|KeyId|String|599fa825-17de-417e-9554-bb032cc6\*\*\*\*|密钥ID。主密钥的全局唯一标识符。
+|CiphertextBlob|String|ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTS\*\*\*\*|数据密钥被指定CMK的主版本加密后的密文。 |
+|KeyId|String|599fa825-17de-417e-9554-bb032cc6\*\*\*\*|主密钥的全局唯一标识符。
 
  **说明：** 如果请求中的KeyId参数使用的是CMK的别名，在响应中会返回别名对应的CMK标识符。 |
 |KeyVersionId|String|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|密钥版本ID。主密钥版本的全局唯一标识符。 |
@@ -66,11 +70,11 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=GenerateDataKey
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <KMS>
-          <CiphertextBlob>ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTSl0oQ</CiphertextBlob>
+          <CiphertextBlob>ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTS****</CiphertextBlob>
           <KeyId>599fa825-17de-417e-9554-bb032cc6****</KeyId>
           <KeyVersionId>2ab1a983-7072-4bbc-a582-584b5bd8****</KeyVersionId>
           <Plaintext>QmFzZTY0IGVuY29kZWQgcGxhaW50ZXh0</Plaintext>
@@ -78,11 +82,11 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=GenerateDataKey
 </KMS>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
-        "CiphertextBlob": "ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTSl0oQ",
+        "CiphertextBlob": "ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901qOjop4bTS****",
         "KeyId": "599fa825-17de-417e-9554-bb032cc6****",
         "KeyVersionId": "2ab1a983-7072-4bbc-a582-584b5bd8****",
         "Plaintext": "QmFzZTY0IGVuY29kZWQgcGxhaW50ZXh0",
@@ -91,11 +95,6 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=GenerateDataKey
 ```
 
 ## 错误码
-
-|HttpCode|错误码|错误信息|描述|
-|--------|---|----|--|
-|400|Throttling|Request was denied due to request throttling.|您这个时段的流量已经超限。如果不能满足现有业务要求可以提工单进行申请。|
-|404|Forbidden.KeyNotFound|The specified Key is not found.|指定的密钥不存在。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Kms)查看更多错误码。
 
