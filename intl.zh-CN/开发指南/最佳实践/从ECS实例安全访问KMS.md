@@ -1,6 +1,6 @@
 # 从ECS实例安全访问KMS
 
-您可以为云服务器ECS创建RAM服务角色，使ECS实例内的应用程序可以使用STS临时凭证、通过SDK访问KMS。
+您可以为云服务器ECS创建RAM服务角色，使ECS实例内的应用程序可以使用STS临时凭证或者通过SDK访问KMS。
 
 ## 步骤一：创建实例RAM角色并授权
 
@@ -72,7 +72,7 @@
 1.  检索名为EcsRamRoleTest的实例RAM角色的临时授权Token。
 
     -   Linux实例：执行命令`http://100.100.100.200/latest/meta-data/ram/security-credentials/EcsRamRoleTest`。
-    -   Windows实例：具体操作，请参见[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/实例元数据概述.md)。
+    -   Windows实例：具体操作，请参见[实例元数据](/intl.zh-CN/实例/管理实例/使用实例元数据/ECS实例元数据概述.md)。
 2.  获得临时授权Token。
 
     返回示例如下：
@@ -89,7 +89,7 @@
     ```
 
 
-## 步骤4：使用SDK访问KMS
+## 步骤四：使用SDK访问KMS
 
 通过如下三种方式使用SDK访问KMS：
 
