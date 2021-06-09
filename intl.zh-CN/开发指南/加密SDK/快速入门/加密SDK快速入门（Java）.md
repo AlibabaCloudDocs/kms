@@ -9,9 +9,9 @@
 1.  编译安装加密SDK。
 
     ```
-    $ git clone https://github.com/aliyun/alibabacloud-encryption-sdk-java.git
-    $ cd alibabacloud-encryption-sdk-java
-    $ mvn clean install -DskipTests
+    git clone https://github.com/aliyun/alibabacloud-encryption-sdk-java.git
+    cd alibabacloud-encryption-sdk-java
+    mvn clean install -DskipTests
     ```
 
 2.  在项目中添加依赖。
