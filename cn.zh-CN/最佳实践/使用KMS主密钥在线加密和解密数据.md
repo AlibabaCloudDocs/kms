@@ -17,7 +17,7 @@
 
 操作流程如下：
 
-1.  通过[KMS控制台](https://kms.console.aliyun.com)或者调用CreateKey接口，创建一个用户主密钥。
+1.  通过[KMS控制台](https://kms.console.aliyun.com)或者调用CreateKey接口，创建一个用户主密钥（CMK）。
 2.  调用KMS服务的Encrypt接口，将明文证书加密为密文证书。
 3.  将密文证书部署在云服务器上。
 4.  当服务器启动需要使用证书时，调用KMS服务的Decrypt接口将密文证书解密为明文证书。
@@ -35,10 +35,15 @@
 
 ## 加密/解密证书密钥
 
-1.  通过调用CreateKey，创建用户主密钥。
+1.  调用CreateKey，创建用户主密钥。
 
     ```
-    $ aliyun kms CreateKey
+    aliyun kms CreateKey
+    ```
+
+    预期输出：
+
+    ```
     {
       "KeyMetadata": {
         "CreationDate": "2019-04-08T07:45:54Z",
@@ -47,8 +52,8 @@
         "KeyState": "Enabled",
         "KeyUsage": "ENCRYPT/DECRYPT",
         "DeleteDate": "",
-        "Creator": "111122223333",
-        "Arn": "acs:kms:cn-hangzhou:111122223333:key/1234abcd-12ab-34cd-56ef-12345678****",
+        "Creator": "151266687691****",
+        "Arn": "acs:kms:cn-hangzhou:151266687691****:key/1234abcd-12ab-34cd-56ef-12345678****",
         "Origin": "Aliyun_KMS",
         "MaterialExpireTime": ""
       },
@@ -61,7 +66,7 @@
     别名是用户主密钥的可选标识。如果用户不创建别名，也可以直接使用密钥的ID。
 
     ```
-    $ aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-12345678****
+    aliyun kms CreateAlias --AliasName alias/Apollo/WorkKey --KeyId 1234abcd-12ab-34cd-56ef-12345678****
     ```
 
     **说明：** 其中，`Apollo/WorkKey`表示Apollo项目中的工作密钥（当前被用于加密的密钥），并在后续示例代码中使用此别名。即表示应用可以使用`alias/Apollo/WorkKey`调用加密API。
@@ -123,8 +128,8 @@
 
     示例代码中：
 
-    -   部署的密文证书文件：./certs/key.pem.cipher
-    -   输出的明文证书文件：./certs/decrypted\_key.pem
+    -   部署的密文证书文件：./certs/key.pem.cipher。
+    -   输出的明文证书文件：./certs/decrypted\_key.pem。
     ```
     #!/usr/bin/env python
     #coding=utf-8
