@@ -132,7 +132,7 @@
     }               
     ```
 
--   只读访问权限，即列出和查看密钥、查看别名以及使用密钥权限。
+-   密钥只读访问权限，即列出和查看密钥、查看别名以及使用密钥权限。
 
     ```
     {
@@ -178,6 +178,26 @@
             }
         ]
     }               
+    ```
+
+-   凭据只读访问权限，即列出和查看凭据、查看凭据版本、查看凭据内容以及生成随机密码的权限。
+
+    ```
+    {
+      "Version": "1",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "kms:List*", "kms:Describe*",
+            "kms:GetSecretValue", "kms:Decrypt", "kms:GetRandomPassword"
+          ],
+          "Resource": [
+            "*"
+          ]
+        }
+      ]
+    }         
     ```
 
 
