@@ -11,7 +11,7 @@
 
 ## 使用限制
 
--   仅支持动态RDS凭据，建议您使用双账号托管的动态RDS凭据。关于如何创建动态RDS凭据，请参见[创建动态RDS凭据](/intl.zh-CN/凭据管家/动态RDS凭据/创建动态RDS凭据.md)。
+-   仅支持动态RDS凭据，建议您使用双账号托管的动态RDS凭据。关于如何创建动态RDS凭据，请参见[t2005680.md\#section\_tgu\_kh8\_a02](/intl.zh-CN/凭据管家/动态RDS凭据/创建动态RDS凭据.md)。
 -   仅支持Java 1.8及以上版本。
 -   仅支持MySQL、MSSQL、PostgreSQL和MariaDB四种数据库类型。
 
@@ -50,6 +50,8 @@
     refresh_secret_ttl=21600000
     ```
 
+    **说明：** 关于如何获取AccessKey，请参见[获取AccessKey]()。
+
 -   STS访问方式
 
     ```
@@ -71,6 +73,8 @@
     refresh_secret_ttl=21600000
     ```
 
+    **说明：** 关于如何获取AccessKey，请参见[获取AccessKey]()。
+
 -   ECS实例RAM角色访问方式
 
     ```
@@ -83,6 +87,8 @@
     ## 用户自定义的刷新频率。默认为6小时，最小值为5分钟，单位为毫秒。
     refresh_secret_ttl=21600000
     ```
+
+    **说明：** 关于如何创建并授权ECS实例RAM角色，请参见[从ECS实例安全访问KMS](/intl.zh-CN/开发指南/最佳实践/从ECS实例安全访问KMS.md)。
 
 
 ## 示例代码
