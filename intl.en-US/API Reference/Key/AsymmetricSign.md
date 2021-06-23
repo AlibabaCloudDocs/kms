@@ -1,21 +1,31 @@
 # AsymmetricSign
 
-Uses asymmetric keys to sign signatures.
+Generates a digital signature by using an asymmetric key.
 
-This operation is only supported for asymmetric keys with **Usage** set to **SIGN/VERIFY**. The following table lists the supported signature algorithms.
+This operation supports only asymmetric keys for which the **Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
 
-|KeySpec
+|Key type
 
 |Algorithm
 
 |Description |
-|---------|-----------|-------------|
+|----------|-----------|-------------|
 |RSA\_2048
 
 |RSA\_PSS\_SHA\_256
 
 |RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 |RSA\_2048
+
+|RSA\_PKCS1\_SHA\_256
+
+|RSASSA-PKCS1-v1\_5 using SHA-256 |
+|RSA\_3072
+
+|RSA\_PSS\_SHA\_256
+
+|RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
+|RSA\_3072
 
 |RSA\_PKCS1\_SHA\_256
 
@@ -34,9 +44,11 @@ This operation is only supported for asymmetric keys with **Usage** set to **SIG
 
 |SM2DSA
 
-|SM2 Elliptic Curve Digital Signature Algorithm |
+|SM2 elliptic curve public key encryption algorithm |
 
-**Note:** According to the national standard GBT32918, when calculating SM2 signature value,**Digest** the parameter is not directly used to calculate the SM3 digest, but for the Z\(A\) the digest computed based on the mosaic values of and M, where M is the original message to be signed and Z\(A\) is A hash value for user A as defined in gbt32918.
+**Note:** When you calculate the SM2 signature based on GB/T 32918, the **Digest** parameter is used to calculate the digest value of the combination of Z\(A\) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z\(A\) indicates the hash value for User A. The hash value is defined in GB/T 32918.
+
+In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a digital signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
 
 ## Debugging
 
@@ -46,27 +58,29 @@ This operation is only supported for asymmetric keys with **Usage** set to **SIG
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
-|Action|String|Yes|AsymmetricSign|The operation that you want to perform. Set the value to**AsymmetricSign**. |
-|Algorithm|String|Yes|RSA\_PSS\_SHA\_256|The signature algorithm to use. |
-|Digest|String|Yes|ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=|Use**Algorithm**, which is the digest generated for the original message.
+|Action|String|Yes|AsymmetricSign|The operation that you want to perform. Set the value to AsymmetricSign. |
+|Algorithm|String|Yes|RSA\_PSS\_SHA\_256|The signature algorithm. |
+|Digest|String|Yes|ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiu\*\*\*\*=|The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
 
-**Note:** Use Base64 encoding. |
-|KeyId|String|Yes|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|The globally unique ID of the CMK.
+ **Note:** The value must be encoded in Base64. |
+|KeyId|String|Yes|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|The globally unique ID \(GUID\) of the CMK.
 
-**Note:** This parameter can also be specified as an alias bound to the master key. For more information, see [use aliases](~~68522~~). |
-|KeyVersionId|String|Yes|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|The globally unique ID of the CMK version. |
+ **Note:** You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~). |
+|KeyVersionId|String|Yes|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|The ID of the CMK version. The ID must be globally unique. |
+
+For more information about common request parameters, see [Common parameters](~~69007~~).
 
 ## Response parameters
 
 |Parameter|Type|Example|Description|
 |---------|----|-------|-----------|
-|KeyId|String|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|The globally unique ID of the CMK.
+|KeyId|String|5c438b18-05be-40ad-b6c2-3be6752c\*\*\*\*|The GUID of the CMK.
 
-**Note:** If you set the KeyId parameter to the alias of a CMK, the ID of the CMK created by the alias is returned. |
-|KeyVersionId|String|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|The globally unique ID of the CMK version. |
-|Value|String|M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq3a/w==|The calculated signature.
+ **Note:** If you set the KeyId parameter in the request to an alias, the ID of the CMK to which the alias is bound is returned. |
+|KeyVersionId|String|2ab1a983-7072-4bbc-a582-584b5bd8\*\*\*\*|The ID of the CMK version. It is the GUID of the CMK version. |
+|Value|String|M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq\*\*\*\*==|The calculated signature.
 
-**Note:** Use Base64 encoding. |
+ **Note:** The value is encoded in Base64. |
 |RequestId|String|475f1620-b9d3-4d35-b5c6-3fbdd941423d|The ID of the request. |
 
 ## Examples
@@ -74,12 +88,12 @@ This operation is only supported for asymmetric keys with **Usage** set to **SIG
 Sample requests
 
 ```
-https://[Endpoint]/?Action=AsymmetricSign
+http(s)://[Endpoint]/?Action=AsymmetricSign
+&Algorithm=RSA_PSS_SHA_256
+&Digest=ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiu****=
 &KeyId=5c438b18-05be-40ad-b6c2-3be6752c****
 &KeyVersionId=2ab1a983-7072-4bbc-a582-584b5bd8****
-&Algorithm=RSA_PSS_SHA_256
-&Digest=ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=
-&<Common request parameters>
+&<Common request parameters>|
 ```
 
 Sample success responses
@@ -90,7 +104,7 @@ Sample success responses
 <KMS>
     <KeyId>5c438b18-05be-40ad-b6c2-3be6752c****</KeyId>
     <KeyVersionId>2ab1a983-7072-4bbc-a582-584b5bd8****</KeyVersionId>
-    <Value>M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq3a/w==</Value>
+    <Value>M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq****==</Value>
     <RequestId>475f1620-b9d3-4d35-b5c6-3fbdd941423d</RequestId>
 </KMS>
 ```
@@ -101,7 +115,7 @@ Sample success responses
 {
   "KeyId": "5c438b18-05be-40ad-b6c2-3be6752c****",
   "KeyVersionId": "2ab1a983-7072-4bbc-a582-584b5bd8****",
-  "Value": "M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq3a/w==",
+  "Value": "M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq****==",
   "RequestId": "475f1620-b9d3-4d35-b5c6-3fbdd941423d"
 }
 ```
