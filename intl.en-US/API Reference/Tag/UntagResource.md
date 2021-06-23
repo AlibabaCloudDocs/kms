@@ -1,8 +1,8 @@
 # UntagResource
 
-Deletes tags from a customer master key \(CMK\) or secret.
+Detaches tags from a customer master key \(CMK\), secret, or certificate.
 
-You must specify either KeyId or SecretName.
+In this example, the tags whose tag keys are tagkey1 and tagkey2 are detached from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf****`.
 
 ## Debugging
 
@@ -13,17 +13,22 @@ You must specify either KeyId or SecretName.
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|UntagResource|The operation that you want to perform. Set the value to UntagResource. |
-|TagKeys|String|Yes|\["tagkey1","tagkey2"\]|One or more tag keys. Multiple tag keys are separated by commas \(,\).
+|TagKeys|String|Yes|\["tagkey1","tagkey2"\]|One or more tag keys. Separate multiple tag keys with commas \(,\).
 
  You need to specify only the tag keys, not the tag values.
 
  Each tag key must be 1 to 128 bytes in length. |
-|KeyId|String|No|08c33a6f-4e0a-4a1b-a3fa-7ddf\*\*\*\*|The globally unique ID of the CMK.
+|KeyId|String|No|08c33a6f-4e0a-4a1b-a3fa-7ddf\*\*\*\*|The ID of the CMK. The ID must be globally unique.
 
- **Note:** Set either this parameter or SecretName. |
+ **Note:** You can set only one of the KeyId, SecretName, and CertificateId parameters. |
 |SecretName|String|No|MyDbC\*\*\*\*|The name of the secret.
 
- **Note:** Set either this parameter or KeyId. |
+ **Note:** You can set only one of the KeyId, SecretName, and CertificateId parameters. |
+|CertificateId|String|No|770dbe42-e146-43d1-a55a-1355db86\*\*\*\*|The ID of the certificate.
+
+ **Note:** You can set only one of the KeyId, SecretName, and CertificateId parameters. |
+
+For more information about common request parameters, see [Common parameters](~~69007~~).
 
 ## Response parameters
 
@@ -39,7 +44,7 @@ Sample requests
 https://kms.cn-hangzhou.aliyuncs.com/?Action=UntagResource
 &KeyId=08c33a6f-4e0a-4a1b-a3fa-7ddf****
 &TagKeys=["tagkey1","tagkey2"]
-&<Common request parameters>
+&<Common request parameters>|
 ```
 
 Sample success responses
