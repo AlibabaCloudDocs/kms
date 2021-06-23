@@ -2,9 +2,7 @@
 
 Generates a digital signature by using a specified certificate.
 
-Limit: The signature algorithm in the request parameters must match the key type.
-
-The following table describes the mapping between signature algorithms and key types.
+The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
 
 |Algorithm
 
@@ -21,9 +19,7 @@ The following table describes the mapping between signature algorithms and key t
 |EC\_P256 |
 |SM2DSA
 
-|EC\_SM2
-
-| |
+|EC\_SM2 |
 
 In this example, the certificate whose ID is `12345678-1234-1234-1234-12345678****` and the signature algorithm `ECDSA_SHA_256` are used to generate a digital signature for the raw data `VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=`.
 
@@ -84,7 +80,7 @@ http(s)://[Endpoint]/?Action=CertificatePrivateKeySign
 &CertificateId=12345678-1234-1234-1234-12345678****
 &Message=VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=
 &MessageType=RAW
-&<Common request parameters>
+&<Common request parameters>|
 ```
 
 Sample success responses
@@ -93,9 +89,9 @@ Sample success responses
 
 ```
 <KMS>
-	  <CertificateId>12345678-1234-1234-1234-123456789012</CertificateId>
-	  <SignatureValue>ZOyIygCyaOW6Gj****MlNKiuyjfzw=</SignatureValue>
-	  <RequestId>5979d897-d69f-4fc9-87dd-f3bb73c40b80</RequestId>
+      <CertificateId>12345678-1234-1234-1234-123456789012</CertificateId>
+      <SignatureValue>ZOyIygCyaOW6Gj****MlNKiuyjfzw=</SignatureValue>
+      <RequestId>5979d897-d69f-4fc9-87dd-f3bb73c40b80</RequestId>
 </KMS>
 ```
 
@@ -111,8 +107,8 @@ Sample success responses
 
 ## Error codes
 
-|HttpCode|Error code|Error message|Description|
-|--------|----------|-------------|-----------|
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
 |404|Certificate.NotFound|The specified certificate is not found.|The error message returned because the specified certificate does not exist.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Kms).
