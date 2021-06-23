@@ -2,9 +2,7 @@
 
 Verifies a digital signature by using a specified certificate.
 
-Limit: The signature algorithm in the request parameters must match the key type.
-
-The following table describes the mapping between signature algorithms and key types.
+The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
 
 |Algorithm
 
@@ -21,9 +19,7 @@ The following table describes the mapping between signature algorithms and key t
 |EC\_P256 |
 |SM2DSA
 
-|EC\_SM2
-
-| |
+|EC\_SM2 |
 
 In this example, the certificate whose ID is `12345678-1234-1234-1234-12345678****` and the signature algorithm `ECDSA_SHA_256` are used to verify the digital signature `ZOyIygCyaOW6Gj****MlNKiuyjfzw=` of the raw data `VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=`.
 
@@ -89,7 +85,7 @@ http(s)://[Endpoint]/?Action=CertificatePublicKeyVerify
 &Message=VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=
 &MessageType=RAW
 &SignatureValue=ZOyIygCyaOW6Gj****MlNKiuyjfzw=
-&<Common request parameters>
+&<Common request parameters>|
 ```
 
 Sample success responses
@@ -116,8 +112,8 @@ Sample success responses
 
 ## Error codes
 
-|HttpCode|Error code|Error message|Description|
-|--------|----------|-------------|-----------|
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
 |404|InvalidAccessKeyId.NotFound|The specified AccessKey ID does not exist.|The error message returned because the specified AccessKey ID does not exist. Check whether a valid AccessKey ID is specified when you call the operation.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Kms).
