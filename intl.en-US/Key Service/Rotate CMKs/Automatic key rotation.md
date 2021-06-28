@@ -56,7 +56,7 @@ You can call the DescribeKey operation to view the configured automatic rotation
 When automatic rotation is enabled, KMS calculates the time of the next rotation by using the following formula:
 
 ```
-${NextRotationTime} = ${LastRotationTime} + ${RotationInterval}
+<NextRotationTime> = <LastRotationTime> + <RotationInterval>
 ```
 
 where:
