@@ -15,6 +15,7 @@
     |[ImportKeyMaterial](/intl.zh-CN/API参考/密钥/ImportKeyMaterial.md)|创建外部密钥（BYOK）的第三步：导入密钥材料到用户主密钥中，完成外部密钥的创建。|
     |[EnableKey](/intl.zh-CN/API参考/密钥/EnableKey.md)|修改密钥的状态为启用。|
     |[DisableKey](/intl.zh-CN/API参考/密钥/DisableKey.md)|修改密钥的状态为禁用。|
+    |[SetDeletionProtection](/intl.zh-CN/API参考/密钥/SetDeletionProtection.md)|为用户主密钥（CMK）开启或关闭删除保护。|
     |[ScheduleKeyDeletion](/intl.zh-CN/API参考/密钥/ScheduleKeyDeletion.md)|计划删除密钥。将密钥的状态设置为待删除状态，处于待删除状态的主密钥，会在计划日期到期后删除。|
     |[CancelKeyDeletion](/intl.zh-CN/API参考/密钥/CancelKeyDeletion.md)|取消计划删除。处于待删除状态的密钥，在计划的日期到期之前，可以取消删除的计划，重新设置密钥状态为启用。|
     |[DeleteKeyMaterial](/intl.zh-CN/API参考/密钥/DeleteKeyMaterial.md)|直接删除用户主密钥的密钥材料。针对导入的外部密钥（BYOK），可以直接删除导入的密钥材料，删除密钥材料后的用户主密钥状态为等待导入。|
