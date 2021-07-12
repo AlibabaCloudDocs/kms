@@ -8,10 +8,10 @@ Customer master keys \(CMKs\) in the Pending Deletion state are not charged. The
 
 |Key creator|Billable item|Unit price in Alibaba Cloud regions \(USD/day\)|
 |-----------|-------------|-----------------------------------------------|
-|Alibaba Cloud service|Version of a service-managed key 1|0.0|
-|User|Version of a software key 2|0.002|
-|Version of a basic hardware key 3|0.033|
-|Version of an advanced hardware key 4|-   0.083 for the first 2,000 key versions
+|Alibaba Cloud service|Version of a service-managed key1|0.0|
+|User|Version of a software key2|0.002|
+|Version of a basic hardware key3|0.033|
+|Version of an advanced hardware key4|-   0.083 for the first 2,000 key versions
 -   0.033 for other key versions |
 
 1 A CMK automatically created by an Alibaba Cloud service and managed by an Alibaba Cloud account. For more information, see [Select appropriate keys](/intl.en-US/Integration of Alibaba Cloud Services with KMS/Integration with KMS.md).
@@ -28,9 +28,9 @@ You can make a total number of 20,000 API operation calls free of charge for you
 
 |Key category|Unit price in Alibaba Cloud regions in mainland China \(USD/10,000 calls\)|Unit price in Alibaba Cloud regions outside mainland China \(USD/10,000 calls\)|
 |------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-|Service-managed key 1|0.08|0.03|
-|Basic key 2 \(software and hardware\)|0.08|0.03|
-|Advanced key 3 \(software and hardware\)|0.24|0.15|
+|Service-managed key1|0.08|0.03|
+|Basic key2 \(software and hardware\)|0.08|0.03|
+|Advanced key3 \(software and hardware\)|0.24|0.15|
 
 1 A CMK automatically created by an Alibaba Cloud service and managed by an Alibaba Cloud account. For more information, see [Select appropriate keys](/intl.en-US/Integration of Alibaba Cloud Services with KMS/Integration with KMS.md).
 
@@ -45,6 +45,9 @@ In the Singapore \(Singapore\) region, 250 disks are created per month. A CMK is
 Fees:
 
 -   Hosted keys: one CMK
+
+    **Note:** The CMK can be a custom hardware key. In this case, you are charged for hosting the CMK. The CMK can also be a service-managed key. In this case, you are charged for calling API operations by using the CMK beyond the monthly free quota of 20,000 calls.
+
 -   API operation calls: 750 \(250 calls to create data keys, 250 calls to encrypt the data keys, and 250 calls to decrypt the data keys\)
 
 The following table lists the estimated monthly costs.
